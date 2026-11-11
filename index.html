@@ -1694,7 +1694,7 @@ function mapMaxInit(){
   window.addEventListener("resize",()=>{if(MAPMAX.on&&MAPV.map)MAPV.map.invalidateSize()});
   // the map's tab buttons hide the map; leave full screen first
   document.querySelectorAll('[id^="t-"]').forEach(b=>b.addEventListener("click",()=>{if(MAPMAX.on)mapMaxSet(false)},true))}
-function mapMaxCtl(m){const C=L.Control.extend({options:{position:"topleft"},onAdd(){const d=L.DomUtil.create("div","leaflet-bar leaflet-control mxctl"),a=L.DomUtil.create("a","",d);
+function mapMaxCtl(m){if(MAPMAX.ctl)return; MAPMAX.ctl=1; const C=L.Control.extend({options:{position:"topleft"},onAdd(){const d=L.DomUtil.create("div","leaflet-bar leaflet-control mxctl"),a=L.DomUtil.create("a","",d);
   a.href="#";a.role="button";a.textContent="⤢";a.title="Full screen map";L.DomEvent.disableClickPropagation(d);
   L.DomEvent.on(a,"click",e=>{L.DomEvent.preventDefault(e);mapMaxSet(!MAPMAX.on)});return d}}); new C().addTo(m)}
 function geoOrder(){const m=MAPV.map,gs=[]; // map lines under the listings, springheads above the lines
