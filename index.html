@@ -1,4 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="strict-origin-when-cross-origin"><style>body{margin:0}[hidden]{display:none!important}</style></head><body><!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="strict-origin-when-cross-origin"><style>body{margin:0}[hidden]{display:none!important}</style></head><body><!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+.mxbtn{font:inherit;font-size:13px;line-height:1.2;padding:6px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer}
+.mxbtn:hover{border-color:var(--muted)} .mxbtn[aria-expanded="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#mapmax{font-weight:600}
+.mxbar,#mxfilt{display:none}
+.mxleg{display:grid;gap:10px}
+#mapwrap.max{position:fixed;inset:0;z-index:1000;margin:0;gap:0;background:var(--bg);display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+#mapwrap.max .mxbar{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--rule);flex:none}
+#mapwrap.max .mxsp{flex:1}
+#mapwrap.max #mapmax{display:none}
+#mapwrap.max .mxleg,#mapwrap.max #mxfilt{display:none;position:absolute;left:8px;right:8px;top:var(--mxtop,52px);z-index:1002;max-height:min(70vh,560px);overflow:auto;
+  background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;box-shadow:0 8px 28px rgba(0,0,0,.28)}
+@media (min-width:900px){#mapwrap.max .mxleg,#mapwrap.max #mxfilt{right:auto;width:560px}}
+#mapwrap.max.leg .mxleg,#mapwrap.max.filt #mxfilt{display:grid}
+#mxfilt .controls{position:static;border:0;padding:0;background:none}
+#mapwrap.max #leafmap{flex:1 1 auto;height:auto;min-height:0;border:0;border-radius:0}
+html.mapmax,html.mapmax body{overflow:hidden}
+.leaflet-control.mxctl a{font-size:17px;font-weight:700;line-height:30px;text-align:center;text-decoration:none;cursor:pointer}
+</style></head><body>
 <title>Clearest Water by State</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>/* fonts from Fontsource (OFL), embedded so the page loads nothing from other sites */
@@ -916,8 +935,12 @@ ul.lsts li.both{border-color:var(--trail);box-shadow:inset 3px 0 0 var(--lake)}
 
 <div id="mapwrap" data-mode="map" hidden>
   <p class="privnote">Street, topo and satellite maps from OpenStreetMap, USGS and Esri: use the switcher in the map's top-right corner. Listings refresh on the 1st and 15th of each month.</p>
-  <div class="mapbar"><span class="count" id="mapcount"></span><span class="lg"><i class="on"></i>On the water</span><span class="lg"><i class="near"></i>Near · MLS waterfront</span><span class="lg"><i class="land"></i>Land (hollow)</span><span class="lg"><i class="sh"></i>Springhead on the lot</span><span class="lg"><i class="tr"></i>House near a bike trail</span><span class="lg"><i class="ct"></i>City house near a bike trail</span><span class="lg"><i class="wt"></i>Green ring: water listing within 1 mile of a major bike trail</span><span class="lg"><i class="wat"></i>Ranked lake, river or spring</span></div>
+  <div class="mxbar"><button id="mxf" class="mxbtn" type="button" aria-expanded="false">Filters</button><button id="mxl" class="mxbtn" type="button" aria-expanded="false">Legend &amp; layers</button><span class="mxsp"></span><button id="mxx" class="mxbtn" type="button">✕ Exit full screen</button></div>
+  <div id="mxfilt" class="mxpanel"></div>
+  <div class="mxleg">
+  <div class="mapbar"><button id="mapmax" class="mxbtn" type="button" aria-pressed="false">⤢ Full screen</button><span class="count" id="mapcount"></span><span class="lg"><i class="on"></i>On the water</span><span class="lg"><i class="near"></i>Near · MLS waterfront</span><span class="lg"><i class="land"></i>Land (hollow)</span><span class="lg"><i class="sh"></i>Springhead on the lot</span><span class="lg"><i class="tr"></i>House near a bike trail</span><span class="lg"><i class="ct"></i>City house near a bike trail</span><span class="lg"><i class="wt"></i>Blue ring: water listing within 1 mile of a major bike trail</span><span class="lg"><i class="wat"></i>Ranked lake, river or spring</span></div>
   <div class="geobar"><b>Map detail</b><label><input id="geotr" type="checkbox" checked> Bike trails</label><label><input id="geowt" type="checkbox" checked> Water</label><label><input id="georoad" type="checkbox" checked> Roads and towns</label><span class="lg"><i class="ln"></i>Paved trail</span><span class="lg"><i class="ln g"></i>Gravel or mountain bike</span><span class="lg"><i class="band"></i>400 m each side of a trail (zoom in)</span><span class="lg"><i class="rk"></i>Ranked water</span><span class="lg"><i class="hy"></i>Other water</span><span class="lg"><i class="vent"></i>Springhead (bigger = stronger flow)</span><span class="lg"><i class="cl"></i>City limits</span></div>
+  </div>
   <div id="leafmap" role="region" aria-label="Map of waterfront listings"></div>
 </div>
 
@@ -1636,6 +1659,44 @@ function geoUpdate(){const m=MAPV.map; if(!m||!GEO.nat)return;
   if(GEO.dirty){GEO.dirty=false;geoOrder()}
   geoLabels(vis);
 }
+
+// full-screen map
+const MAPMAX={on:false,ph:null,fs:false};
+function mxPanel(which){const w=document.getElementById("mapwrap");
+  ["filt","leg"].forEach(k=>w.classList.toggle(k,which===k&&!w.classList.contains(k)));
+  document.getElementById("mxf").setAttribute("aria-expanded",w.classList.contains("filt"));
+  document.getElementById("mxl").setAttribute("aria-expanded",w.classList.contains("leg"));
+  w.style.setProperty("--mxtop",(w.querySelector(".mxbar").offsetHeight+6)+"px")}
+function mapMaxSet(on){const w=document.getElementById("mapwrap"), c=document.querySelector(".controls"), d=document;
+  if(on===MAPMAX.on)return; MAPMAX.on=on;
+  if(on){MAPMAX.ph=d.createComment("controls"); c.parentNode.insertBefore(MAPMAX.ph,c); document.getElementById("mxfilt").appendChild(c);
+    w.classList.add("max"); d.documentElement.classList.add("mapmax");
+    const fs=w.requestFullscreen||w.webkitRequestFullscreen;
+    if(fs&&!(d.fullscreenElement||d.webkitFullscreenElement)){try{const r=fs.call(w,{navigationUI:"hide"}); if(r&&r.catch)r.catch(()=>{})}catch(e){}}}
+  else{if(MAPMAX.ph){MAPMAX.ph.parentNode.insertBefore(c,MAPMAX.ph); MAPMAX.ph.remove(); MAPMAX.ph=null}
+    w.classList.remove("max","filt","leg"); d.documentElement.classList.remove("mapmax");
+    if(d.fullscreenElement||d.webkitFullscreenElement){try{const r=(d.exitFullscreen||d.webkitExitFullscreen).call(d); if(r&&r.catch)r.catch(()=>{})}catch(e){}}
+    w.scrollIntoView({block:"start"})}
+  document.getElementById("mapmax").setAttribute("aria-pressed",on);
+  document.querySelectorAll(".mxctl a").forEach(a=>{a.textContent=on?"✕":"⤢";a.title=on?"Exit full screen":"Full screen map"});
+  [50,300,700].forEach(t=>setTimeout(()=>MAPV.map&&MAPV.map.invalidateSize(),t))}
+function mapMaxInit(){
+  document.getElementById("mapmax").onclick=()=>mapMaxSet(true);
+  document.getElementById("mxx").onclick=()=>mapMaxSet(false);
+  document.getElementById("mxf").onclick=()=>mxPanel("filt");
+  document.getElementById("mxl").onclick=()=>mxPanel("leg");
+  const fsc=()=>{const d=document, w=document.getElementById("mapwrap"), el=d.fullscreenElement||d.webkitFullscreenElement;
+    if(el===w)MAPMAX.fs=true; else if(MAPMAX.fs){MAPMAX.fs=false; if(MAPMAX.on)mapMaxSet(false)}
+    [50,300].forEach(t=>setTimeout(()=>MAPV.map&&MAPV.map.invalidateSize(),t))};
+  document.addEventListener("fullscreenchange",fsc); document.addEventListener("webkitfullscreenchange",fsc);
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&MAPMAX.on){const w=document.getElementById("mapwrap");
+    if(w.classList.contains("filt")||w.classList.contains("leg"))mxPanel(null); else mapMaxSet(false)}});
+  window.addEventListener("resize",()=>{if(MAPMAX.on&&MAPV.map)MAPV.map.invalidateSize()});
+  // the map's tab buttons hide the map; leave full screen first
+  document.querySelectorAll('[id^="t-"]').forEach(b=>b.addEventListener("click",()=>{if(MAPMAX.on)mapMaxSet(false)},true))}
+function mapMaxCtl(m){const C=L.Control.extend({options:{position:"topleft"},onAdd(){const d=L.DomUtil.create("div","leaflet-bar leaflet-control mxctl"),a=L.DomUtil.create("a","",d);
+  a.href="#";a.role="button";a.textContent="⤢";a.title="Full screen map";L.DomEvent.disableClickPropagation(d);
+  L.DomEvent.on(a,"click",e=>{L.DomEvent.preventDefault(e);mapMaxSet(!MAPMAX.on)});return d}}); new C().addTo(m)}
 function geoOrder(){const m=MAPV.map,gs=[]; // map lines under the listings, springheads above the lines
   Object.values(GEO.S).forEach(G=>{if(G.hd)gs.push(G.hd)}); if(GEO.natG)gs.push(GEO.natG.tr);
   Object.values(GEO.S).forEach(G=>{if(G.tr)gs.push(G.tr)}); Object.values(GEO.H).forEach(G=>{if(G.l)gs.push(G.l)});
@@ -1693,7 +1754,7 @@ function renderMap(){
   document.getElementById("list").innerHTML="";
   if(typeof L==="undefined"){document.getElementById("mapcount").textContent="The map library didn't load. Check your connection and reload the page.";return}
   initMap(); const m=MAPV.map;
-  setTimeout(()=>m.invalidateSize(),0);
+  setTimeout(()=>m.invalidateSize(),0); mapMaxCtl(m);
   const q=document.getElementById("q").value.trim().toLowerCase(), s=sel.value, pt=document.getElementById("ptype").value,
     nw=document.getElementById("newonly").checked, near=document.getElementById("incnear").checked, sw=document.getElementById("showwat").checked&&!document.getElementById("wtboth").checked;
   const L0=allListings().filter(o=>(!s||o.st===s)&&(!pt||o.x[3]===pt)&&(!nw||o.x[15])&&(near||o.x[1]===0)&&wtOK(o.x[12])&&
@@ -1781,6 +1842,8 @@ document.querySelectorAll(".shdate").forEach(e=>e.textContent=fmtD(SH.date));
 document.querySelectorAll(".trdate").forEach(e=>e.textContent=fmtD(TR.date));
 document.querySelectorAll(".ctdate").forEach(e=>e.textContent=fmtD(CT.date));
 setMode(mode);
+
+try{mapMaxInit()}catch(e){}
 </script>
 <script>
 /* ---------- private copy: basemaps from outside servers ---------- */
