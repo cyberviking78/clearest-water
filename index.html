@@ -32,7 +32,7 @@ html.mapmax,html.mapmax body{overflow:hidden}
 <style>
 /* Layout: field-notebook index. One column of state entries, each a ranked list; values in a mono column like a sampling log. */
 :root{
-  --map-land:#ffffff; --map-water:#dfeaec; --map-line:#c4d2d4; --map-hydro:#b3d7df; --map-hydro-line:#6fb0bf; --map-road:#e3d9c4; --map-road-major:#dcc18e; --map-label:#3a4c4f;
+  --map-land:#ffffff; --map-water:#dfeaec; --map-line:#c4d2d4; --map-state:#71848a; --map-hydro:#b3d7df; --map-hydro-line:#6fb0bf; --map-road:#e3d9c4; --map-road-major:#dcc18e; --map-label:#3a4c4f;
   --bg:#f3f6f6; --surface:#ffffff; --ink:#132326; --muted:#5a6b6e; --rule:#d5dfe0;
   --city:#b0502a; --city-soft:#f8e7de;
   --trail:#2347c8; --trail-soft:#e3e9fb; --trail-case:#ffffff;
@@ -43,14 +43,14 @@ html.mapmax,html.mapmax body{overflow:hidden}
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --map-land:#182629; --map-water:#0b1314; --map-line:#2c3f42; --map-hydro:#1c4952; --map-hydro-line:#2f7482; --map-road:#33413f; --map-road-major:#6b5c3d; --map-label:#b9c9cb;
+  --map-land:#182629; --map-water:#0b1314; --map-line:#2c3f42; --map-state:#7e979d; --map-hydro:#1c4952; --map-hydro-line:#2f7482; --map-road:#33413f; --map-road-major:#6b5c3d; --map-label:#b9c9cb;
   --bg:#0e1719; --surface:#152225; --ink:#e3eeef; --muted:#93a6a9; --rule:#28393c;
   --city:#f0a27c; --city-soft:#3a2419;
   --trail:#7d96ff; --trail-soft:#1c2445; --trail-case:#0b1020;
   --spring:#b79cf0; --spring-soft:#2a2140;
   --lake:#5cc3cf; --lake-soft:#173a3f; --warn:#e8a74a; --warn-soft:#3a2c17; --none:#8e9a9c; --none-soft:#222e30; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --map-land:#182629; --map-water:#0b1314; --map-line:#2c3f42; --map-hydro:#1c4952; --map-hydro-line:#2f7482; --map-road:#33413f; --map-road-major:#6b5c3d; --map-label:#b9c9cb;
+  --map-land:#182629; --map-water:#0b1314; --map-line:#2c3f42; --map-state:#7e979d; --map-hydro:#1c4952; --map-hydro-line:#2f7482; --map-road:#33413f; --map-road-major:#6b5c3d; --map-label:#b9c9cb;
   --bg:#0e1719; --surface:#152225; --ink:#e3eeef; --muted:#93a6a9; --rule:#28393c;
   --city:#f0a27c; --city-soft:#3a2419;
   --trail:#7d96ff; --trail-soft:#1c2445; --trail-case:#0b1020;
@@ -1567,10 +1567,17 @@ function shPopup(x){
     <div class="pp-water">${SHT[t][1]}: <b>${esc(hd[0])}</b> <span class="pp-sub">(magnitude ${hd[3]}${hd[4]!=null?`, ${cfs(hd[4])} cfs`:""}${hd[5]?`, measured ${hd[5]}`:""})</span>${x[19]&&x[19].length?`<br><span class="pp-sub">${x[19].length} permit${x[19].length>1?"s":""} or water right${x[19].length>1?"s":""} near the vent</span>`:""}</div>
     ${wtPop(path)}<div class="pp-links"><a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">View listing on Redfin</a><a class="alt" href="${z}" target="_blank" rel="noopener">Find on Zillow</a></div>`;
 }
+// state outlines: their own layer above any basemap
+function stLineStyle(){const b=GEO.tiles?(GEO.baseName||"Streets"):"";
+  if(b==="Satellite")return {color:"#ffffff",weight:2,opacity:.9,fill:false};
+  if(b)return {color:"#2a2e4a",weight:2.4,opacity:.8,fill:false};
+  return {color:tok("--map-state"),weight:1.4,opacity:1,fill:false}}
+function styleStates(){if(MAPV.stl)MAPV.stl.setStyle(stLineStyle())}
 function styleBase(){
   if(!MAPV.base)return;
   MAPV.base.setStyle({color:tok("--map-line"),weight:1,fillColor:tok("--map-land"),fillOpacity:1});
   if(MAPV.counties)MAPV.counties.setStyle({color:tok("--map-line"),weight:.5,opacity:.8,fill:false});
+  styleStates();
 }
 
 /* ---------- detailed map layers (map/nat.json, map/st/<ST>.json, map/hy/<ST>.json) ---------- */
@@ -1594,7 +1601,7 @@ function geoWaterTip(l){const o=l.options;let w=null;try{if(!WIDX)allListings();
   const k={l:"lake",r:"river",s:"spring",f:"spring-fed river"}[o.kind];
   return w?`<b>${esc(w.n)}</b><br>${w.t==="gl"?"Great Lakes shoreline in "+esc(NAMES[w.st]):`${w.rank?`#${w.rank} `:"Known clear, not measured · "}${w.t}${w.t==="lake"||w.t==="river"?" in "+esc(NAMES[w.st]):""}`}`:`<b>${esc(o.nm||"Ranked "+k)}</b>`}
 function geoInit(m){
-  [["geoBase",200],["geoWater",320],["geoRanked",340],["geoRoad",350],["geoCity",355],["geoBand",360],["geoTrail",370],["geoVent",380],["geoLabel",390]].forEach(([p,z])=>{const e=m.createPane(p);e.style.zIndex=z;if(p==="geoLabel"||p==="geoBand"||p==="geoBase")e.style.pointerEvents="none"; if(p==="geoBand")e.style.opacity=".2"});
+  [["geoBase",200],["geoStates",300],["geoWater",320],["geoRanked",340],["geoRoad",350],["geoCity",355],["geoBand",360],["geoTrail",370],["geoVent",380],["geoLabel",390]].forEach(([p,z])=>{const e=m.createPane(p);e.style.zIndex=z;if(p==="geoLabel"||p==="geoBand"||p==="geoBase"||p==="geoStates")e.style.pointerEvents="none"; if(p==="geoBand")e.style.opacity=".2"});
   GEO.R={};["geoBase","geoWater","geoRanked","geoRoad","geoCity","geoBand","geoTrail","geoVent"].forEach(p=>GEO.R[p]=L.canvas({pane:p,padding:.4,tolerance:p==="geoTrail"?6:p==="geoRanked"||p==="geoWater"?3:0}));
   GEO.labels=L.layerGroup().addTo(m); GEO.top=m.getRenderer(L.circleMarker([0,0])); GEO.top.options.tolerance=5;
   m.on("zoomend",geoZoomStyle); m.on("moveend",geoUpdate);
@@ -1760,6 +1767,7 @@ function initMap(){
       MAPV.topo=t;
       MAPV.base=L.geoJSON(topojson.feature(t,t.objects.states),{interactive:false,pane:"geoBase"}).addTo(m);
       MAPV.counties=L.geoJSON(topojson.feature(t,t.objects.counties),{interactive:false,pane:"geoBase"});
+      MAPV.stl=L.geoJSON(topojson.mesh(t,t.objects.states),{interactive:false,pane:"geoStates",style:stLineStyle}).addTo(m);
       styleBase(); MAPV.base.bringToBack();
     }).catch(()=>{});
   }
@@ -1884,9 +1892,10 @@ try{mapMaxInit()}catch(e){}
       const e=document.getElementById("mapcount"); if(e)e.insertAdjacentHTML("afterend",'<span class="hint" style="color:var(--warn)">Some map tiles did not load; switch the basemap or reload.</span>')}})};
       if(l.eachLayer)l.eachLayer(each); else each(l)});
     let cur="Streets"; try{const v=localStorage.getItem("cw-base"); if(v&&layers[v])cur=v}catch(e){}
-    const apply=name=>{GEO.tiles=name!=="Plain map";
+    const apply=name=>{GEO.tiles=name!=="Plain map"; GEO.baseName=name;
       if(MAPV.base)MAPV.base.setStyle({fillOpacity:GEO.tiles?0:1,opacity:GEO.tiles?.5:1});
       if(MAPV.counties)MAPV.counties.setStyle({opacity:GEO.tiles?0:.8});
+      if(typeof styleStates==="function")styleStates();
       const r=document.getElementById("georoad"); if(r)r.checked=!GEO.tiles;
       try{localStorage.setItem("cw-base",name)}catch(e){}
       geoUpdate()};
