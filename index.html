@@ -1661,7 +1661,17 @@ function geoUpdate(){const m=MAPV.map; if(!m||!GEO.nat)return;
 }
 
 // full-screen map
-const MAPMAX={on:false,ph:null,fs:false};
+const MAPMAX={on:false,ph:null,fs:false,away:false,armed:false,saved:null};
+function mxSS(k,v){try{if(v===undefined)return sessionStorage.getItem(k); sessionStorage.setItem(k,v)}catch(e){return null}}
+function mxFS(){const w=document.getElementById("mapwrap"), d=document, fs=w.requestFullscreen||w.webkitRequestFullscreen;
+  if(!fs||d.fullscreenElement||d.webkitFullscreenElement)return;
+  try{const r=fs.call(w,{navigationUI:"hide"}); if(r&&r.catch)r.catch(()=>{})}catch(e){}}
+// after the browser drops full screen (another tab, app switch, reload), the next tap on the map goes back to it
+function mxArm(){if(MAPMAX.armed)return; const w=document.getElementById("mapwrap"); MAPMAX.armed=true;
+  const f=e=>{if(e.type==="pointerdown"&&e.pointerType!=="mouse")return; if(e.type==="pointerup"&&e.pointerType==="mouse")return;
+    w.removeEventListener("pointerdown",f,true); w.removeEventListener("pointerup",f,true); MAPMAX.armed=false;
+    if(MAPMAX.on&&!MAPMAX.away)mxFS()};
+  w.addEventListener("pointerdown",f,true); w.addEventListener("pointerup",f,true)}
 function mxPanel(which){const w=document.getElementById("mapwrap");
   ["filt","leg"].forEach(k=>w.classList.toggle(k,which===k&&!w.classList.contains(k)));
   document.getElementById("mxf").setAttribute("aria-expanded",w.classList.contains("filt"));
@@ -1670,11 +1680,10 @@ function mxPanel(which){const w=document.getElementById("mapwrap");
 function mapMaxSet(on){const w=document.getElementById("mapwrap"), c=document.querySelector(".controls"), d=document;
   if(on===MAPMAX.on)return; MAPMAX.on=on;
   if(on){MAPMAX.ph=d.createComment("controls"); c.parentNode.insertBefore(MAPMAX.ph,c); document.getElementById("mxfilt").appendChild(c);
-    w.classList.add("max"); d.documentElement.classList.add("mapmax");
-    const fs=w.requestFullscreen||w.webkitRequestFullscreen;
-    if(fs&&!(d.fullscreenElement||d.webkitFullscreenElement)){try{const r=fs.call(w,{navigationUI:"hide"}); if(r&&r.catch)r.catch(()=>{})}catch(e){}}}
+    w.classList.add("max"); d.documentElement.classList.add("mapmax"); mxSS("secchi-mapmax","1");
+    if(navigator.userActivation&&!navigator.userActivation.isActive)mxArm(); else mxFS()}
   else{if(MAPMAX.ph){MAPMAX.ph.parentNode.insertBefore(c,MAPMAX.ph); MAPMAX.ph.remove(); MAPMAX.ph=null}
-    w.classList.remove("max","filt","leg"); d.documentElement.classList.remove("mapmax");
+    w.classList.remove("max","filt","leg"); d.documentElement.classList.remove("mapmax"); mxSS("secchi-mapmax","0");
     if(d.fullscreenElement||d.webkitFullscreenElement){try{const r=(d.exitFullscreen||d.webkitExitFullscreen).call(d); if(r&&r.catch)r.catch(()=>{})}catch(e){}}
     w.scrollIntoView({block:"start"})}
   document.getElementById("mapmax").setAttribute("aria-pressed",on);
@@ -1686,15 +1695,23 @@ function mapMaxInit(){
   document.getElementById("mxf").onclick=()=>mxPanel("filt");
   document.getElementById("mxl").onclick=()=>mxPanel("leg");
   const fsc=()=>{const d=document, w=document.getElementById("mapwrap"), el=d.fullscreenElement||d.webkitFullscreenElement;
-    if(el===w)MAPMAX.fs=true; else if(MAPMAX.fs){MAPMAX.fs=false; if(MAPMAX.on)mapMaxSet(false)}
+    if(el===w)MAPMAX.fs=true; else if(MAPMAX.fs){MAPMAX.fs=false; if(MAPMAX.on){if(MAPMAX.away||d.hidden)mxArm(); else mapMaxSet(false)}}
     [50,300].forEach(t=>setTimeout(()=>MAPV.map&&MAPV.map.invalidateSize(),t))};
+  // a listing link or an app switch takes the page away: mark it so the browser leaving full screen doesn't shrink the map
+  document.getElementById("mapwrap").addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a[href]");
+    if(a&&MAPMAX.on&&(a.target==="_blank"||/^https?:/.test(a.getAttribute("href")||""))){MAPMAX.away=true; setTimeout(()=>{if(!document.hidden)MAPMAX.away=false},2500)}},true);
+  document.addEventListener("visibilitychange",()=>{if(document.hidden){if(MAPMAX.on)MAPMAX.away=true}
+    else if(MAPMAX.on){setTimeout(()=>{MAPMAX.away=false; if(MAPMAX.on&&!(document.fullscreenElement||document.webkitFullscreenElement))mxArm()},600)}});
   document.addEventListener("fullscreenchange",fsc); document.addEventListener("webkitfullscreenchange",fsc);
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&MAPMAX.on){const w=document.getElementById("mapwrap");
     if(w.classList.contains("filt")||w.classList.contains("leg"))mxPanel(null); else mapMaxSet(false)}});
   window.addEventListener("resize",()=>{if(MAPMAX.on&&MAPV.map)MAPV.map.invalidateSize()});
   // the map's tab buttons hide the map; leave full screen first
   document.querySelectorAll('[id^="t-"]').forEach(b=>b.addEventListener("click",()=>{if(MAPMAX.on)mapMaxSet(false)},true))}
-function mapMaxCtl(m){if(MAPMAX.ctl)return; MAPMAX.ctl=1; const C=L.Control.extend({options:{position:"topleft"},onAdd(){const d=L.DomUtil.create("div","leaflet-bar leaflet-control mxctl"),a=L.DomUtil.create("a","",d);
+function mapMaxCtl(m){if(MAPMAX.ctl)return; MAPMAX.ctl=1;
+  m.on("moveend",()=>{if(!MAPMAX.restored)return; const c=m.getCenter(); mxSS("secchi-mapview",JSON.stringify({s:MAPV.lastS||"",lat:+c.lat.toFixed(5),lng:+c.lng.toFixed(5),z:m.getZoom()}))});
+  if(mxSS("secchi-mapmax")==="1")setTimeout(()=>{if(!MAPMAX.on&&!document.getElementById("mapwrap").hidden)mapMaxSet(true)},0);
+  const C=L.Control.extend({options:{position:"topleft"},onAdd(){const d=L.DomUtil.create("div","leaflet-bar leaflet-control mxctl"),a=L.DomUtil.create("a","",d);
   a.href="#";a.role="button";a.textContent="⤢";a.title="Full screen map";L.DomEvent.disableClickPropagation(d);
   L.DomEvent.on(a,"click",e=>{L.DomEvent.preventDefault(e);mapMaxSet(!MAPMAX.on)});return d}}); new C().addTo(m)}
 function geoOrder(){const m=MAPV.map,gs=[]; // map lines under the listings, springheads above the lines
@@ -1805,6 +1822,10 @@ function renderMap(){
   if(s&&STBOX[s]){const b=STBOX[s];m.fitBounds([[b[0],b[1]],[b[2],b[3]]],{padding:[30,30],maxZoom:10})}
   else if(!MAPV.fitted||MAPV.lastS!==s){m.fitBounds([[24.5,-124.8],[49.4,-66.9]],{padding:[10,10]})}
   MAPV.fitted=true; MAPV.lastS=s;
+  try{localStorage.setItem("secchi-st",s||"")}catch(e){}
+  // after a reload, put the map back where it was (the page refreshes the map a few times while it loads)
+  if(!MAPMAX.restored){MAPMAX.restored=1; let v=null; try{v=JSON.parse(mxSS("secchi-mapview")||"null")}catch(e){} if(v&&isFinite(v.lat))MAPMAX.hold={v,until:Date.now()+3000}}
+  const hv=MAPMAX.hold; if(hv&&Date.now()<hv.until&&(hv.v.s||"")===(s||"")){const go=()=>m.setView([hv.v.lat,hv.v.lng],hv.v.z,{animate:false}); go(); setTimeout(go,450)} else MAPMAX.hold=null;   // again once the state zoom animation ends
   geoUpdate();
 }
 
