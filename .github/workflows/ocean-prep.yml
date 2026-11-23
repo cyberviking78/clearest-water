@@ -2,16 +2,21 @@ name: ocean-prep
 on:
   push:
     branches: [ocean-prep]
+permissions:
+  contents: write
 jobs:
-  look:
+  kd:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
-      - name: Describe the candidate Kd490 datasets
+      - uses: actions/checkout@v4
+        with: {ref: ocean-prep}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q numpy
+      - name: Satellite clarity in front of every piece of open coast
+        run: cd pipeline/ocean && python3 kd_coast.py
+      - name: Save kd.json on this branch
         run: |
-          for d in noaacwNPPVIIRSkd490MonthlyVV00 noaacwecnNPPVIIRSSQkd490EastCoastAnnual noaacwNPPVIIRSSQkd490Monthly; do
-            echo "== $d"
-            curl -s -m 120 "https://coastwatch.noaa.gov/erddap/griddap/$d.das" | grep -iE "geospatial_l|time_coverage|spatial_resolution|units|_FillValue|valid_" | head -14
-            curl -s -m 120 "https://coastwatch.noaa.gov/erddap/griddap/$d.dds"
-          done
-          echo "== search west coast"
-          curl -s -m 120 "https://coastwatch.noaa.gov/erddap/search/index.csv?searchFor=kd490%20west&page=1&itemsPerPage=50" | cut -c1-300 | head -30
+          git config user.name "Clearest Water refresh"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pipeline/ocean/kd.json && git commit -q -m "Satellite clarity for the open coast" && git push -q origin HEAD:ocean-prep
