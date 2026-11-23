@@ -1958,6 +1958,15 @@ function skyInit(m){
   if(document.getElementById("geosky").checked)skyUpdate();
 }
 function geoInit(m){
+  if(!L.Canvas.prototype._cwFix){L.Canvas.prototype._cwFix=1;
+    // size each drawing layer for the map's real size and the screen's real sharpness (see pipeline/fixes/map_speed3.py)
+    L.Canvas.prototype._update=function(){if(this._map._animatingZoom&&this._bounds)return;
+      if(this._padBase==null)this._padBase=this.options.padding; const ms=this._map.getSize(), a=Math.max(1,ms.x*ms.y);
+      this.options.padding=Math.max(.1,Math.min(this._padBase,(Math.sqrt(5.2e6/a)-1)/2));
+      L.Renderer.prototype._update.call(this);
+      const b=this._bounds,c=this._container,s=b.getSize(),r=Math.max(1,Math.min(window.devicePixelRatio||1,Math.sqrt(9e6/Math.max(1,s.x*s.y))));
+      L.DomUtil.setPosition(c,b.min); c.width=Math.round(r*s.x); c.height=Math.round(r*s.y); c.style.width=s.x+"px"; c.style.height=s.y+"px";
+      this._ctx.scale(c.width/s.x,c.height/s.y); this._ctx.translate(-b.min.x,-b.min.y); this.fire("update")}}
   [["geoBase",200],["geoStates",300],["geoWater",320],["geoRanked",340],["geoRoad",350],["geoCity",355],["geoBand",360],["geoTrail",370],["geoVent",380],["geoLabel",390]].forEach(([p,z])=>{const e=m.createPane(p);e.style.zIndex=z;if(p==="geoLabel"||p==="geoBand"||p==="geoBase"||p==="geoStates")e.style.pointerEvents="none"; if(p==="geoBand")e.style.opacity=".2"});
   GEO.R={};["geoBase","geoWater","geoRanked","geoRoad","geoCity","geoBand","geoTrail","geoVent"].forEach(p=>GEO.R[p]=L.canvas({pane:p,padding:.4,tolerance:p==="geoTrail"?6:p==="geoRanked"||p==="geoWater"?3:0}));
   GEO.labels=L.layerGroup().addTo(m); GEO.top=m.getRenderer(L.circleMarker([0,0])); GEO.top.options.tolerance=5;

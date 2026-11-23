@@ -331,3 +331,13 @@ when the casing was added on Nov 11). Each trail network's pieces are now one mu
 per named segment at state level so tooltips still name the segment), and national pieces are joined end to end and thinned to
 ~150 m. National view: ~6,000 shapes instead of ~97,000. In a scripted zoom-and-pan test, time spent in long browser tasks fell
 from about 3.5 s to 1.6 s and frame rate rose from about 45 to 55 fps, back to the Nov 10 level.
+
+## Map speed, part 3: full screen (Nov 23, 2026) -- pipeline/fixes/map_speed3.py
+The lag Chad saw was in full screen on a 2560 x 1440 screen at 150% scaling (a 4K monitor), not in the smaller map. Leaflet draws
+the map's lines on see-through canvases that extend past the map on every side (padding; 0.4 = 40% each side on the geo panes)
+and, on any screen scaled above 100%, doubles their resolution. Full screen made each canvas about 6,100 x 3,300 pixels or more
+(9,200 x 5,000 with the 0.4 padding), and every drag and zoom moved and repainted several of them. L.Canvas._update is now
+replaced (in geoInit) so that the padding shrinks as the map grows (sqrt(5.2M / map area), between 0.1 and the layer's own
+setting, so the small map keeps its wide margin) and the resolution follows the real screen scale (1.5, not 2), capped at
+about 9 million pixels per canvas. Scripted full-screen test at 2560 x 1440, scale 1.5: long browser tasks fell from about
+8.2 s to 0.3-0.6 s and frame rate rose from about 21 to 40-44 fps; lines and markers still line up.
