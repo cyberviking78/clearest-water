@@ -283,3 +283,38 @@ already search (115) was checked against the Water Quality Portal by us.
 3. page_edit_lq.py page.html out/extra.json (idempotent): LK rows, PR rows (index-aligned with props), method paragraph, source.
 4. map_add_lq.py out/: outlines into map/st/<ST>.json "wt". run_new.py page.html: Redfin search for just these 88 waters,
    merged into listings.json with nothing marked new. From here on the regular refresh (run.py) covers them like any other lake.
+
+## The refresh runs on GitHub (since Nov 23, 2026) -- .github/workflows/refresh.yml, ci/assemble.py, shard.py
+The repository cyberviking78/clearest-water holds this pipeline folder, the claude.ai page (pipeline/page.html) and the web copy
+(index.html, served by GitHub Pages). The workflow "Refresh listings" runs at 11:23 UTC on the 1st and 15th (6:23 am in
+Indianapolis in winter, 7:23 in summer), and can be started by hand from the Actions tab (Run workflow; tick "Test run" to keep
+the results as a downloadable artifact instead of committing them).
+1. pull (20 parallel jobs): each runner does one slice of one search family, four requests at a time, with SHARD="k/N" and
+   PULL_ONLY=1 (shard.py): waters 8 slices (run.py -> prefetch.py, wcsv/), springheads 2 (heads/pull_rf.py, heads/rf/),
+   trails 4 (trails/pull_trails.py, trails/rf/), cities 1, old growth 1 (og/run_og.py, og/csv/), rainforest 1 (rain/csv/),
+   wild lakes 2 (wild/csv/), oceanfront 1 (ocean/csv/). Every slice is uploaded as a short-lived workflow artifact.
+2. assemble: downloads every slice into place and runs ci/assemble.py: run.py, heads/run_heads.py, trails/run_trails.py,
+   trails/water_trails.py, cities/run_cities.py, og/run_og.py, rain/run_rain.py, wild/run_wild.py, ocean/run_ocean.py, in that
+   order, each with KEEP_RF=1 (reuse the downloads; anything missing is searched there and then). A failed step leaves the page
+   as it was and the rest carry on; a failed water step stops the run with nothing committed. Then the full-screen styles are
+   checked (fixes/restore_css.py), mapbuild/make_site.py rebuilds index.html, and everything is committed to main, which
+   GitHub Pages publishes. ci/last_run.json records each step's result and last lines.
+The Claude scheduled task no longer searches or pushes: it waits for this run, publishes pipeline/page.html and the data files
+to the claude.ai artifact, sends the satellite-map file (mapbuild/make_local.py) and writes the report.
+The whole refresh takes about an hour (it was 8 to 9 hours as one sequential run).
+
+## Oceanfront (Nov 23, 2026) -- pipeline/ocean/
+Houses and land, $100k-$750k, with direct frontage on clear, open Atlantic (ME-FL) or Pacific (CA, OR, WA) coast.
+1. build_coast.py (one-time): Census TIGER 2024 coastline (Atlantic, Pacific) cut into ~1 km pieces; a piece is open ocean when
+   rays every 5 degrees from 300 m offshore run 40 km without touching land (Census state outlines 1:500k + Natural Earth 10m
+   land) over an arc of 90 degrees or more. coast.json (kept), coast_all.json (all, with arc and sea bearing).
+2. kd_coast.py (one-time, run on GitHub because NOAA's ERDDAP isn't reachable from every network): NOAA CoastWatch S-NPP VIIRS
+   Kd490, Atlantic from the U.S. East Coast 750 m annual product (2015-2025), Pacific from the global 4 km monthly product
+   (2021-2025); per-pixel median over the years; each piece takes the median of pixels seaward of it (1-3 km out on the
+   Atlantic, 4-8 km on the Pacific, along its sea bearing and 25 degrees either side). kd.json.
+3. run_ocean.py (each refresh): clear pieces (Kd490 <= KD_MAX), grid cells 0.15 x 0.12 degrees around them cut to 300 m, Redfin
+   searched with its waterfront filter; a listing is kept when its map point is within 60 m + sqrt(lot area) (max 250 m; 90 m
+   house / 150 m land without a lot size) of a clear piece and no bay or sound piece is closer. oc.json, seen_oc.json,
+   meta_oc.json; oc_tab.py adds/refreshes the Oceanfront tab and map layer. OC.L rows: [piece index into OC.P, price, "h"/"l",
+   beds, baths, sqft, acres, address, city, state, days listed, metres from the coastline, redfin path, first seen, is new,
+   lat, lon, year built]; OC.P rows: [state, Kd490, delta-encoded coords at 1e4].

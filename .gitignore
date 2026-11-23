@@ -11,3 +11,4 @@ pipeline/.tiger/
 pipeline/wild/nlcd_blocks/
 __pycache__/
 *.tmp
+pipeline/ocean/csv/

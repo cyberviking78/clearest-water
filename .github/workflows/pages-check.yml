@@ -1,0 +1,23 @@
+# Checks, by hand, that this repository's workflows can publish the site: it commits a one-line timestamp file with the
+# workflow's own token and asks GitHub Pages to build, the same way the twice-monthly refresh does. Run it from the Actions tab.
+name: Check site publishing
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: ci}
+      - name: Commit a timestamp and ask Pages to build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "Clearest Water refresh"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          date -u +%FT%TZ > ci/pages_check.txt
+          git add ci/pages_check.txt && git commit -q -m "Publishing check $(date -u +%F)" && git push -q origin HEAD:main
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" --jq .status

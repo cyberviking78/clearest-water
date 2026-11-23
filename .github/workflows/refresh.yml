@@ -20,6 +20,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: refresh-${{ github.ref }}
@@ -124,6 +125,12 @@ jobs:
           git commit -q -m "Refresh listings $(date -u +%F)" || { echo "nothing changed"; exit 0; }
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep 15; done
           exit 1
+      - name: Ask GitHub Pages to publish the new commit
+        # a push made with the workflow's own token doesn't start a Pages build by itself
+        if: github.ref == 'refs/heads/main' && !inputs.test
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" --jq .status
       - name: Keep test results
         if: github.ref != 'refs/heads/main' || inputs.test
         uses: actions/upload-artifact@v4
