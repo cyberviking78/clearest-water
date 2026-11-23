@@ -290,8 +290,8 @@ The repository cyberviking78/clearest-water holds this pipeline folder, the clau
 Indianapolis in winter, 7:23 in summer), and can be started by hand from the Actions tab (Run workflow; tick "Test run" to keep
 the results as a downloadable artifact instead of committing them).
 1. pull (20 parallel jobs): each runner does one slice of one search family, four requests at a time, with SHARD="k/N" and
-   PULL_ONLY=1 (shard.py): waters 8 slices (run.py -> prefetch.py, wcsv/), springheads 2 (heads/pull_rf.py, heads/rf/),
-   trails 4 (trails/pull_trails.py, trails/rf/), cities 1, old growth 1 (og/run_og.py, og/csv/), rainforest 1 (rain/csv/),
+   PULL_ONLY=1 (shard.py): waters 4 slices (run.py -> prefetch.py, wcsv/), springheads 2 (heads/pull_rf.py, heads/rf/),
+   trails 8 (trails/pull_trails.py, trails/rf/), cities 1, old growth 1 (og/run_og.py, og/csv/), rainforest 1 (rain/csv/),
    wild lakes 2 (wild/csv/), oceanfront 1 (ocean/csv/). Every slice is uploaded as a short-lived workflow artifact.
 2. assemble: downloads every slice into place and runs ci/assemble.py: run.py, heads/run_heads.py, trails/run_trails.py,
    trails/water_trails.py, cities/run_cities.py, og/run_og.py, rain/run_rain.py, wild/run_wild.py, ocean/run_ocean.py, in that
@@ -301,7 +301,7 @@ the results as a downloadable artifact instead of committing them).
    GitHub Pages publishes. ci/last_run.json records each step's result and last lines.
 The Claude scheduled task no longer searches or pushes: it waits for this run, publishes pipeline/page.html and the data files
 to the claude.ai artifact, sends the satellite-map file (mapbuild/make_local.py) and writes the report.
-The whole refresh takes about an hour (it was 8 to 9 hours as one sequential run).
+The whole refresh takes about 35 minutes (it was 8 to 9 hours as one sequential run).
 
 ## Oceanfront (Nov 23, 2026) -- pipeline/ocean/
 Houses and land, $100k-$750k, with direct frontage on clear, open Atlantic (ME-FL) or Pacific (CA, OR, WA) coast.

@@ -39,20 +39,20 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - {name: waters-0, kind: waters, shard: 0/8}
-          - {name: waters-1, kind: waters, shard: 1/8}
-          - {name: waters-2, kind: waters, shard: 2/8}
-          - {name: waters-3, kind: waters, shard: 3/8}
-          - {name: waters-4, kind: waters, shard: 4/8}
-          - {name: waters-5, kind: waters, shard: 5/8}
-          - {name: waters-6, kind: waters, shard: 6/8}
-          - {name: waters-7, kind: waters, shard: 7/8}
+          - {name: waters-0, kind: waters, shard: 0/4}
+          - {name: waters-1, kind: waters, shard: 1/4}
+          - {name: waters-2, kind: waters, shard: 2/4}
+          - {name: waters-3, kind: waters, shard: 3/4}
           - {name: heads-0, kind: heads, shard: 0/2}
           - {name: heads-1, kind: heads, shard: 1/2}
-          - {name: trails-0, kind: trails, shard: 0/4}
-          - {name: trails-1, kind: trails, shard: 1/4}
-          - {name: trails-2, kind: trails, shard: 2/4}
-          - {name: trails-3, kind: trails, shard: 3/4}
+          - {name: trails-0, kind: trails, shard: 0/8}
+          - {name: trails-1, kind: trails, shard: 1/8}
+          - {name: trails-2, kind: trails, shard: 2/8}
+          - {name: trails-3, kind: trails, shard: 3/8}
+          - {name: trails-4, kind: trails, shard: 4/8}
+          - {name: trails-5, kind: trails, shard: 5/8}
+          - {name: trails-6, kind: trails, shard: 6/8}
+          - {name: trails-7, kind: trails, shard: 7/8}
           - {name: cities-0, kind: cities, shard: 0/1}
           - {name: og-0, kind: og, shard: 0/1}
           - {name: rain-0, kind: rain, shard: 0/1}
