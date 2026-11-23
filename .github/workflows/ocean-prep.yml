@@ -6,21 +6,12 @@ jobs:
   look:
     runs-on: ubuntu-latest
     steps:
-      - name: Find Kd490 datasets on NOAA ERDDAP servers
+      - name: Describe the candidate Kd490 datasets
         run: |
-          for s in https://coastwatch.noaa.gov/erddap https://coastwatch.pfeg.noaa.gov/erddap; do
-            echo "== $s"
-            curl -s -m 120 "$s/search/index.csv?searchFor=kd490&page=1&itemsPerPage=200" | python3 -c "
-          import csv,sys
-          r=csv.reader(sys.stdin); h=next(r,None)
-          if not h: sys.exit()
-          I={k:i for i,k in enumerate(h)}
-          for row in r:
-              t=row[I['Title']]
-              if 'onth' in t or 'limatolog' in t or 'nnual' in t: print(row[I['Dataset ID']],'|',t)
-          "
-          done
-          for d in noaacwNPPVIIRSSQkd490Monthly; do
-            curl -s -m 120 "https://coastwatch.noaa.gov/erddap/griddap/$d.das" | grep -iE "spatial_resolution|time_coverage|geospatial_lat_res|geospatial_lon_res|actual_range" | head -12
+          for d in noaacwNPPVIIRSkd490MonthlyVV00 noaacwecnNPPVIIRSSQkd490EastCoastAnnual noaacwNPPVIIRSSQkd490Monthly; do
+            echo "== $d"
+            curl -s -m 120 "https://coastwatch.noaa.gov/erddap/griddap/$d.das" | grep -iE "geospatial_l|time_coverage|spatial_resolution|units|_FillValue|valid_" | head -14
             curl -s -m 120 "https://coastwatch.noaa.gov/erddap/griddap/$d.dds"
           done
+          echo "== search west coast"
+          curl -s -m 120 "https://coastwatch.noaa.gov/erddap/search/index.csv?searchFor=kd490%20west&page=1&itemsPerPage=50" | cut -c1-300 | head -30
