@@ -323,3 +323,11 @@ Houses and land, $100k-$750k, with direct frontage on clear, open Atlantic (ME-F
 The clear open-ocean coast is drawn from oc.json "M" (each state's clear coast joined with shapely.line_merge and simplified at
 0.0008 degrees, one multi-line per state) instead of 4,808 one-kilometre pieces, and the wild-lake outlines are drawn only from
 zoom 8 in. At the national view the map now redraws about 2,000 shapes (35,000 points) instead of 7,200 (167,000).
+
+## Map speed, part 2 (Nov 23, 2026) -- pipeline/fixes/map_speed2.py
+The real cause of the sluggish map: the bike-trail layers drew every trail piece as its own line, twice (white casing + blue
+line), so the national view handled about 95,000 separate lines and restyled each one on every zoom (it had grown from ~47,000
+when the casing was added on Nov 11). Each trail network's pieces are now one multi-part line (per network and surface type;
+per named segment at state level so tooltips still name the segment), and national pieces are joined end to end and thinned to
+~150 m. National view: ~6,000 shapes instead of ~97,000. In a scripted zoom-and-pan test, time spent in long browser tasks fell
+from about 3.5 s to 1.6 s and frame rate rose from about 45 to 55 fps, back to the Nov 10 level.

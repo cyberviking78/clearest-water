@@ -1969,9 +1969,13 @@ function geoInit(m){
   if(typeof fetch==="function")fetch("map/nat.json").then(r=>r.json()).then(d=>{GEO.nat=d;GEO.sb=d.sb;geoBuildNat();geoUpdate()}).catch(()=>{});
 }
 function geoGroup(){return L.featureGroup()}
+function geoSimp(ll,tol){if(ll.length<3)return ll; return L.LineUtil.simplify(ll.map(p=>L.point(p[1],p[0])),tol).map(p=>[p.y,p.x])}
+function geoJoin(parts){const key=p=>p[0]+','+p[1], out=[], used=new Array(parts.length).fill(false), byStart=new Map();parts.forEach((ll,i)=>{const k=key(ll[0]); if(!byStart.has(k))byStart.set(k,[]); byStart.get(k).push(i)});parts.forEach((ll,i)=>{if(used[i])return; used[i]=true; let cur=ll.slice();for(;;){const nx=(byStart.get(key(cur[cur.length-1]))||[]).find(j=>!used[j]); if(nx==null)break; used[nx]=true; cur=cur.concat(parts[nx].slice(1))}out.push(cur)}); return out}
 function geoBuildNat(){const d=GEO.nat,R=GEO.R,z=MAPV.map.getZoom(),G=GEO.natG={tr:geoGroup(),rd:geoGroup(),rv:geoGroup(),lk:geoGroup()};
-  const nll=d.tr.map(([tid,ty,e])=>geoDec(e,1e4)); nll.forEach(ll=>G.tr.addLayer(geoCasing(ll,z)));
-  d.tr.forEach(([tid,ty,e],i)=>G.tr.addLayer(L.polyline(nll[i],{renderer:GEO.top,tid,ty,...geoTrailStyle(ty,z)})));
+  const ng=new Map(); d.tr.forEach(([tid,ty,e])=>{const k=tid+"|"+ty; if(!ng.has(k))ng.set(k,{tid,ty,ll:[]}); ng.get(k).ll.push(geoDec(e,1e4))});
+  ng.forEach(g=>{g.ll=geoJoin(g.ll).map(ll=>geoSimp(ll,.0014))});
+  ng.forEach(g=>G.tr.addLayer(geoCasing(g.ll,z)));
+  ng.forEach(g=>G.tr.addLayer(L.polyline(g.ll,{renderer:GEO.top,tid:g.tid,ty:g.ty,...geoTrailStyle(g.ty,z)})));
   G.tr.bindTooltip(geoTrailTip,{sticky:true,className:"gt"}).bindPopup(geoTrailPop,{maxWidth:300});
   d.rd.forEach(([nm,rt,e])=>G.rd.addLayer(L.polyline(geoDec(e,1e4),{renderer:R.geoRoad,interactive:false,color:tok("--map-road-major"),weight:1.1,opacity:.85})));
   d.rv.forEach(([nm,sr,e])=>G.rv.addLayer(L.polyline(geoDec(e,1e4),{renderer:R.geoWater,interactive:false,color:tok("--map-hydro-line"),weight:sr<=4?1.6:sr<=6?1.1:.8})));
@@ -1979,9 +1983,10 @@ function geoBuildNat(){const d=GEO.nat,R=GEO.R,z=MAPV.map.getZoom(),G=GEO.natG={
 }
 function geoBuildState(s,d){["tr","wt","hd","cl","rd","rv","lk","pl"].forEach(k=>d[k]=d[k]||[]);const R=GEO.R,z=MAPV.map.getZoom(),G={tr:geoGroup(),band:geoGroup(),wt:geoGroup(),hd:geoGroup(),cl:geoGroup(),rdM:geoGroup(),rdm:geoGroup(),rv:geoGroup(),lk:geoGroup(),pl:d.pl};
   const hy=tok("--map-hydro"),hyl=tok("--map-hydro-line"),lk=tok("--lake"),sp=tok("--spring"),surf=tok("--surface"),cc=tok("--city"),rM=tok("--map-road-major"),rm=tok("--map-road"),tc=tok("--trail"),bw=geoBandW();
-  const sll=d.tr.map(([tid,ty,seg,e])=>geoDec(e,1e5)); sll.forEach(ll=>G.tr.addLayer(geoCasing(ll,z)));
-  d.tr.forEach(([tid,ty,seg,e],i)=>{const ll=sll[i];G.tr.addLayer(L.polyline(ll,{renderer:GEO.top,tid,ty,seg:seg||null,...geoTrailStyle(ty,z)}));
-    G.band.addLayer(L.polyline(ll,{renderer:R.geoBand,interactive:false,color:tc,opacity:1,weight:bw,lineCap:"round",lineJoin:"round"}))});
+  const sg=new Map(); d.tr.forEach(([tid,ty,seg,e])=>{const k=tid+"|"+ty+"|"+(seg||""); if(!sg.has(k))sg.set(k,{tid,ty,seg:seg||null,ll:[]}); sg.get(k).ll.push(geoDec(e,1e5))});
+  sg.forEach(g=>G.tr.addLayer(geoCasing(g.ll,z)));
+  sg.forEach(g=>{G.tr.addLayer(L.polyline(g.ll,{renderer:GEO.top,tid:g.tid,ty:g.ty,seg:g.seg,...geoTrailStyle(g.ty,z)}));
+    G.band.addLayer(L.polyline(g.ll,{renderer:R.geoBand,interactive:false,color:tc,opacity:1,weight:bw,lineCap:"round",lineJoin:"round"}))});
   G.tr.bindTooltip(geoTrailTip,{sticky:true,className:"gt"}).bindPopup(geoTrailPop,{maxWidth:300});
   d.wt.forEach(([grp,wi,kind,nm,ps,ls])=>{const o={renderer:GEO.top,grp,wi,kind,nm,color:lk};
     ps.forEach(p=>G.wt.addLayer(L.polygon(geoRings(p,1e5),{...o,weight:1.4,fillColor:lk,fillOpacity:.32})));
