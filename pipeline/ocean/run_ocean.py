@@ -113,8 +113,13 @@ def enc(coords):
         if (x, y) == (px, py) and out: continue
         out += [x - px, y - py]; px, py = x, y
     return out
+# for the map: each state's clear coast joined into long lines and simplified (~80 m), far lighter to draw than 1 km pieces
+M = []
+for st in sorted({r[1] for r in CLR}):
+    g = shapely.line_merge(shapely.MultiLineString([r[6] for r in CLR if r[1] == st])).simplify(0.0008)
+    M.append([st, [enc(list(x.coords)) for x in getattr(g, "geoms", [g]) if len(x.coords) > 1]])
 OC = dict(date=TODAY, prev=prev, first=first_run, kdmax=KD_MAX, k=SECCHI_K,
-          P=[[r[1], KD[r[0]], enc(r[6])] for r in CLR], L=L,
+          P=[[r[1], KD[r[0]], enc(r[6])] for r in CLR], M=M, L=L,
           km={st: sum(1 for r in CLR if r[1] == st) for st in sorted({r[1] for r in C})},
           kmall={st: sum(1 for r in C if r[1] == st) for st in sorted({r[1] for r in C})})
 json.dump(OC, open(HERE + "/oc.json", "w"), separators=(",", ":"), ensure_ascii=False)

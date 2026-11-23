@@ -318,3 +318,8 @@ Houses and land, $100k-$750k, with direct frontage on clear, open Atlantic (ME-F
    meta_oc.json; oc_tab.py adds/refreshes the Oceanfront tab and map layer. OC.L rows: [piece index into OC.P, price, "h"/"l",
    beds, baths, sqft, acres, address, city, state, days listed, metres from the coastline, redfin path, first seen, is new,
    lat, lon, year built]; OC.P rows: [state, Kd490, delta-encoded coords at 1e4].
+
+## Lighter map drawing (Nov 23, 2026) -- pipeline/fixes/map_speed.py
+The clear open-ocean coast is drawn from oc.json "M" (each state's clear coast joined with shapely.line_merge and simplified at
+0.0008 degrees, one multi-line per state) instead of 4,808 one-kilometre pieces, and the wild-lake outlines are drawn only from
+zoom 8 in. At the national view the map now redraws about 2,000 shapes (35,000 points) instead of 7,200 (167,000).

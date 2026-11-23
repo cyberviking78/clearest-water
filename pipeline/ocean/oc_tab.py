@@ -127,7 +127,7 @@ rep("m.addLayer(MAPV.mll);", "m.addLayer(MAPV.mll); m.addLayer(MAPV.ocA); m.addL
 rep("  const shownStates=new Set(L0.map(o=>o.st));",
     """  MAPV.ocl.clearLayers(); MAPV.ocA.clearLayers(); let nOC=0;
   if(document.getElementById("showoc").checked){const oc=tok("--oc-map"), ol=tok("--oc-line"), od=tok("--og-dot");
-    if(!MAPV.ocP)MAPV.ocP=OC.P.map(p=>[p[0],geoDec(p[2],1e4)]);
+    if(!MAPV.ocP)MAPV.ocP=OC.M?OC.M.map(([st,ls])=>[st,ls.map(e=>geoDec(e,1e4))]):OC.P.map(p=>[p[0],[geoDec(p[2],1e4)]]);
     MAPV.ocP.forEach(([st,ll])=>{if(!s||st===s)L.polyline(ll,{color:ol,weight:4,opacity:.85,interactive:false}).addTo(MAPV.ocA)});
     const OL=OC.L.filter(x=>{if((s&&x[9]!==s)||(nw&&!x[14])||(pt&&x[2]!==pt))return false;
       if(q&&!(x[7]+" "+x[8]+" "+NAMES[x[9]]).toLowerCase().includes(q)&&x[9].toLowerCase()!==q)return false;return true});
