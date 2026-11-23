@@ -1,0 +1,138 @@
+# Twice-monthly listings refresh for the Clearest Water by State site.
+# The Redfin searches are split across parallel jobs (each GitHub runner searches its own slice, four at a time), then one
+# final job gathers every download, runs the refresh steps in order, rebuilds index.html and commits it straight to main,
+# which GitHub Pages publishes. Nothing outside GitHub is needed to update the site.
+# A push to the ci-test branch runs the whole thing as a test: nothing is committed, and the results are kept as a
+# downloadable "test-result" artifact instead.
+name: Refresh listings
+
+on:
+  schedule:
+    - cron: "23 11 1,15 * *"     # 6:23 am Indianapolis in winter (7:23 in summer) on the 1st and 15th
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Test run: don't commit, keep the results as a downloadable artifact"
+        type: boolean
+        default: false
+  push:
+    branches: [ci-test]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PY_DEPS: pandas numpy shapely pyproj scipy pyshp
+
+jobs:
+  pull:
+    name: search ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {name: waters-0, kind: waters, shard: 0/8}
+          - {name: waters-1, kind: waters, shard: 1/8}
+          - {name: waters-2, kind: waters, shard: 2/8}
+          - {name: waters-3, kind: waters, shard: 3/8}
+          - {name: waters-4, kind: waters, shard: 4/8}
+          - {name: waters-5, kind: waters, shard: 5/8}
+          - {name: waters-6, kind: waters, shard: 6/8}
+          - {name: waters-7, kind: waters, shard: 7/8}
+          - {name: heads-0, kind: heads, shard: 0/2}
+          - {name: heads-1, kind: heads, shard: 1/2}
+          - {name: trails-0, kind: trails, shard: 0/4}
+          - {name: trails-1, kind: trails, shard: 1/4}
+          - {name: trails-2, kind: trails, shard: 2/4}
+          - {name: trails-3, kind: trails, shard: 3/4}
+          - {name: cities-0, kind: cities, shard: 0/1}
+          - {name: og-0, kind: og, shard: 0/1}
+          - {name: rain-0, kind: rain, shard: 0/1}
+          - {name: wild-0, kind: wild, shard: 0/2}
+          - {name: wild-1, kind: wild, shard: 1/2}
+          - {name: ocean-0, kind: ocean, shard: 0/1}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            pipeline
+            ci
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q $PY_DEPS
+      - name: Search Redfin (${{ matrix.name }})
+        env:
+          SHARD: ${{ matrix.shard }}
+          PULL_ONLY: "1"
+        run: |
+          cd pipeline
+          case "${{ matrix.kind }}" in
+            waters) python3 -W ignore run.py page.html; OUT=wcsv ;;
+            heads)  mkdir -p heads/rf && (cd heads && python3 -W ignore pull_rf.py); OUT=heads/rf ;;
+            trails) python3 -W ignore trails/pull_trails.py; OUT=trails/rf ;;
+            cities) python3 -W ignore cities/pull_cities.py; OUT=cities/rf ;;
+            og)     python3 -W ignore og/run_og.py; OUT=og/csv ;;
+            rain)   python3 -W ignore rain/run_rain.py; OUT=rain/csv ;;
+            wild)   python3 -W ignore wild/run_wild.py; OUT=wild/csv ;;
+            ocean)  if [ -f ocean/run_ocean.py ]; then python3 -W ignore ocean/run_ocean.py; fi; OUT=ocean/csv ;;
+          esac
+          mkdir -p "$OUT"; echo "OUT=pipeline/$OUT" >> "$GITHUB_ENV"
+          echo "$(find "$OUT" -type f | wc -l) files saved"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dl-${{ matrix.kind }}-${{ strategy.job-index }}
+          path: ${{ env.OUT }}
+          retention-days: 3
+          if-no-files-found: ignore
+
+  assemble:
+    name: build and publish
+    needs: pull
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q $PY_DEPS
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-waters-*, merge-multiple: true, path: pipeline/wcsv}}
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-heads-*, merge-multiple: true, path: pipeline/heads/rf}}
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-trails-*, merge-multiple: true, path: pipeline/trails/rf}}
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-cities-*, merge-multiple: true, path: pipeline/cities/rf}}
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-og-*, merge-multiple: true, path: pipeline/og/csv}}
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-rain-*, merge-multiple: true, path: pipeline/rain/csv}}
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-wild-*, merge-multiple: true, path: pipeline/wild/csv}}
+      - {uses: actions/download-artifact@v4, with: {pattern: dl-ocean-*, merge-multiple: true, path: pipeline/ocean/csv}}
+      - name: Run the refresh steps and rebuild the site
+        run: python3 ci/assemble.py
+      - name: Commit to main (GitHub Pages publishes it)
+        if: github.ref == 'refs/heads/main' && !inputs.test
+        run: |
+          git config user.name "Clearest Water refresh"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A index.html robots.txt .nojekyll pipeline ci/last_run.json
+          git commit -q -m "Refresh listings $(date -u +%F)" || { echo "nothing changed"; exit 0; }
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep 15; done
+          exit 1
+      - name: Keep test results
+        if: github.ref != 'refs/heads/main' || inputs.test
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-result
+          retention-days: 7
+          path: |
+            index.html
+            pipeline/page.html
+            ci/last_run.json
+            pipeline/listings.json
+            pipeline/meta.json

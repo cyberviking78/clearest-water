@@ -1,0 +1,4175 @@
+[
+{
+"st": "CO",
+"n": "Rampart Reservoir",
+"cty": "El Paso",
+"lq": 28.5,
+"ac": 300,
+"words": [
+"rampart"
+],
+"stations": [],
+"k": 0,
+"yrs": 0,
+"y0": null,
+"y1": null,
+"med": null,
+"avg": null,
+"mx": null,
+"yavg": null
+},
+{
+"st": "CO",
+"n": "Lake Nighthorse",
+"cty": "La Plata",
+"lq": 18.7,
+"ac": 1548,
+"words": [
+"nighthorse"
+],
+"stations": [],
+"k": 0,
+"yrs": 0,
+"y0": null,
+"y1": null,
+"med": null,
+"avg": null,
+"mx": null,
+"yavg": null
+},
+{
+"st": "CO",
+"n": "Island Lake",
+"cty": "Delta",
+"lq": 16.7,
+"ac": 161,
+"words": [
+"island"
+],
+"stations": [],
+"k": 0,
+"yrs": 0,
+"y0": null,
+"y1": null,
+"med": null,
+"avg": null,
+"mx": null,
+"yavg": null
+},
+{
+"st": "CO",
+"n": "Turquoise Reservoir",
+"cty": "Lake",
+"lq": 16.1,
+"ac": 1788,
+"words": [
+"turquoise"
+],
+"stations": [],
+"k": 0,
+"yrs": 0,
+"y0": null,
+"y1": null,
+"med": null,
+"avg": null,
+"mx": null,
+"yavg": null
+},
+{
+"st": "FL",
+"n": "Jackson-Silver Lake",
+"cty": "Jackson",
+"lq": 25.0,
+"ac": null,
+"words": [
+"silver"
+],
+"stations": [
+[
+"21FLKWAT-JAC-SILVER-1",
+"Jackson-Silver-1",
+"30.5794666",
+"-85.3148833"
+],
+[
+"21FLKWAT-JAC-SILVER-2",
+"Jackson-Silver-2",
+"30.5772333",
+"-85.3129166"
+],
+[
+"21FLKWAT-JAC-SILVER-3",
+"Jackson-Silver-3",
+"30.5746833",
+"-85.3117833"
+],
+[
+"21FLKWAT_WQX-JAC-SILVER-1",
+"Jackson-Silver-1",
+"30.5795999890",
+"-85.3150000000"
+],
+[
+"21FLKWAT_WQX-JAC-SILVER-2",
+"Jackson-Silver-2",
+"30.5769999890",
+"-85.3128000000"
+],
+[
+"21FLKWAT_WQX-JAC-SILVER-3",
+"Jackson-Silver-3",
+"30.5747999890",
+"-85.3118000000"
+]
+],
+"k": 148,
+"yrs": 13,
+"y0": "2000",
+"y1": "2026",
+"med": 21.0,
+"avg": 20.5,
+"mx": 34.0,
+"yavg": 20.6
+},
+{
+"st": "FL",
+"n": "Open Lake",
+"cty": "Washington",
+"lq": 24.3,
+"ac": null,
+"words": [
+"open"
+],
+"stations": [
+[
+"21FLGW_WQX-55584",
+"Z1-LL-13009 OPEN LAKE",
+"30.4886141670",
+"-85.7137594440"
+],
+[
+"21FLTLHR_WQX-G3TLHR0026",
+"OPEN",
+"30.4867000000",
+"-85.7111000000"
+]
+],
+"k": 2,
+"yrs": 2,
+"y0": "2019",
+"y1": "2021",
+"med": 24.3,
+"avg": 24.3,
+"mx": 24.3,
+"yavg": 24.3
+},
+{
+"st": "FL",
+"n": "Highlands-Denton Lake",
+"cty": "Highlands",
+"lq": 23.4,
+"ac": null,
+"words": [
+"denton"
+],
+"stations": [
+[
+"USGS-273323081290800",
+"LAKE DENTON NEAR AVON PARK FL",
+"27.55670154000000",
+"-81.4853524000000"
+],
+[
+"21FLFTM_WQX-G4SD0180",
+"Lake Denton",
+"27.5562999870",
+"-81.4894300000"
+],
+[
+"21FLKWAT-HIG-DENTON-1",
+"Highlands-Denton-1",
+"27.5580166",
+"-81.4881333"
+],
+[
+"21FLKWAT-HIG-DENTON-2",
+"Highlands-Denton-2",
+"27.5561333",
+"-81.4892000"
+],
+[
+"21FLKWAT-HIG-DENTON-3",
+"Highlands-Denton-3",
+"27.5541833",
+"-81.4901000"
+],
+[
+"21FLKWAT_WQX-HIG-DENTON-1",
+"Highlands-Denton-1",
+"27.5580000010",
+"-81.4881000000"
+],
+[
+"21FLKWAT_WQX-HIG-DENTON-2",
+"Highlands-Denton-2",
+"27.5561000010",
+"-81.4892000000"
+],
+[
+"21FLKWAT_WQX-HIG-DENTON-3",
+"Highlands-Denton-3",
+"27.5542000010",
+"-81.4901000000"
+],
+[
+"21FLSWFD_WQX-23816",
+"Lake Denton",
+"27.5558639870",
+"-81.4868580000"
+],
+[
+"21FLWPB_WQX-G4SE0158",
+"Lake Denton near center",
+"27.5562999780",
+"-81.4894300000"
+]
+],
+"k": 151,
+"yrs": 17,
+"y0": "2000",
+"y1": "2026",
+"med": 21.0,
+"avg": 20.6,
+"mx": 41.0,
+"yavg": 20.3
+},
+{
+"st": "FL",
+"n": "Clay-Sheelar Lake",
+"cty": "Clay",
+"lq": 20.8,
+"ac": null,
+"words": [
+"sheelar"
+],
+"stations": [
+[
+"21FLA_WQX-20030338",
+"Sheelar Lake Center",
+"29.8393609890",
+"-81.9582200000"
+],
+[
+"21FLGW_WQX-44349",
+"Z3-SL-7005 SHEELAR LAKE",
+"29.8394455000",
+"-81.9578730000"
+],
+[
+"21FLGW_WQX-61408",
+"Z3-SL-16017 SHEELAR LAKE",
+"29.8392874890",
+"-81.9582588890"
+],
+[
+"21FLKWAT-CLA-SHEELAR-1",
+"Clay-Sheelar-1",
+"29.8392833",
+"-81.9588833"
+],
+[
+"21FLKWAT-CLA-SHEELAR-2",
+"Clay-Sheelar-2",
+"29.8394444",
+"-81.9581833"
+],
+[
+"21FLKWAT-CLA-SHEELAR-3",
+"Clay-Sheelar-3",
+"29.8395388",
+"-81.9574500"
+],
+[
+"21FLKWAT_WQX-CLA-SHEELAR-1",
+"Clay-Sheelar-1",
+"29.8393000010",
+"-81.9589000000"
+],
+[
+"21FLKWAT_WQX-CLA-SHEELAR-2",
+"Clay-Sheelar-2",
+"29.8394000010",
+"-81.9582000000"
+],
+[
+"21FLKWAT_WQX-CLA-SHEELAR-3",
+"Clay-Sheelar-3",
+"29.8395000010",
+"-81.9575000000"
+],
+[
+"21FLSJWM-SHEEL",
+"LAKE SHEELAR @ CENTER (GOLD HEAD BRDG - CLAY CO)",
+"29.8392972",
+"-81.9578333"
+],
+[
+"21FLSJWM_WQX-SHEEL",
+"LAKE SHEELAR @ CENTER (GOLD HEAD BRDG - CLAY CO)",
+"29.8392972000",
+"-81.9578333000"
+]
+],
+"k": 344,
+"yrs": 26,
+"y0": "2000",
+"y1": "2026",
+"med": 17.0,
+"avg": 17.0,
+"mx": 32.8,
+"yavg": 16.3
+},
+{
+"st": "FL",
+"n": "Clay-Deer Lake",
+"cty": "Clay",
+"lq": 20.0,
+"ac": null,
+"words": [
+"deer"
+],
+"stations": [
+[
+"21FLKWAT-CLA-DEER-1",
+"Clay-Deer-1",
+"29.8449666",
+"-81.9489833"
+],
+[
+"21FLKWAT-CLA-DEER-2",
+"Clay-Deer-2",
+"29.8448000",
+"-81.9491000"
+],
+[
+"21FLKWAT_WQX-CLA-DEER-1",
+"Clay-Deer-1",
+"29.8450000010",
+"-81.9490000000"
+],
+[
+"21FLKWAT_WQX-CLA-DEER-2",
+"Clay-Deer-2",
+"29.8448000010",
+"-81.9491000000"
+]
+],
+"k": 143,
+"yrs": 14,
+"y0": "2002",
+"y1": "2026",
+"med": 20.0,
+"avg": 21.4,
+"mx": 42.0,
+"yavg": 21.8
+},
+{
+"st": "FL",
+"n": "Putnam-Barco Lake",
+"cty": "Putnam",
+"lq": 17.0,
+"ac": null,
+"words": [
+"barco"
+],
+"stations": [
+[
+"21FLKWAT_WQX-PUT-BARCO-1",
+"Putnam-Barco-1",
+"29.6754000010",
+"-82.0087000000"
+],
+[
+"21FLKWAT_WQX-PUT-BARCO-2",
+"Putnam-Barco-2",
+"29.6759000010",
+"-82.0083000000"
+],
+[
+"21FLKWAT_WQX-PUT-BARCO-3",
+"Putnam-Barco-3",
+"29.6763000010",
+"-82.0079000000"
+]
+],
+"k": 264,
+"yrs": 9,
+"y0": "2018",
+"y1": "2026",
+"med": 17.0,
+"avg": 17.2,
+"mx": 22.0,
+"yavg": 17.7
+},
+{
+"st": "FL",
+"n": "Highlands-Tulane Lake",
+"cty": "Highlands",
+"lq": 17.0,
+"ac": null,
+"words": [
+"tulane"
+],
+"stations": [
+[
+"USGS-273518081301900",
+"LAKE TULANE AT AVON PARK FL",
+"27.58864510000000",
+"-81.5050750000000"
+],
+[
+"21FLFTM_WQX-26010340FTM",
+"Lake Tulane mid lake",
+"27.5862500000",
+"-81.5043611000"
+],
+[
+"21FLFTM_WQX-G4SD0177",
+"Lake Tulane",
+"27.5859799870",
+"-81.5035100000"
+],
+[
+"21FLKWAT-HIG-TULANE-1",
+"Highlands-Tulane-1",
+"27.5846000",
+"-81.5037166"
+],
+[
+"21FLKWAT-HIG-TULANE-2",
+"Highlands-Tulane-2",
+"27.5862833",
+"-81.5040000"
+],
+[
+"21FLKWAT-HIG-TULANE-3",
+"Highlands-Tulane-3",
+"27.5883000",
+"-81.5042333"
+],
+[
+"21FLKWAT_WQX-HIG-TULANE-1",
+"Highlands-Tulane-1",
+"27.5846000010",
+"-81.5037000000"
+],
+[
+"21FLKWAT_WQX-HIG-TULANE-2",
+"Highlands-Tulane-2",
+"27.5863000010",
+"-81.5040000000"
+],
+[
+"21FLKWAT_WQX-HIG-TULANE-3",
+"Highlands-Tulane-3",
+"27.5883000010",
+"-81.5042000000"
+],
+[
+"21FLSWFD_WQX-25507",
+"Lake Tulane",
+"27.5861669870",
+"-81.5060830000"
+],
+[
+"NALMS-F292502",
+"Lake Tulane, Highlands County, FL, USA",
+"27.5860000000",
+"-81.5040000000"
+]
+],
+"k": 186,
+"yrs": 16,
+"y0": "2000",
+"y1": "2024",
+"med": 16.5,
+"avg": 17.1,
+"mx": 30.0,
+"yavg": 17.8
+},
+{
+"st": "FL",
+"n": "Clc Lake",
+"cty": "Washington",
+"lq": 16.4,
+"ac": null,
+"words": [
+"clc"
+],
+"stations": [
+[
+"21FLTLHR_WQX-G3TLHR0012",
+"CLC",
+"30.4531000000",
+"-85.7027000000"
+]
+],
+"k": 14,
+"yrs": 3,
+"y0": "2019",
+"y1": "2021",
+"med": 18.2,
+"avg": 19.5,
+"mx": 38.4,
+"yavg": 18.8
+},
+{
+"st": "FL",
+"n": "Down Lake",
+"cty": "Orange",
+"lq": 16.1,
+"ac": null,
+"words": [
+"down"
+],
+"stations": [
+[
+"21FLCEN_WQX-26010103",
+"LAKE DOWN @ CENTER",
+"28.5037500000",
+"-81.5275830000"
+],
+[
+"21FLCEN_WQX-HABCE0220",
+"Lake Down - S Boat Ramp",
+"28.4937999880",
+"-81.5206000000"
+],
+[
+"21FLGW_WQX-41730",
+"Z5-LL-6004 DOWN, LAKE",
+"28.5006072000",
+"-81.5183600000"
+],
+[
+"21FLKWAT-ORA-DOWN-1",
+"Orange-Down-1",
+"28.5014166",
+"-81.5205833"
+],
+[
+"21FLKWAT-ORA-DOWN-2",
+"Orange-Down-2",
+"28.5053888",
+"-81.5282166"
+],
+[
+"21FLKWAT-ORA-DOWN-3",
+"Orange-Down-3",
+"28.5119000",
+"-81.5336166"
+],
+[
+"21FLKWAT_WQX-ORA-DOWN-1",
+"Orange-Down-1",
+"28.5014000010",
+"-81.5206000000"
+],
+[
+"21FLKWAT_WQX-ORA-DOWN-2",
+"Orange-Down-2",
+"28.5054000010",
+"-81.5282000000"
+],
+[
+"21FLKWAT_WQX-ORA-DOWN-3",
+"Orange-Down-3",
+"28.5119000010",
+"-81.5336000000"
+],
+[
+"21FLORAN-CC9",
+"Down",
+"28.5066667",
+"-81.5311111"
+],
+[
+"21FLORAN_WQX-CC9",
+"Down",
+"28.5097290000",
+"-81.5304850000"
+]
+],
+"k": 449,
+"yrs": 27,
+"y0": "2000",
+"y1": "2026",
+"med": 13.5,
+"avg": 13.5,
+"mx": 22.8,
+"yavg": 12.6
+},
+{
+"st": "FL",
+"n": "Highlands-Sirena Lake",
+"cty": "Highlands",
+"lq": 16.0,
+"ac": null,
+"words": [
+"sirena"
+],
+"stations": [
+[
+"21FLKWAT-HIG-SIRENA-1",
+"Highlands-Sirena-1",
+"27.2881833",
+"-81.3700333"
+],
+[
+"21FLKWAT-HIG-SIRENA-2",
+"Highlands-Sirena-2",
+"27.2849166",
+"-81.3693333"
+],
+[
+"21FLKWAT-HIG-SIRENA-3",
+"Highlands-Sirena-3",
+"27.2815333",
+"-81.3678666"
+],
+[
+"21FLKWAT_WQX-HIG-SIRENA-1",
+"Highlands-Sirena-1",
+"27.2881999880",
+"-81.3700000000"
+],
+[
+"21FLKWAT_WQX-HIG-SIRENA-2",
+"Highlands-Sirena-2",
+"27.2848999880",
+"-81.3693000000"
+],
+[
+"21FLKWAT_WQX-HIG-SIRENA-3",
+"Highlands-Sirena-3",
+"27.2814999880",
+"-81.3679000000"
+],
+[
+"21FLSWFD_WQX-25420",
+"SIRENA",
+"27.2847222000",
+"-81.3694440000"
+]
+],
+"k": 59,
+"yrs": 11,
+"y0": "2000",
+"y1": "2024",
+"med": 12.0,
+"avg": 13.1,
+"mx": 24.6,
+"yavg": 15.3
+},
+{
+"st": "FL",
+"n": "Lake-Saunders",
+"cty": "Lake",
+"lq": 16.0,
+"ac": null,
+"words": [
+"saunders"
+],
+"stations": [
+[
+"21FLKWAT-LAK-SAUNDERS-1",
+"Lake-Saunders-1",
+"28.8078000",
+"-81.6956333"
+],
+[
+"21FLKWAT-LAK-SAUNDERS-2",
+"Lake-Saunders-2",
+"28.8134666",
+"-81.6937666"
+],
+[
+"21FLKWAT-LAK-SAUNDERS-3",
+"Lake-Saunders-3",
+"28.8306666",
+"-81.6934666"
+],
+[
+"21FLKWAT_WQX-LAK-SAUNDERS-1",
+"Lake-Saunders-1",
+"28.8077999880",
+"-81.6956000000"
+],
+[
+"21FLKWAT_WQX-LAK-SAUNDERS-2",
+"Lake-Saunders-2",
+"28.8134999880",
+"-81.6938000000"
+],
+[
+"21FLKWAT_WQX-LAK-SAUNDERS-3",
+"Lake-Saunders-3",
+"28.8170999880",
+"-81.6935000000"
+],
+[
+"21FLLCPC_WQX-LKSAUNDERS",
+"LAKE SAUNDERS @ COUNTY BOAT RAMP OFF SAUNDERS DR",
+"28.8053000000",
+"-81.6972000000"
+],
+[
+"21FLLCPC_WQX-SAUNDERSWBR",
+"Saunders, Lk @ SW BR",
+"28.8074359000",
+"-81.6981000000"
+]
+],
+"k": 149,
+"yrs": 10,
+"y0": "2000",
+"y1": "2025",
+"med": 8.0,
+"avg": 6.5,
+"mx": 16.5,
+"yavg": 6.7
+},
+{
+"st": "FL",
+"n": "Highlands-Pearl Lake",
+"cty": "Highlands",
+"lq": 15.7,
+"ac": null,
+"words": [
+"pearl"
+],
+"stations": [
+[
+"21FLFTM_WQX-G4SD0137",
+"Pearl Lake @ Center",
+"27.2836100010",
+"-81.3612230000"
+],
+[
+"21FLKWAT-HIG-PEARL-1",
+"Highlands-Pearl-1",
+"27.2853000",
+"-81.3619500"
+],
+[
+"21FLKWAT-HIG-PEARL-2",
+"Highlands-Pearl-2",
+"27.2835500",
+"-81.3612500"
+],
+[
+"21FLKWAT-HIG-PEARL-3",
+"Highlands-Pearl-3",
+"27.2819833",
+"-81.3602833"
+],
+[
+"21FLKWAT_WQX-HIG-PEARL-1",
+"Highlands-Pearl-1",
+"27.2853000010",
+"-81.3620000000"
+],
+[
+"21FLKWAT_WQX-HIG-PEARL-2",
+"Highlands-Pearl-2",
+"27.2836000010",
+"-81.3613000000"
+],
+[
+"21FLKWAT_WQX-HIG-PEARL-3",
+"Highlands-Pearl-3",
+"27.2820000010",
+"-81.3603000000"
+],
+[
+"21FLSWFD_WQX-25423",
+"PEARL",
+"27.2833333000",
+"-81.3613880000"
+]
+],
+"k": 75,
+"yrs": 14,
+"y0": "2002",
+"y1": "2026",
+"med": 14.0,
+"avg": 13.8,
+"mx": 18.0,
+"yavg": 13.6
+},
+{
+"st": "FL",
+"n": "Volusia-Charles Lake",
+"cty": "Volusia",
+"lq": 15.5,
+"ac": null,
+"words": [
+"charles"
+],
+"stations": [
+[
+"21FLKWAT-VOL-CHARLES-1",
+"Volusia-Charles-1",
+"29.0333333",
+"-81.2527777"
+],
+[
+"21FLKWAT-VOL-CHARLES-2",
+"Volusia-Charles-2",
+"29.0333333",
+"-81.2527777"
+],
+[
+"21FLKWAT-VOL-CHARLES-3",
+"Volusia-Charles-3",
+"29.0333333",
+"-81.2527777"
+],
+[
+"21FLKWAT_WQX-VOL-CHARLES-1",
+"Volusia-Charles-1",
+"29.0348999890",
+"-81.2557000000"
+],
+[
+"21FLKWAT_WQX-VOL-CHARLES-2",
+"Volusia-Charles-2",
+"29.0338999890",
+"-81.2549000000"
+],
+[
+"21FLKWAT_WQX-VOL-CHARLES-3",
+"Volusia-Charles-3",
+"29.0326999890",
+"-81.2543000000"
+]
+],
+"k": 192,
+"yrs": 8,
+"y0": "2000",
+"y1": "2023",
+"med": 8.0,
+"avg": 8.0,
+"mx": 16.0,
+"yavg": 8.8
+},
+{
+"st": "FL",
+"n": "Lkcnwy Lake",
+"cty": "Orange",
+"lq": 15.4,
+"ac": null,
+"words": [
+"lkcnwy"
+],
+"stations": [
+[
+"21FLCEN_WQX-26010104",
+"CONWAYNTST",
+"28.4898600000",
+"-81.3430500000"
+],
+[
+"21FLCEN_WQX-26011347",
+"LKCONWAY",
+"28.4866600000",
+"-81.3583300000"
+],
+[
+"21FLCEN_WQX-G4CE0221",
+"Lake Conway, Center of lake",
+"28.4727777880",
+"-81.3493611000"
+],
+[
+"21FLCEN_WQX-HABCE0047",
+"Lake Conway @ West Shore",
+"28.4713999880",
+"-81.3604000000"
+],
+[
+"21FLCEN_WQX-HABCE0071",
+"Lake Conway @ SW Shore",
+"28.4662817880",
+"-81.3595114000"
+],
+[
+"21FLCEN_WQX-HABCE0210",
+"Lake Conway - N Lobe near canal",
+"28.4662499880",
+"-81.3430000000"
+],
+[
+"21FLCEN_WQX-HABCE0282",
+"Lake Conway - Nela Ave",
+"28.4660169880",
+"-81.3496970000"
+],
+[
+"21FLCEN_WQX-HABCE0320",
+"Lake Conway - St. Regis Pl",
+"28.4791339880",
+"-81.3445250000"
+],
+[
+"21FLGW_WQX-56139",
+"Z3-LL-13001 LAKE CONWAY",
+"28.4551544450",
+"-81.3475594440"
+],
+[
+"21FLGW_WQX-62177",
+"Z3-LL-17005 LAKE CONWAY",
+"28.4557413770",
+"-81.3499336110"
+],
+[
+"21FLKWAT-ORA-CONWAYNO-1",
+"Orange-Conway North-1",
+"28.4675833",
+"-81.3513888"
+],
+[
+"21FLKWAT-ORA-CONWAYNO-2",
+"Orange-Conway North-2",
+"28.4712222",
+"-81.3498611"
+],
+[
+"21FLKWAT-ORA-CONWAYNO-3",
+"Orange-Conway North-3",
+"28.4778611",
+"-81.3479444"
+],
+[
+"21FLKWAT-ORA-CONWAYSO-1",
+"Orange-Conway South-1",
+"28.4568888",
+"-81.3428055"
+],
+[
+"21FLKWAT-ORA-CONWAYSO-2",
+"Orange-Conway South-2",
+"28.4587222",
+"-81.3465555"
+],
+[
+"21FLKWAT-ORA-CONWAYSO-3",
+"Orange-Conway South-3",
+"28.4603055",
+"-81.3496666"
+],
+[
+"21FLKWAT_WQX-ORA-CONWAYNO-1",
+"Orange-Conway North-1",
+"28.4676000010",
+"-81.3514000000"
+],
+[
+"21FLKWAT_WQX-ORA-CONWAYNO-2",
+"Orange-Conway North-2",
+"28.4712000010",
+"-81.3499000000"
+],
+[
+"21FLKWAT_WQX-ORA-CONWAYNO-3",
+"Orange-Conway North-3",
+"28.4779000010",
+"-81.3479000000"
+],
+[
+"21FLKWAT_WQX-ORA-CONWAYSO-1",
+"Orange-Conway South-1",
+"28.4569000010",
+"-81.3428000000"
+],
+[
+"21FLKWAT_WQX-ORA-CONWAYSO-2",
+"Orange-Conway South-2",
+"28.4587000010",
+"-81.3466000000"
+],
+[
+"21FLKWAT_WQX-ORA-CONWAYSO-3",
+"Orange-Conway South-3",
+"28.4603000010",
+"-81.3497000000"
+],
+[
+"21FLORAN-BC6",
+"Conway NE",
+"28.5272222",
+"-81.3738889"
+],
+[
+"21FLORAN-BC7",
+"Conway NW",
+"28.4830556",
+"-81.3611111"
+],
+[
+"21FLORAN-BC8",
+"Conway M",
+"28.4716667",
+"-81.3602778"
+],
+[
+"21FLORAN-BC9",
+"Conway S",
+"28.4575000",
+"-81.3475000"
+],
+[
+"21FLORAN_WQX-BC6",
+"Conway NE",
+"28.4928594000",
+"-81.3458236000"
+],
+[
+"21FLORAN_WQX-BC7",
+"Conway NW",
+"28.4847240000",
+"-81.3597460000"
+],
+[
+"21FLORAN_WQX-BC8",
+"Conway M",
+"28.4719550000",
+"-81.3500910000"
+],
+[
+"21FLORAN_WQX-BC9",
+"Conway S",
+"28.4589860000",
+"-81.3473760000"
+],
+[
+"21FLORAN_WQX-XDC",
+"Lake Conway @ Daetwyler Weir",
+"28.4544520000",
+"-81.3390430000"
+]
+],
+"k": 1019,
+"yrs": 27,
+"y0": "2000",
+"y1": "2026",
+"med": 11.5,
+"avg": 11.6,
+"mx": 23.3,
+"yavg": 11.7
+},
+{
+"st": "FL",
+"n": "Orange-Little Conway Lake",
+"cty": "Orange",
+"lq": 15.0,
+"ac": null,
+"words": [
+"little",
+"conway"
+],
+"stations": [
+[
+"21FLCEN_WQX-HABCE0083",
+"Little Lake Conway - off FOP Lodge dock",
+"28.4796421880",
+"-81.3677676000"
+],
+[
+"21FLCEN_WQX-HABCE0156",
+"Little Lake Conway - Near SE Shore",
+"28.4841059880",
+"-81.3410750000"
+],
+[
+"21FLCEN_WQX-HABOC0003",
+"Little Lake Conway - near Lake Conway Woods Community dock",
+"28.4864269880",
+"-81.3366700000"
+],
+[
+"21FLGW_WQX-60690",
+"Z3-LL-16007 LITTLE LAKE CONWAY",
+"28.4867099880",
+"-81.3601527780"
+],
+[
+"21FLKWAT-ORA-LITTLECO-1",
+"Orange-Little Conway-1",
+"28.4809833",
+"-81.3633333"
+],
+[
+"21FLKWAT-ORA-LITTLECO-2",
+"Orange-Little Conway-2",
+"28.4864833",
+"-81.3590333"
+],
+[
+"21FLKWAT-ORA-LITTLECO-3",
+"Orange-Little Conway-3",
+"28.4882833",
+"-81.3573333"
+],
+[
+"21FLKWAT_WQX-ORA-LITTLECO-1",
+"Orange-Little Conway-1",
+"28.4810000010",
+"-81.3633000000"
+],
+[
+"21FLKWAT_WQX-ORA-LITTLECO-2",
+"Orange-Little Conway-2",
+"28.4865000010",
+"-81.3590000000"
+],
+[
+"21FLKWAT_WQX-ORA-LITTLECO-3",
+"Orange-Little Conway-3",
+"28.4883000010",
+"-81.3573000000"
+]
+],
+"k": 134,
+"yrs": 12,
+"y0": "2000",
+"y1": "2025",
+"med": 12.0,
+"avg": 12.8,
+"mx": 27.0,
+"yavg": 13.9
+},
+{
+"st": "FL",
+"n": "Miami-Dade-E Lake",
+"cty": "Miami-Dade",
+"lq": 15.0,
+"ac": null,
+"words": [
+"e"
+],
+"stations": [
+[
+"21FLKWAT-MIA-E-1",
+"Miami-Dade-E-1",
+"25.6416944",
+"-80.3452500"
+],
+[
+"21FLKWAT-MIA-E-2",
+"Miami-Dade-E-2",
+"25.6391944",
+"-80.3477777"
+],
+[
+"21FLKWAT-MIA-E-3",
+"Miami-Dade-E-3",
+"25.6377222",
+"-80.3480555"
+],
+[
+"21FLKWAT_WQX-MIA-E-1",
+"Miami-Dade-E-1",
+"25.6417000010",
+"-80.3453000000"
+],
+[
+"21FLKWAT_WQX-MIA-E-2",
+"Miami-Dade-E-2",
+"25.6392000010",
+"-80.3478000000"
+],
+[
+"21FLKWAT_WQX-MIA-E-3",
+"Miami-Dade-E-3",
+"25.6377000010",
+"-80.3481000000"
+],
+[
+"21FLWPB_WQX-52010043",
+"Cuthbert Lake @ E.N.P.",
+"25.2021666000",
+"-80.7866694000"
+],
+[
+"21FLWPB_WQX-52010051",
+"Long Lake @ E.N.P.",
+"25.1989861000",
+"-80.7934944000"
+]
+],
+"k": 240,
+"yrs": 17,
+"y0": "2000",
+"y1": "2026",
+"med": 15.5,
+"avg": 15.4,
+"mx": 23.0,
+"yavg": 15.3
+},
+{
+"st": "IA",
+"n": "Blue Pit Lake",
+"cty": "Cerro Gordo",
+"lq": 17.1,
+"ac": null,
+"words": [
+"blue",
+"pit"
+],
+"stations": [
+[
+"21IOWA_WQX-22170004",
+"Blue Pit",
+"43.1403680000",
+"-93.2193120000"
+]
+],
+"k": 18,
+"yrs": 6,
+"y0": "2006",
+"y1": "2022",
+"med": 16.7,
+"avg": 17.0,
+"mx": 26.2,
+"yavg": 16.7
+},
+{
+"st": "IL",
+"n": "Loch Lomond Lake",
+"cty": "Lake",
+"lq": 16.5,
+"ac": 72,
+"words": [
+"loch",
+"lomond"
+],
+"stations": [
+[
+"IL_EPA-RGU-1",
+"LOCH LOMOND",
+"42.2806000",
+"-88.0051000"
+],
+[
+"IL_EPA_WQX-RGU-1",
+"Loch Lomond",
+"42.2806000000",
+"-88.0051000000"
+],
+[
+"NALMS-F412463",
+"Loch Lomond, Lake County, IL, USA",
+"42.2800000000",
+"-88.0100000000"
+]
+],
+"k": 39,
+"yrs": 6,
+"y0": "2002",
+"y1": "2020",
+"med": 2.3,
+"avg": 2.5,
+"mx": 6.5,
+"yavg": 2.6
+},
+{
+"st": "KS",
+"n": "Meade Lake",
+"cty": "Meade",
+"lq": 53.0,
+"ac": null,
+"words": [
+"meade"
+],
+"stations": [
+[
+"21KAN001_WQX-LM010601",
+"MEADE LAKE",
+"37.1640000000",
+"-100.4320000000"
+],
+[
+"21KAN001_WQX-LM010651",
+"MEADE CO STATE FISHING LAKE",
+"37.1621600000",
+"-100.4254000000"
+]
+],
+"k": 12,
+"yrs": 6,
+"y0": "2001",
+"y1": "2019",
+"med": 1.6,
+"avg": 1.7,
+"mx": 2.4,
+"yavg": 1.7
+},
+{
+"st": "MI",
+"n": "Lake Sapphire",
+"cty": "Missaukee",
+"lq": 26.2,
+"ac": 8,
+"words": [
+"sapphire"
+],
+"stations": [
+[
+"USGS-441900085160805",
+"LAKE SAPPHIRE NR LAKE CITY, MI (3 FT BL LK SURF)",
+"44.31667545000000",
+"-85.2689357000000"
+],
+[
+"USGS-441900085160806",
+"LAKE SAPPHIRE NR LAKE CITY, MI (MID-DEPTH)",
+"44.31667545000000",
+"-85.2689357000000"
+],
+[
+"21MICH-570015",
+"SAPPHIRE LAKE IN CENTRAL BASIN; LAKE TOWNSHIP, SEC 10",
+"44.3166700",
+"-85.2688920"
+],
+[
+"21MICH_MICORPS-570015",
+"SAPPHIRE LAKE CENTRAL BASIN; LAKE TOWNSHIP, SECTION 10",
+"44.3166700000",
+"-85.2688920000"
+],
+[
+"NALMS-F637254",
+"Lake Sapphire, Missaukee County, MI, USA",
+"44.3160000000",
+"-85.2700000000"
+]
+],
+"k": 256,
+"yrs": 9,
+"y0": "2000",
+"y1": "2024",
+"med": 8.0,
+"avg": 8.0,
+"mx": 9.0,
+"yavg": 8.0
+},
+{
+"st": "MI",
+"n": "Chancellor Lake",
+"cty": "Mason",
+"lq": 26.0,
+"ac": 50,
+"words": [
+"chancellor"
+],
+"stations": [
+[
+"21MICH_MICORPS-530287",
+"CHANCELLOR (BLUE) LAKE CENTRAL BASIN",
+"44.0679400000",
+"-86.1386080000"
+],
+[
+"NALMS-F623062",
+"Chancellor Lake, Mason County, MI, USA",
+"44.0680000000",
+"-86.1390000000"
+]
+],
+"k": 545,
+"yrs": 23,
+"y0": "2000",
+"y1": "2023",
+"med": 25.0,
+"avg": 25.2,
+"mx": 38.0,
+"yavg": 25.0
+},
+{
+"st": "MI",
+"n": "Smoky Lake",
+"cty": "Iron",
+"lq": 24.0,
+"ac": null,
+"words": [
+"smoky"
+],
+"stations": [
+[
+"USGS-460624088560805",
+"SMOKY LAKE NEAR BEECHWOOD, MI (3 FT BL LK SURF)",
+"46.10666667000000",
+"-88.9355556000000"
+],
+[
+"NALMS-F1580439",
+"Smoky Lake, MI WI, USA",
+"46.0960000000",
+"-88.9420000000"
+],
+[
+"WIDNR_WQX-10029174",
+"Smoky Lake",
+"46.0863800000",
+"-88.9480800000"
+],
+[
+"WIDNR_WQX-643104",
+"Smoky Lake - Deep Hole",
+"46.0904540000",
+"-88.9435350000"
+]
+],
+"k": 182,
+"yrs": 25,
+"y0": "2000",
+"y1": "2026",
+"med": 20.9,
+"avg": 21.0,
+"mx": 32.5,
+"yavg": 20.2
+},
+{
+"st": "MI",
+"n": "Twin Lake",
+"cty": "Kalkaska",
+"lq": 23.0,
+"ac": 80,
+"words": [
+"twin"
+],
+"stations": [
+[
+"NALMS-F1615245",
+"Twin Lake, Kalkaska County, MI, USA",
+"44.8220000000",
+"-84.9650000000"
+]
+],
+"k": 277,
+"yrs": 17,
+"y0": "2005",
+"y1": "2022",
+"med": 23.0,
+"avg": 22.5,
+"mx": 36.0,
+"yavg": 22.6
+},
+{
+"st": "MI",
+"n": "Square Lake",
+"cty": "Oakland",
+"lq": 23.0,
+"ac": 67,
+"words": [
+"square"
+],
+"stations": [
+[
+"21MICH_MICORPS-630569",
+"SQUARE LAKE CENTRAL BASIN; BLOOMFIELD TOWNSHIP, SECTION 6",
+"42.6091700000",
+"-83.3133370000"
+],
+[
+"NALMS-F638656",
+"Square Lake, Oakland County, MI, USA, 42.6097423, -83.3117991",
+"42.6100000000",
+"-83.3120000000"
+]
+],
+"k": 92,
+"yrs": 3,
+"y0": "2021",
+"y1": "2023",
+"med": 25.0,
+"avg": 27.2,
+"mx": 42.0,
+"yavg": 30.0
+},
+{
+"st": "MI",
+"n": "Bass Lake",
+"cty": "Dickinson",
+"lq": 21.5,
+"ac": 58,
+"words": [
+"bass"
+],
+"stations": [
+[
+"USGS-455111088041305",
+"BASS LAKE NR IRON MOUNTAIN, MI (3 FT BL LK SURF)",
+"45.85301040000000",
+"-88.0704059000000"
+],
+[
+"21MICH-220040",
+"BASS LAKE-E-CENTRAL BASIN; FLORENCE TOWNSHIP, SEC 15",
+"45.8525040",
+"-88.0677820"
+],
+[
+"NALMS-F620709",
+"Bass Lake, Dickinson County, MI, USA",
+"45.8530000000",
+"-88.0730000000"
+]
+],
+"k": 37,
+"yrs": 3,
+"y0": "2002",
+"y1": "2016",
+"med": 22.5,
+"avg": 23.6,
+"mx": 42.0,
+"yavg": 22.7
+},
+{
+"st": "MI",
+"n": "Hagerman Lake",
+"cty": "Iron",
+"lq": 21.0,
+"ac": 50,
+"words": [
+"hagerman"
+],
+"stations": [
+[
+"USGS-460330088463405",
+"HAGERMAN LAKE NR IRON RIVER, MI (3 FT BL LK SURF)",
+"46.05833330000000",
+"-88.7761111000000"
+],
+[
+"21MICH_MICORPS-360042",
+"HAGERMAN LAKE CENTRAL BASIN; ALVIN TOWNSHIP, SECTION 2",
+"46.0583370000",
+"-88.7761150000"
+],
+[
+"NALMS-F627597",
+"Hagerman Lake, Iron County, MI, USA",
+"46.0600000000",
+"-88.7790000000"
+]
+],
+"k": 86,
+"yrs": 4,
+"y0": "2007",
+"y1": "2019",
+"med": 21.0,
+"avg": 20.7,
+"mx": 31.0,
+"yavg": 20.0
+},
+{
+"st": "MN",
+"n": "St James Pit Lake",
+"cty": "St. Louis",
+"lq": 47.6,
+"ac": 381,
+"words": [
+"st",
+"james",
+"pit"
+],
+"stations": [
+[
+"MNPCA-69-0428-00-201",
+"St James Pit",
+"47.5337800000",
+"-92.2340800000"
+]
+],
+"k": 9,
+"yrs": 2,
+"y0": "2019",
+"y1": "2020",
+"med": 41.0,
+"avg": 40.3,
+"mx": 50.9,
+"yavg": 43.8
+},
+{
+"st": "MN",
+"n": "Three Island Lake",
+"cty": "Itasca",
+"lq": 29.0,
+"ac": 66,
+"words": [
+"three",
+"island"
+],
+"stations": [
+[
+"MNPCA-31-0451-00-201",
+"THREE ISLAND",
+"47.5455600000",
+"-93.5156700000"
+],
+[
+"MNPCA-31-0542-00-201",
+"THREE ISLAND",
+"47.5858970000",
+"-93.5727160000"
+],
+[
+"MNPCA-31-0542-00-202",
+"THREE ISLAND",
+"47.5874970000",
+"-93.5766970000"
+],
+[
+"MNPCA-31-0542-00-203",
+"THREE ISLAND",
+"47.5829570000",
+"-93.5837440000"
+]
+],
+"k": 181,
+"yrs": 15,
+"y0": "2006",
+"y1": "2022",
+"med": 23.0,
+"avg": 23.3,
+"mx": 32.0,
+"yavg": 24.5
+},
+{
+"st": "MN",
+"n": "Holland Lake",
+"cty": "Dakota",
+"lq": 27.9,
+"ac": 55,
+"words": [
+"holland"
+],
+"stations": [
+[
+"MNPCA-19-0065-00-201",
+"HOLLAND",
+"44.7881200000",
+"-93.1421060000"
+],
+[
+"MNPCA-19-0065-00-203",
+"HOLLAND",
+"44.7886460000",
+"-93.1425780000"
+]
+],
+"k": 111,
+"yrs": 18,
+"y0": "2000",
+"y1": "2025",
+"med": 13.5,
+"avg": 14.7,
+"mx": 39.4,
+"yavg": 15.3
+},
+{
+"st": "MN",
+"n": "Little Mcdonald Lake",
+"cty": "Otter Tail",
+"lq": 26.5,
+"ac": 109,
+"words": [
+"little",
+"mcdonald"
+],
+"stations": [
+[
+"MNPCA-56-0328-00-202",
+"LITTLE MCDONALD",
+"46.6112890000",
+"-95.7028790000"
+],
+[
+"MNPCA-56-0328-00-203",
+"LITTLE MCDONALD",
+"46.6141120000",
+"-95.6885000000"
+],
+[
+"MNPCA-56-0328-00-204",
+"LITTLE MCDONALD",
+"46.6098920000",
+"-95.7245630000"
+],
+[
+"NALMS-F646855",
+"Little McDonald Lake, Otter Tail County, MN, USA",
+"46.6110000000",
+"-95.7040000000"
+]
+],
+"k": 464,
+"yrs": 26,
+"y0": "2000",
+"y1": "2025",
+"med": 21.0,
+"avg": 21.8,
+"mx": 35.5,
+"yavg": 22.3
+},
+{
+"st": "MN",
+"n": "South Lake",
+"cty": "Cook",
+"lq": 26.0,
+"ac": 140,
+"words": [
+"south"
+],
+"stations": [
+[
+"MNPCA-16-0244-00-100",
+"SOUTH",
+"48.0962000000",
+"-90.5475000000"
+],
+[
+"MNPCA-16-0244-00-201",
+"SOUTH",
+"48.0955780000",
+"-90.5390620000"
+]
+],
+"k": 11,
+"yrs": 8,
+"y0": "2004",
+"y1": "2025",
+"med": 24.6,
+"avg": 20.1,
+"mx": 29.1,
+"yavg": 19.9
+},
+{
+"st": "MN",
+"n": "Iron Chief Complex Lake",
+"cty": "St. Louis",
+"lq": 24.5,
+"ac": 262,
+"words": [
+"iron",
+"chief",
+"complex"
+],
+"stations": [
+[
+"MNPCA-69-1428-00-201",
+"IRON CHIEF COMPLEX",
+"47.4988000000",
+"-92.7840700000"
+]
+],
+"k": 2,
+"yrs": 1,
+"y0": "2024",
+"y1": "2024",
+"med": 24.5,
+"avg": 24.5,
+"mx": 27.0,
+"yavg": 24.5
+},
+{
+"st": "MN",
+"n": "Sagamore Mine Lake",
+"cty": "Crow Wing",
+"lq": 23.8,
+"ac": 210,
+"words": [
+"sagamore",
+"mine"
+],
+"stations": [
+[
+"MNPCA-18-0523-00-201",
+"Sagamore Mine",
+"46.4525010000",
+"-94.0519110000"
+]
+],
+"k": 7,
+"yrs": 1,
+"y0": "2025",
+"y1": "2025",
+"med": 22.5,
+"avg": 22.4,
+"mx": 26.0,
+"yavg": 22.5
+},
+{
+"st": "MN",
+"n": "Miner'S Pit West Lake",
+"cty": "St. Louis",
+"lq": 23.1,
+"ac": 140,
+"words": [
+"miner",
+"s",
+"pit",
+"west"
+],
+"stations": [
+[
+"MNPCA-69-1293-01-201",
+"Miner's Pit West",
+"47.9095760000",
+"-91.8571080000"
+],
+[
+"MNPCA-69-1293-01-202",
+"Miner's Pit West",
+"47.9094920000",
+"-91.8596680000"
+]
+],
+"k": 7,
+"yrs": 1,
+"y0": "2025",
+"y1": "2025",
+"med": 22.6,
+"avg": 22.4,
+"mx": 29.7,
+"yavg": 22.6
+},
+{
+"st": "MN",
+"n": "Lost Lake",
+"cty": "St. Louis",
+"lq": 23.0,
+"ac": 44,
+"words": [
+"lost"
+],
+"stations": [
+[
+"MNPCA-69-0556-00-201",
+"LOST",
+"47.4372790000",
+"-92.3557090000"
+],
+[
+"MNPCA-69-0556-00-202",
+"LOST",
+"47.4331180000",
+"-92.3638240000"
+],
+[
+"MNPCA-69-0581-00-201",
+"LOST",
+"47.8217070000",
+"-92.4058280000"
+]
+],
+"k": 91,
+"yrs": 16,
+"y0": "2008",
+"y1": "2024",
+"med": 14.4,
+"avg": 14.9,
+"mx": 25.0,
+"yavg": 15.7
+},
+{
+"st": "MN",
+"n": "Peter Lake",
+"cty": "Cook",
+"lq": 22.5,
+"ac": 120,
+"words": [
+"peter"
+],
+"stations": [
+[
+"MNPCA-16-0757-00-101",
+"PETER",
+"48.0637200000",
+"-90.9886690000"
+],
+[
+"MNPCA-16-0757-00-201",
+"PETER",
+"48.0646050000",
+"-90.9868010000"
+],
+[
+"MNPCA-16-0757-00-202",
+"Peter",
+"48.0671250000",
+"-90.9725050000"
+]
+],
+"k": 4,
+"yrs": 4,
+"y0": "2012",
+"y1": "2020",
+"med": 21.5,
+"avg": 20.5,
+"mx": 22.5,
+"yavg": 20.5
+},
+{
+"st": "MT",
+"n": "Big Therriault Lake",
+"cty": "Lincoln",
+"lq": 37.3,
+"ac": null,
+"words": [
+"big",
+"therriault"
+],
+"stations": [
+[
+"NALMS-F779886",
+"Big Therriault Lake, Lincoln County, MT, USA, 48.9327801, -114.8",
+"48.9330000000",
+"-114.8760000000"
+]
+],
+"k": 6,
+"yrs": 3,
+"y0": "2020",
+"y1": "2023",
+"med": 37.3,
+"avg": 35.8,
+"mx": 42.0,
+"yavg": 37.5
+},
+{
+"st": "MT",
+"n": "Ashley Lake",
+"cty": "Flathead",
+"lq": 33.1,
+"ac": 2852,
+"words": [
+"ashley"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-C11AHLYL01",
+"Ashley Lake at mid-lake",
+"48.2032500000",
+"-114.6190800000"
+],
+[
+"NALMS-F779175",
+"Ashley Lake, Flathead County, MT, USA, 48.2044038, -114.6165276",
+"48.2040000000",
+"-114.6170000000"
+],
+[
+"NALMS-F796279",
+"Ashley Lake, Flathead County, MT, USA, 48.2037418, -114.6097243",
+"48.2040000000",
+"-114.6100000000"
+]
+],
+"k": 15,
+"yrs": 7,
+"y0": "2000",
+"y1": "2023",
+"med": 32.0,
+"avg": 31.5,
+"mx": 42.0,
+"yavg": 32.0
+},
+{
+"st": "MT",
+"n": "Holland Lake",
+"cty": "Missoula",
+"lq": 30.5,
+"ac": null,
+"words": [
+"holland"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-C10HLNDL01",
+"Holland Lake",
+"47.4477000000",
+"-113.6024000000"
+],
+[
+"NALMS-F772475",
+"Holland Lake, Missoula County, MT, USA",
+"47.4480000000",
+"-113.5990000000"
+]
+],
+"k": 9,
+"yrs": 3,
+"y0": "2004",
+"y1": "2023",
+"med": 29.5,
+"avg": 28.5,
+"mx": 35.5,
+"yavg": 30.0
+},
+{
+"st": "MT",
+"n": "Lindbergh Lake",
+"cty": "Missoula",
+"lq": 26.5,
+"ac": null,
+"words": [
+"lindbergh"
+],
+"stations": [
+[
+"NALMS-F786171",
+"Lindbergh Lake, Missoula County, MT, USA",
+"47.3930000000",
+"-113.7300000000"
+]
+],
+"k": 9,
+"yrs": 3,
+"y0": "2020",
+"y1": "2023",
+"med": 26.5,
+"avg": 27.2,
+"mx": 37.5,
+"yavg": 26.5
+},
+{
+"st": "MT",
+"n": "Murray Lake",
+"cty": "Flathead",
+"lq": 22.0,
+"ac": null,
+"words": [
+"murray"
+],
+"stations": [
+[
+"NALMS-F787878",
+"Murray Lake, Flathead County, MT, USA",
+"48.4410000000",
+"-114.4530000000"
+]
+],
+"k": 3,
+"yrs": 3,
+"y0": "2020",
+"y1": "2023",
+"med": 22.0,
+"avg": 20.3,
+"mx": 24.5,
+"yavg": 20.3
+},
+{
+"st": "MT",
+"n": "Upper Stillwater Lake",
+"cty": "Flathead",
+"lq": 21.9,
+"ac": null,
+"words": [
+"upper",
+"stillwater"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-C09USLWL01",
+"Upper Stillwater Lake at mid-lake",
+"48.5908000000",
+"-114.6392400000"
+],
+[
+"NALMS-F792654",
+"Upper Stillwater Lake, Flathead County, MT, USA",
+"48.5880000000",
+"-114.6370000000"
+]
+],
+"k": 9,
+"yrs": 3,
+"y0": "2006",
+"y1": "2023",
+"med": 17.9,
+"avg": 19.8,
+"mx": 26.6,
+"yavg": 19.8
+},
+{
+"st": "MT",
+"n": "Tetrault Lake",
+"cty": "Lincoln",
+"lq": 21.8,
+"ac": null,
+"words": [
+"tetrault"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-K01TETRL01",
+"Tetrault Lake at mid-lake",
+"48.9457000000",
+"-115.1158000000"
+],
+[
+"NALMS-F792010",
+"Tetrault Lake, Lincoln County, MT, USA",
+"48.9450000000",
+"-115.1160000000"
+]
+],
+"k": 20,
+"yrs": 3,
+"y0": "2008",
+"y1": "2023",
+"med": 22.2,
+"avg": 22.7,
+"mx": 37.1,
+"yavg": 23.9
+},
+{
+"st": "MT",
+"n": "Hanson-Doyle Lake",
+"cty": "Flathead",
+"lq": 21.8,
+"ac": null,
+"words": [
+"hanson",
+"doyle"
+],
+"stations": [
+[
+"NALMS-F784533",
+"Hanson-Doyle Lake, Flathead County, MT, USA",
+"48.3590000000",
+"-114.4670000000"
+]
+],
+"k": 8,
+"yrs": 6,
+"y0": "2000",
+"y1": "2023",
+"med": 17.8,
+"avg": 19.6,
+"mx": 34.6,
+"yavg": 18.5
+},
+{
+"st": "MT",
+"n": "Hauser Lake D",
+"cty": "Lewis and Clark",
+"lq": 21.8,
+"ac": null,
+"words": [
+"hauser"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-M09HASRL06",
+"Hauser Lake at deepest point",
+"46.7619830000",
+"-111.8840490000"
+],
+[
+"MDEQ_WQ_WQX-M09HASRL10",
+"Hauser Lake in causeway arm",
+"46.7188030000",
+"-111.8777940000"
+],
+[
+"MDEQ_WQ_WQX-M09HASRL30",
+"Hauser Lake d/s of Hwy 280 bridge",
+"46.7186290000",
+"-111.8360810000"
+],
+[
+"MDEQ_WQ_WQX-M09HASRL50",
+"Hauser Lake near near Lakeside",
+"46.6809250000",
+"-111.8253960000"
+],
+[
+"R8MONTWQ-LKHLNTMDL_HR01",
+"Hauser Reservoir upper Causeway Arm near Lake Helena outflow",
+"46.7043200000",
+"-111.9014200000"
+],
+[
+"R8MONTWQ-LKHLNTMDL_HR02",
+"Hauser Reservoir middle Causeway Arm",
+"46.7183900000",
+"-111.8773700000"
+],
+[
+"R8MONTWQ-LKHLNTMDL_HR03",
+"Hauser Reservoir lower Causeway Arm",
+"46.7353900000",
+"-111.8906500000"
+],
+[
+"R8MONTWQ-LKHLNTMDL_HR04",
+"Hauser Reservoir upstream of Causeway Arm",
+"46.7354900000",
+"-111.8784000000"
+],
+[
+"R8MONTWQ-LKHLNTMDL_HR05",
+"Hauser Reservoir downstream of Causeway Arm near Hauser Dam",
+"46.7630200000",
+"-111.8846000000"
+]
+],
+"k": 31,
+"yrs": 3,
+"y0": "2008",
+"y1": "2026",
+"med": 6.1,
+"avg": 7.8,
+"mx": 18.2,
+"yavg": 7.3
+},
+{
+"st": "MT",
+"n": "Lake Alva Mid-Lake Deep",
+"cty": "Missoula",
+"lq": 21.6,
+"ac": null,
+"words": [
+"alva"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-C03ALVAL01",
+"Lake Alva at mid-lake",
+"47.3163890000",
+"-113.5827780000"
+],
+[
+"MTVOLWQM_WQX-ALVA_1",
+"Lake Alva Mid-Lake Deep",
+"47.3161100000",
+"-113.5833600000"
+]
+],
+"k": 99,
+"yrs": 15,
+"y0": "2003",
+"y1": "2019",
+"med": 20.8,
+"avg": 20.0,
+"mx": 28.1,
+"yavg": 21.0
+},
+{
+"st": "MT",
+"n": "Mcgilvray Lake",
+"cty": "Flathead",
+"lq": 21.0,
+"ac": null,
+"words": [
+"mcgilvray"
+],
+"stations": [
+[
+"NALMS-F787052",
+"McGilvray Lake, Flathead County, MT, USA",
+"48.1430000000",
+"-114.0800000000"
+]
+],
+"k": 3,
+"yrs": 3,
+"y0": "2020",
+"y1": "2023",
+"med": 21.0,
+"avg": 21.0,
+"mx": 21.1,
+"yavg": 21.0
+},
+{
+"st": "MT",
+"n": "Lower Stillwater Lake",
+"cty": "Flathead",
+"lq": 21.0,
+"ac": null,
+"words": [
+"lower",
+"stillwater"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-C09LSLWL01",
+"Lower Stillwater Lake at mid-lake",
+"48.5259900000",
+"-114.5642700000"
+],
+[
+"NALMS-F786680",
+"Lower Stillwater Lake, Flathead County, MT, USA",
+"48.5250000000",
+"-114.5640000000"
+]
+],
+"k": 8,
+"yrs": 6,
+"y0": "2001",
+"y1": "2023",
+"med": 16.9,
+"avg": 17.8,
+"mx": 22.0,
+"yavg": 18.1
+},
+{
+"st": "MT",
+"n": "Bootjack Lake",
+"cty": "Flathead",
+"lq": 20.8,
+"ac": null,
+"words": [
+"bootjack"
+],
+"stations": [
+[
+"NALMS-F780234",
+"Bootjack Lake, Flathead County, MT, USA",
+"48.4230000000",
+"-114.4940000000"
+]
+],
+"k": 4,
+"yrs": 3,
+"y0": "2020",
+"y1": "2023",
+"med": 20.8,
+"avg": 19.9,
+"mx": 25.0,
+"yavg": 20.2
+},
+{
+"st": "MT",
+"n": "Upper Whitefish Lake",
+"cty": "Flathead",
+"lq": 20.5,
+"ac": null,
+"words": [
+"upper",
+"whitefish"
+],
+"stations": [
+[
+"NALMS-F792660",
+"Upper Whitefish Lake, Flathead County, MT, USA",
+"48.6870000000",
+"-114.5790000000"
+]
+],
+"k": 3,
+"yrs": 1,
+"y0": "2020",
+"y1": "2020",
+"med": 20.5,
+"avg": 19.5,
+"mx": 22.6,
+"yavg": 20.5
+},
+{
+"st": "MT",
+"n": "Glen Lake",
+"cty": "Lincoln",
+"lq": 19.9,
+"ac": 300,
+"words": [
+"glen"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-K01GLENL01",
+"Glen Lake at mid-lake",
+"48.8623600000",
+"-114.9461200000"
+],
+[
+"NALMS-F771798",
+"Glen Lake, Lincoln County, MT, USA",
+"48.8650000000",
+"-114.9500000000"
+]
+],
+"k": 15,
+"yrs": 5,
+"y0": "2002",
+"y1": "2023",
+"med": 19.7,
+"avg": 20.7,
+"mx": 28.6,
+"yavg": 20.3
+},
+{
+"st": "MT",
+"n": "Bailey Lake",
+"cty": "Flathead",
+"lq": 19.5,
+"ac": null,
+"words": [
+"bailey"
+],
+"stations": [
+[
+"NALMS-F779258",
+"Bailey Lake, Flathead County, MT, USA",
+"48.4710000000",
+"-114.1320000000"
+]
+],
+"k": 12,
+"yrs": 4,
+"y0": "2000",
+"y1": "2023",
+"med": 18.8,
+"avg": 18.8,
+"mx": 23.0,
+"yavg": 18.0
+},
+{
+"st": "MT",
+"n": "Dollar Lake",
+"cty": "Flathead",
+"lq": 19.2,
+"ac": null,
+"words": [
+"dollar"
+],
+"stations": [
+[
+"NALMS-F782453",
+"Dollar Lake, Flathead County, MT, USA",
+"48.4460000000",
+"-114.4150000000"
+]
+],
+"k": 4,
+"yrs": 3,
+"y0": "2020",
+"y1": "2023",
+"med": 19.2,
+"avg": 17.6,
+"mx": 21.5,
+"yavg": 18.3
+},
+{
+"st": "MT",
+"n": "Blanchard Lake",
+"cty": "Flathead",
+"lq": 19.0,
+"ac": null,
+"words": [
+"blanchard"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-C09BLHDL01",
+"Blanchard Lake at mid-lake",
+"48.3792000000",
+"-114.3646000000"
+],
+[
+"NALMS-F780093",
+"Blanchard Lake, Flathead County, MT, USA",
+"48.3840000000",
+"-114.3660000000"
+]
+],
+"k": 10,
+"yrs": 4,
+"y0": "2008",
+"y1": "2023",
+"med": 19.5,
+"avg": 19.6,
+"mx": 25.0,
+"yavg": 19.7
+},
+{
+"st": "MT",
+"n": "Holter Reservoir",
+"cty": "Lewis and Clark",
+"lq": 19.0,
+"ac": 4550,
+"words": [
+"holter"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-M09HLTRS05",
+"Holter Reservoir at deepest point",
+"46.9901320000",
+"-112.0018070000"
+],
+[
+"MDEQ_WQ_WQX-M09HLTRS40",
+"Holter Reservoir at first S bend",
+"46.9550520000",
+"-111.9478600000"
+],
+[
+"MDEQ_WQ_WQX-M09HLTRS80",
+"Holter Reservoir near yacht club",
+"46.8259230000",
+"-111.9510940000"
+]
+],
+"k": 12,
+"yrs": 1,
+"y0": "2026",
+"y1": "2026",
+"med": 19.4,
+"avg": 18.5,
+"mx": 27.4,
+"yavg": 19.4
+},
+{
+"st": "MT",
+"n": "Beaver Lake",
+"cty": "Flathead",
+"lq": 18.8,
+"ac": null,
+"words": [
+"beaver"
+],
+"stations": [
+[
+"NALMS-F779626",
+"Beaver Lake, Flathead County, MT, USA, 48.4348751, -114.4196584",
+"48.4350000000",
+"-114.4200000000"
+]
+],
+"k": 19,
+"yrs": 8,
+"y0": "2000",
+"y1": "2023",
+"med": 20.5,
+"avg": 18.7,
+"mx": 28.6,
+"yavg": 19.8
+},
+{
+"st": "MT",
+"n": "Lake Inez South Hole",
+"cty": "Missoula",
+"lq": 17.8,
+"ac": null,
+"words": [
+"inez",
+"south"
+],
+"stations": [
+[
+"MDEQ_WQ_WQX-C03INEZL01",
+"Lake Inez at mid-lake",
+"47.2866670000",
+"-113.5675000000"
+],
+[
+"MTVOLWQM_WQX-INEZ_1",
+"Lake Inez North Hole",
+"47.2862300000",
+"-113.5684100000"
+],
+[
+"MTVOLWQM_WQX-INEZ_2",
+"Lake Inez South Hole",
+"47.2785600000",
+"-113.5654700000"
+]
+],
+"k": 132,
+"yrs": 13,
+"y0": "2003",
+"y1": "2019",
+"med": 16.7,
+"avg": 16.5,
+"mx": 24.3,
+"yavg": 17.4
+},
+{
+"st": "NC",
+"n": "Wolf Creek Reservoir",
+"cty": "Jackson",
+"lq": 19.7,
+"ac": 40,
+"words": [
+"wolf",
+"creek"
+],
+"stations": [
+[
+"21NC03WQ-LTN015A",
+"WOLF CREEK RESERVOIR",
+"35.2331500000",
+"-82.9907600000"
+],
+[
+"21NC03WQ-LTN015A1",
+"WOLF CREEK RESERVOIR",
+"35.2216200000",
+"-82.9972500000"
+]
+],
+"k": 10,
+"yrs": 1,
+"y0": "2024",
+"y1": "2024",
+"med": 17.1,
+"avg": 19.4,
+"mx": 28.5,
+"yavg": 17.1
+},
+{
+"st": "NC",
+"n": "Calderwood Lake",
+"cty": "Graham",
+"lq": 16.4,
+"ac": null,
+"words": [
+"calderwood"
+],
+"stations": [
+[
+"21NC03WQ-LTN040",
+"CALDERWOOD LAKE",
+"35.4633900000",
+"-83.9569400000"
+]
+],
+"k": 5,
+"yrs": 1,
+"y0": "2024",
+"y1": "2024",
+"med": 16.4,
+"avg": 18.1,
+"mx": 26.2,
+"yavg": 16.4
+},
+{
+"st": "NE",
+"n": "Bridgeport Middle Lake",
+"cty": "Morrill",
+"lq": 18.9,
+"ac": null,
+"words": [
+"bridgeport",
+"middle"
+],
+"stations": [
+[
+"21NEB001_WQX-LNP3BRPTMD01",
+"Bridgeport Middle Lake (SRA) -- Deep Water Site -- Site 01",
+"41.6775520000",
+"-103.1105990000"
+]
+],
+"k": 15,
+"yrs": 3,
+"y0": "2017",
+"y1": "2024",
+"med": 19.7,
+"avg": 17.4,
+"mx": 24.6,
+"yavg": 18.1
+},
+{
+"st": "NY",
+"n": "Lake George",
+"cty": "Warren",
+"lq": 26.7,
+"ac": null,
+"words": [
+"george"
+],
+"stations": [
+[
+"NALMS-F970163",
+"Lake George, Warren County, NY, USA",
+"43.6020000000",
+"-73.5800000000"
+]
+],
+"k": 103,
+"yrs": 4,
+"y0": "2017",
+"y1": "2020",
+"med": 25.1,
+"avg": 25.1,
+"mx": 36.6,
+"yavg": 25.1
+},
+{
+"st": "NY",
+"n": "Keuka Lake",
+"cty": "Yates",
+"lq": 23.6,
+"ac": null,
+"words": [
+"keuka"
+],
+"stations": [
+[
+"NALMS-F954572",
+"Keuka Lake, Yates County, NY, USA",
+"42.5200000000",
+"-77.1090000000"
+]
+],
+"k": 53,
+"yrs": 4,
+"y0": "2017",
+"y1": "2020",
+"med": 23.0,
+"avg": 22.3,
+"mx": 43.3,
+"yavg": 22.5
+},
+{
+"st": "NY",
+"n": "Blue Mountain Lake",
+"cty": "Hamilton",
+"lq": 21.0,
+"ac": null,
+"words": [
+"blue",
+"mountain"
+],
+"stations": [
+[
+"HAMILTONCOUNTYDISTRICT-BLB",
+"Blue Mountain Lake BOTTOM",
+"43.8651900000",
+"-74.4612260000"
+],
+[
+"HAMILTONCOUNTYDISTRICT-BLS",
+"Blue Mountain Lake",
+"43.8651900000",
+"-74.4612260000"
+],
+[
+"NALMS-F944318",
+"Blue Mountain Lake, Hamilton County, NY, USA",
+"43.8620000000",
+"-74.4570000000"
+]
+],
+"k": 14,
+"yrs": 3,
+"y0": "2001",
+"y1": "2025",
+"med": 22.6,
+"avg": 22.8,
+"mx": 31.5,
+"yavg": 25.0
+},
+{
+"st": "NY",
+"n": "Lake Moraine",
+"cty": "Madison",
+"lq": 20.3,
+"ac": 260,
+"words": [
+"moraine"
+],
+"stations": [
+[
+"NALMS-F957641",
+"Lake Moraine, Madison County, NY, USA",
+"42.8550000000",
+"-75.5180000000"
+]
+],
+"k": 52,
+"yrs": 10,
+"y0": "2000",
+"y1": "2020",
+"med": 14.4,
+"avg": 14.8,
+"mx": 24.8,
+"yavg": 13.7
+},
+{
+"st": "NY",
+"n": "Eaton Reservoir",
+"cty": "Madison",
+"lq": 18.2,
+"ac": null,
+"words": [
+"eaton"
+],
+"stations": [
+[
+"NALMS-F949321",
+"Eaton Reservoir, Madison County, NY, USA",
+"42.8610000000",
+"-75.6990000000"
+]
+],
+"k": 48,
+"yrs": 6,
+"y0": "2015",
+"y1": "2020",
+"med": 17.8,
+"avg": 18.2,
+"mx": 29.9,
+"yavg": 17.9
+},
+{
+"st": "NY",
+"n": "Queneska Island Lake",
+"cty": "Essex",
+"lq": 17.4,
+"ac": null,
+"words": [
+"queneska",
+"island"
+],
+"stations": [
+[
+"1VTDECWQ-502715",
+"Queneska Island",
+"43.9538000000",
+"-73.4059000000"
+]
+],
+"k": 99,
+"yrs": 12,
+"y0": "2011",
+"y1": "2022",
+"med": 14.1,
+"avg": 14.4,
+"mx": 24.6,
+"yavg": 15.0
+},
+{
+"st": "NY",
+"n": "Lake Luzerne",
+"cty": "Warren",
+"lq": 17.1,
+"ac": 111,
+"words": [
+"luzerne"
+],
+"stations": [
+[
+"21NYDECA_WQX-LLUZERNE_050318_DH",
+"LAKE LUZERNE DEEP HOLE",
+"43.3232890000",
+"-73.8345730000"
+],
+[
+"NALMS-F956161",
+"Lake Luzerne, Warren County, NY, USA",
+"43.3230000000",
+"-73.8330000000"
+]
+],
+"k": 13,
+"yrs": 3,
+"y0": "2003",
+"y1": "2020",
+"med": 15.9,
+"avg": 15.8,
+"mx": 19.4,
+"yavg": 15.2
+},
+{
+"st": "NY",
+"n": "Cazenovia Lake",
+"cty": "Madison",
+"lq": 16.7,
+"ac": null,
+"words": [
+"cazenovia"
+],
+"stations": [
+[
+"NALMS-F946092",
+"Cazenovia Lake, Madison County, NY, USA",
+"42.9480000000",
+"-75.8720000000"
+]
+],
+"k": 40,
+"yrs": 5,
+"y0": "2016",
+"y1": "2020",
+"med": 13.1,
+"avg": 13.4,
+"mx": 19.0,
+"yavg": 13.5
+},
+{
+"st": "UT",
+"n": "Lake Mary",
+"cty": "Salt Lake",
+"lq": 26.9,
+"ac": null,
+"words": [
+"mary"
+],
+"stations": [
+[
+"UTAHDWQ_WQX-5911680",
+"LAKE MARY AB DAM 01",
+"40.5880100000",
+"-111.5904800000"
+]
+],
+"k": 7,
+"yrs": 5,
+"y0": "2000",
+"y1": "2012",
+"med": 13.8,
+"avg": 14.2,
+"mx": 26.9,
+"yavg": 15.4
+},
+{
+"st": "UT",
+"n": "Strawberry Mid Res Lake",
+"cty": "Wasatch",
+"lq": 22.0,
+"ac": null,
+"words": [
+"strawberry"
+],
+"stations": [
+[
+"UC_REGION_USBOR_WQX-SR-Dam",
+"Strawberry at Dam",
+"40.1378000000",
+"-111.0270000000"
+],
+[
+"UC_REGION_USBOR_WQX-SR-Mid",
+"Strawberry Mid Res",
+"40.1451000000",
+"-111.1370000000"
+],
+[
+"UC_REGION_USBOR_WQX-SR-StrMar",
+"Strawberry Marina",
+"40.1718000000",
+"-111.1440000000"
+],
+[
+"UTAHDWQ_WQX-4936310",
+"STRAWBERRY RES AB SOLDIER CK DAM T-14 Replicate of 4936320",
+"40.1424600000",
+"-111.0276700000"
+],
+[
+"UTAHDWQ_WQX-4936320",
+"STRAWBERRY RES AB SOLDIER CK DAM T-14",
+"40.1424600000",
+"-111.0276700000"
+],
+[
+"UTAHDWQ_WQX-4936330",
+"STRAWBERRY RES NARROWS T-12",
+"40.1344000000",
+"-111.0537700000"
+],
+[
+"UTAHDWQ_WQX-4936420",
+"STRAWBERRY RES BRYANTS FK T-2",
+"40.1666200000",
+"-111.1673900000"
+],
+[
+"UTAHDWQ_WQX-4936430",
+"STRAWBERRY RES STRAWBERRY BAY T-5",
+"40.2088400000",
+"-111.1510000000"
+],
+[
+"UTAHDWQ_WQX-4936450",
+"STRAWBERRY RES AB OLD DAMSITE T-8",
+"40.1610600000",
+"-111.1229500000"
+],
+[
+"UTAHDWQ_WQX-4936480",
+"STRAWBERRY RES 3/4 UP STRAWBERRY BAY",
+"40.2310700000",
+"-111.1426700000"
+],
+[
+"UTAHDWQ_WQX-5936760",
+"STRAWBERRY RES INDIAN CK BAY T-10",
+"40.1305100000",
+"-111.1323900000"
+]
+],
+"k": 1363,
+"yrs": 24,
+"y0": "2000",
+"y1": "2025",
+"med": 17.4,
+"avg": 18.6,
+"mx": 48.3,
+"yavg": 15.7
+},
+{
+"st": "UT",
+"n": "Lyman Lake",
+"cty": "Summit",
+"lq": 19.7,
+"ac": null,
+"words": [
+"lyman"
+],
+"stations": [
+[
+"UTAHDWQ_WQX-5939860",
+"LYMAN LAKE",
+"40.9379700000",
+"-110.6140300000"
+],
+[
+"UTAHDWQ_WQX-5939861",
+"LYMAN LAKE Replicate of 5939860",
+"40.9379700000",
+"-110.6140300000"
+],
+[
+"UTAHDWQ_WQX-5939862",
+"Lyman Lake 02",
+"40.9396100000",
+"-110.6117200000"
+]
+],
+"k": 41,
+"yrs": 8,
+"y0": "2000",
+"y1": "2023",
+"med": 16.7,
+"avg": 14.4,
+"mx": 21.7,
+"yavg": 13.1
+},
+{
+"st": "UT",
+"n": "Ferron Reservoir",
+"cty": "Sanpete",
+"lq": 19.0,
+"ac": null,
+"words": [
+"ferron"
+],
+"stations": [
+[
+"UTAHDWQ_WQX-5931800",
+"FERRON RES AB DAM 01",
+"39.1402500000",
+"-111.4512900000"
+]
+],
+"k": 12,
+"yrs": 5,
+"y0": "2000",
+"y1": "2025",
+"med": 15.9,
+"avg": 15.0,
+"mx": 19.4,
+"yavg": 14.2
+},
+{
+"st": "UT",
+"n": "Flaming Gorge-Green River Lake",
+"cty": "Daggett",
+"lq": 18.9,
+"ac": null,
+"words": [
+"flaming",
+"gorge",
+"green",
+"river"
+],
+"stations": [
+[
+"UC_REGION_USBOR_WQX-FG-Dam",
+"Flaming Gorge at Dam",
+"40.9151000000",
+"-109.4220000000"
+],
+[
+"UC_REGION_USBOR_WQX-FGGR0034",
+"Flaming Gorge-Green River- Nr Cedar Springs Boat Marina",
+"40.9167950000",
+"-109.4484720000"
+],
+[
+"UC_REGION_USBOR_WQX-FGGR0219",
+"Flaming Gorge-Green River- Red Canyon at Eagle Creek",
+"40.8944560000",
+"-109.5762310000"
+],
+[
+"UC_REGION_USBOR_WQX-FGGR0331",
+"Flaming Gorge-Green River Near Hideout Campground",
+"40.9442330000",
+"-109.6393270000"
+],
+[
+"UC_REGION_USBOR_WQX-FGGR0484",
+"Flaming Gorge-Green River off Antelope Point",
+"40.9829240000",
+"-109.5699020000"
+],
+[
+"UC_REGION_USBOR_WQX-FGHF-044",
+"Flaming Gorge-Henry's Fork- RKM 4.4",
+"40.9739610000",
+"-109.6063480000"
+],
+[
+"UC_REGION_USBOR_WQX-FG-Mid",
+"Flaming Gorge at Manila Marina",
+"40.9833970000",
+"-109.5819420000"
+],
+[
+"UC_REGION_USBOR_WQX-FGSC-025",
+"Flaming Gorge-Sheeps Creek Bay",
+"40.9304000000",
+"-109.6604800000"
+],
+[
+"UTAHDWQ_WQX-4938550",
+"FLAMING GORGE RES NR CEDAR SPRINGS BOAT RAMP",
+"40.9171800000",
+"-109.4470900000"
+],
+[
+"UTAHDWQ_WQX-4938570",
+"FLAMING GORGE RES NR HIDEOUT CMPGRD",
+"40.9488500000",
+"-109.6409700000"
+],
+[
+"UTAHDWQ_WQX-4938573",
+"FLAMING GORGE RES SHEEP CK BAY",
+"40.9249600000",
+"-109.6757000000"
+],
+[
+"UTAHDWQ_WQX-4938574",
+"FLAMING GORGE RES NEAR SHEEP CK",
+"40.9305100000",
+"-109.6636400000"
+],
+[
+"UTAHDWQ_WQX-4938580",
+"FLAMING GORGE RES AT RED CANYON",
+"40.8943700000",
+"-109.5772000000"
+],
+[
+"UTAHDWQ_WQX-4938585",
+"FLAMING GORGE RES AT LINWOOD BAY",
+"40.9825500000",
+"-109.6144300000"
+],
+[
+"UTAHDWQ_WQX-4938590",
+"FLAMING GORGE RESERVOIR  FG-4",
+"40.9060700000",
+"-109.5126400000"
+],
+[
+"UTAHDWQ_WQX-4938600",
+"FLAMING GORGE RES ANTELOPE FLAT",
+"40.9894000000",
+"-109.5745900000"
+],
+[
+"UTAHDWQ_WQX-4938601",
+"FLAMING GORGE RES ANTELOPE FLAT Replicate of 4938600",
+"40.9894000000",
+"-109.5745900000"
+]
+],
+"k": 807,
+"yrs": 19,
+"y0": "2000",
+"y1": "2025",
+"med": 27.9,
+"avg": 26.7,
+"mx": 45.9,
+"yavg": 24.1
+},
+{
+"st": "UT",
+"n": "Whitney Reservoir",
+"cty": "Summit",
+"lq": 17.7,
+"ac": null,
+"words": [
+"whitney"
+],
+"stations": [
+[
+"UTAHDWQ_WQX-5907780",
+"WHITNEY RES AB DAM 01",
+"40.8371700000",
+"-110.9285100000"
+]
+],
+"k": 32,
+"yrs": 6,
+"y0": "2001",
+"y1": "2021",
+"med": 17.7,
+"avg": 15.4,
+"mx": 18.4,
+"yavg": 10.9
+},
+{
+"st": "UT",
+"n": "Cleveland Lake",
+"cty": "Emery",
+"lq": 17.4,
+"ac": null,
+"words": [
+"cleveland"
+],
+"stations": [
+[
+"UTAHDWQ_WQX-5932050",
+"CLEVELAND L AB DAM 01",
+"39.5783000000",
+"-111.2368400000"
+]
+],
+"k": 11,
+"yrs": 6,
+"y0": "2001",
+"y1": "2025",
+"med": 13.1,
+"avg": 13.0,
+"mx": 20.3,
+"yavg": 11.2
+},
+{
+"st": "UT",
+"n": "Posey Lake",
+"cty": "Garfield",
+"lq": 16.4,
+"ac": 11,
+"words": [
+"posey"
+],
+"stations": [
+[
+"UTAHDWQ_WQX-5953760",
+"POSEY L AB OUTLET 01",
+"37.9368100000",
+"-111.6957300000"
+]
+],
+"k": 8,
+"yrs": 3,
+"y0": "2001",
+"y1": "2025",
+"med": 16.4,
+"avg": 17.3,
+"mx": 20.3,
+"yavg": 17.2
+},
+{
+"st": "UT",
+"n": "Newton Reservoir",
+"cty": "Cache",
+"lq": 15.4,
+"ac": 297,
+"words": [
+"newton"
+],
+"stations": [
+[
+"UTAHDWQ_WQX-4903130",
+"NEWTON RES AB DAM 01",
+"41.8971500000",
+"-111.9743900000"
+],
+[
+"UTAHDWQ_WQX-4903140",
+"NEWTON RES MIDLAKE 02",
+"41.9066000000",
+"-111.9830100000"
+]
+],
+"k": 130,
+"yrs": 13,
+"y0": "2000",
+"y1": "2021",
+"med": 9.0,
+"avg": 10.1,
+"mx": 20.0,
+"yavg": 8.7
+},
+{
+"st": "UT",
+"n": "Causey Reservoir",
+"cty": "Weber",
+"lq": 15.1,
+"ac": 136,
+"words": [
+"causey"
+],
+"stations": [
+[
+"NALMS-F1448239",
+"Causey Reservoir, Weber County, UT, USA",
+"41.2960000000",
+"-111.5740000000"
+],
+[
+"UTAHDWQ_WQX-4924730",
+"CAUSEY RES AB DAM 01",
+"41.2988300000",
+"-111.5863200000"
+],
+[
+"UTAHDWQ_WQX-4924740",
+"Causey Res Midway Up N Arm 02",
+"41.3068800000",
+"-111.5835400000"
+],
+[
+"UTAHDWQ_WQX-4924750",
+"CAUSEY RES. E ARM 003",
+"41.2956600000",
+"-111.5699300000"
+]
+],
+"k": 43,
+"yrs": 10,
+"y0": "2001",
+"y1": "2022",
+"med": 8.9,
+"avg": 10.6,
+"mx": 21.3,
+"yavg": 11.0
+},
+{
+"st": "VT",
+"n": "Lake Elligo",
+"cty": "Orleans",
+"lq": 26.2,
+"ac": null,
+"words": [
+"elligo"
+],
+"stations": [
+[
+"1VTDECWQ-500040",
+"Lake Elligo (Eligo Pond)",
+"44.5939000000",
+"-72.3561000000"
+],
+[
+"1VTDECWQ-500373",
+"Lake Elligo (Eligo Pond)",
+"44.6075000000",
+"-72.3564000000"
+],
+[
+"1VTDECWQ-504828",
+"Lake Elligo (Eligo Pond)",
+"44.6003000000",
+"-72.3558000000"
+]
+],
+"k": 48,
+"yrs": 11,
+"y0": "2000",
+"y1": "2023",
+"med": 21.3,
+"avg": 21.7,
+"mx": 31.8,
+"yavg": 22.6
+},
+{
+"st": "VT",
+"n": "Harveys Lake",
+"cty": "Caledonia",
+"lq": 21.0,
+"ac": 409,
+"words": [
+"harveys"
+],
+"stations": [
+[
+"1VTDECWQ-504526",
+"Harveys Lake",
+"44.2939000000",
+"-72.1375000000"
+],
+[
+"1VTDECWQ-504527",
+"Harveys Lake",
+"44.3000000000",
+"-72.1400000000"
+],
+[
+"1VTDECWQ-504540",
+"Harveys Lake",
+"44.2878000000",
+"-72.1406000000"
+]
+],
+"k": 513,
+"yrs": 26,
+"y0": "2000",
+"y1": "2025",
+"med": 19.4,
+"avg": 19.2,
+"mx": 33.5,
+"yavg": 19.2
+},
+{
+"st": "WI",
+"n": "Adams Lake",
+"cty": "Vilas",
+"lq": 100.0,
+"ac": 14,
+"words": [
+"adams"
+],
+"stations": [
+[
+"WIDNR_WQX-10006579",
+"ADAMS LAKE - ADAMS LAKE",
+"45.9700000000",
+"-89.2600000000"
+],
+[
+"WIDNR_WQX-10032117",
+"Adams lake - Deep Hole",
+"45.9700160000",
+"-89.2654950000"
+]
+],
+"k": 2,
+"yrs": 2,
+"y0": "2000",
+"y1": "2023",
+"med": 56.9,
+"avg": 56.9,
+"mx": 100.0,
+"yavg": 56.9
+},
+{
+"st": "WI",
+"n": "Wazee Lake",
+"cty": "Jackson",
+"lq": 30.0,
+"ac": 350,
+"words": [
+"wazee"
+],
+"stations": [
+[
+"USGS-441730090432900",
+"WAZEE LAKE AT DEEP HOLE NEAR BLACK RIVER FALLS, WI",
+"44.29162820000000",
+"-90.7248610000000"
+],
+[
+"WIDNR_WQX-273028",
+"Wazee Lake - Deep Hole",
+"44.2891600000",
+"-90.7213400000"
+]
+],
+"k": 19,
+"yrs": 7,
+"y0": "2002",
+"y1": "2022",
+"med": 30.0,
+"avg": 32.8,
+"mx": 46.9,
+"yavg": 33.4
+},
+{
+"st": "WI",
+"n": "Bardon Lake",
+"cty": "Douglas",
+"lq": 27.0,
+"ac": 102,
+"words": [
+"bardon"
+],
+"stations": [
+[
+"WIDNR_WQX-10002140",
+"BARDON LAKE - BARDON LAKE",
+"46.2000000000",
+"-91.8700000000"
+],
+[
+"WIDNR_WQX-163390",
+"Bardon Lake (Whitefish) - Deep Hole",
+"46.2034920000",
+"-91.8766670000"
+]
+],
+"k": 5,
+"yrs": 3,
+"y0": "2000",
+"y1": "2025",
+"med": 19.0,
+"avg": 22.3,
+"mx": 29.0,
+"yavg": 21.2
+},
+{
+"st": "WI",
+"n": "Saxon Fall Flowage Lake",
+"cty": "Iron",
+"lq": 26.2,
+"ac": 12,
+"words": [
+"saxon",
+"fall",
+"flowage"
+],
+"stations": [
+[
+"WIDNR_WQX-10022248",
+"Saxon Falls Flowage",
+"46.5392650000",
+"-90.3657100000"
+],
+[
+"WIDNR_WQX-10055383",
+"Saxon Fall Flowage - Deep Hole",
+"46.5390900000",
+"-90.3736400000"
+]
+],
+"k": 2,
+"yrs": 3,
+"y0": "2010",
+"y1": "2021",
+"med": 2.7,
+"avg": 2.7,
+"mx": 4.0,
+"yavg": 2.7
+},
+{
+"st": "WI",
+"n": "Roach Lake",
+"cty": "Vilas",
+"lq": 24.0,
+"ac": 48,
+"words": [
+"roach"
+],
+"stations": [
+[
+"WIDNR_WQX-10006068",
+"ROACH LAKE - ROACH LAKE",
+"45.9500000000",
+"-89.6100000000"
+],
+[
+"WIDNR_WQX-10006501",
+"ROACH LAKE - ROACH LAKE",
+"46.2200000000",
+"-89.5400000000"
+],
+[
+"WIDNR_WQX-643450",
+"Roach Lake - Max Depth",
+"45.9595470000",
+"-89.6202290000"
+]
+],
+"k": 9,
+"yrs": 4,
+"y0": "2000",
+"y1": "2023",
+"med": 22.0,
+"avg": 21.4,
+"mx": 26.0,
+"yavg": 21.1
+},
+{
+"st": "WI",
+"n": "Big Hurst Lake",
+"cty": "Vilas",
+"lq": 24.0,
+"ac": 44,
+"words": [
+"big",
+"hurst"
+],
+"stations": [
+[
+"WIDNR_WQX-10006468",
+"BIG HURST LAKE - BIG HURST LAKE",
+"46.1700000000",
+"-89.7500000000"
+],
+[
+"WIDNR_WQX-643198",
+"BIG HURST LAKE - MAX DEPTH",
+"46.1797760000",
+"-89.7523360000"
+]
+],
+"k": 30,
+"yrs": 6,
+"y0": "2000",
+"y1": "2026",
+"med": 23.5,
+"avg": 23.5,
+"mx": 26.0,
+"yavg": 22.3
+},
+{
+"st": "WI",
+"n": "Clara Lake",
+"cty": "Lincoln",
+"lq": 23.8,
+"ac": 50,
+"words": [
+"clara"
+],
+"stations": [
+[
+"WIDNR_WQX-10003506",
+"LAKE CLARA - LAKE CLARA",
+"45.4300000000",
+"-89.4800000000"
+],
+[
+"WIDNR_WQX-10003507",
+"LAKE CLARA - LAKE CLARA",
+"45.5000000000",
+"-89.5700000000"
+],
+[
+"WIDNR_WQX-10048445",
+"Clara Lake-Deep Hole",
+"45.4375410000",
+"-89.4828010000"
+],
+[
+"WIDNR_WQX-353086",
+"Clara Lake - Deep Hole",
+"45.5124950000",
+"-89.5713970000"
+]
+],
+"k": 10,
+"yrs": 7,
+"y0": "2000",
+"y1": "2022",
+"med": 12.6,
+"avg": 14.3,
+"mx": 24.6,
+"yavg": 14.6
+},
+{
+"st": "WI",
+"n": "Buskey Bay Lake",
+"cty": "Bayfield",
+"lq": 21.9,
+"ac": 51,
+"words": [
+"buskey",
+"bay"
+],
+"stations": [
+[
+"WIDNR_WQX-10001016",
+"BUSKEY BAY - BUSKEY BAY",
+"46.5200000000",
+"-91.3700000000"
+],
+[
+"WIDNR_WQX-10020502",
+"Buskey Bay - Deep Hole",
+"46.5313900000",
+"-91.3716700000"
+]
+],
+"k": 60,
+"yrs": 21,
+"y0": "2000",
+"y1": "2026",
+"med": 20.8,
+"avg": 20.1,
+"mx": 28.8,
+"yavg": 19.7
+},
+{
+"st": "WY",
+"n": "Fremont Lake",
+"cty": "Sublette",
+"lq": 42.8,
+"ac": 5400,
+"words": [
+"fremont"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_268",
+"FREMONT LAKE - LPD",
+"42.9358700000",
+"-109.8098583300"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_269",
+"FREMONT LAKE - TPD",
+"43.0004783300",
+"-109.7910083300"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_270",
+"FREMONT LAKE - RPD",
+"43.0180116700",
+"-109.7802866700"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_272",
+"FREMONT LAKE - INTAKE",
+"42.9067233300",
+"-109.8335183300"
+]
+],
+"k": 12,
+"yrs": 1,
+"y0": "2019",
+"y1": "2019",
+"med": 42.8,
+"avg": 40.8,
+"mx": 47.6,
+"yavg": 42.8
+},
+{
+"st": "WY",
+"n": "Lake Desmet Lpd",
+"cty": "Johnson",
+"lq": 39.1,
+"ac": null,
+"words": [
+"desmet"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_220",
+"Lake DeSmet RTPD",
+"44.5145760000",
+"-106.7821900000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_221",
+"Lake Desmet LPD",
+"44.4812650000",
+"-106.7580540000"
+]
+],
+"k": 6,
+"yrs": 1,
+"y0": "2018",
+"y1": "2018",
+"med": 35.8,
+"avg": 36.8,
+"mx": 46.3,
+"yavg": 35.8
+},
+{
+"st": "WY",
+"n": "Boulder Lake",
+"cty": "Sublette",
+"lq": 27.7,
+"ac": 1676,
+"words": [
+"boulder"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_260",
+"BOULDER LAKE - LPD",
+"42.8528533300",
+"-109.6475616700"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_261",
+"BOULDER LAKE - RTPD",
+"42.8566050000",
+"-109.6325666700"
+]
+],
+"k": 6,
+"yrs": 1,
+"y0": "2019",
+"y1": "2019",
+"med": 27.7,
+"avg": 26.1,
+"mx": 32.0,
+"yavg": 27.7
+},
+{
+"st": "WY",
+"n": "Lak Reservoir",
+"cty": "Weston",
+"lq": 22.4,
+"ac": 126,
+"words": [
+"lak"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_248",
+"LAK RESERVOIR - D",
+"43.8244360000",
+"-104.1088890000"
+]
+],
+"k": 3,
+"yrs": 1,
+"y0": "2019",
+"y1": "2019",
+"med": 21.3,
+"avg": 18.0,
+"mx": 23.5,
+"yavg": 21.3
+},
+{
+"st": "WY",
+"n": "Half Moon Lake",
+"cty": "Sublette",
+"lq": 22.2,
+"ac": null,
+"words": [
+"half",
+"moon"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_266",
+"HALF MOON LAKE - LPD",
+"42.9265566700",
+"-109.7391133300"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_267",
+"HALF MOON LAKE - RTPD",
+"42.9273316700",
+"-109.7181733300"
+]
+],
+"k": 6,
+"yrs": 1,
+"y0": "2019",
+"y1": "2019",
+"med": 22.2,
+"avg": 22.4,
+"mx": 29.1,
+"yavg": 22.2
+},
+{
+"st": "WY",
+"n": "Lower New Fork Lake",
+"cty": "Sublette",
+"lq": 22.0,
+"ac": null,
+"words": [
+"lower",
+"new",
+"fork"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_262",
+"LOWER NEW FORK LAKE - LPD",
+"43.0914833300",
+"-109.9539800000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_263",
+"LOWER NEW FORK LAKE - RTPD",
+"43.0975616700",
+"-109.9444416700"
+]
+],
+"k": 6,
+"yrs": 1,
+"y0": "2019",
+"y1": "2019",
+"med": 22.0,
+"avg": 23.1,
+"mx": 35.7,
+"yavg": 22.0
+},
+{
+"st": "WY",
+"n": "Hog Park Reservoir",
+"cty": "Carbon",
+"lq": 17.9,
+"ac": 598,
+"words": [
+"hog",
+"park"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_399",
+"Hog Park Reservoir - RTPD",
+"41.0363350000",
+"-106.8783800000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_400",
+"Hog Park Reservoir - LPD",
+"41.0330100000",
+"-106.8645290000"
+]
+],
+"k": 6,
+"yrs": 1,
+"y0": "2022",
+"y1": "2022",
+"med": 17.9,
+"avg": 17.5,
+"mx": 20.9,
+"yavg": 17.9
+},
+{
+"st": "WY",
+"n": "West Newton Lake",
+"cty": "Park",
+"lq": 17.7,
+"ac": null,
+"words": [
+"west",
+"newton"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_308",
+"West Newton Lake - D",
+"44.5435900000",
+"-109.1237100000"
+]
+],
+"k": 3,
+"yrs": 1,
+"y0": "2021",
+"y1": "2021",
+"med": 17.7,
+"avg": 16.0,
+"mx": 18.4,
+"yavg": 17.7
+},
+{
+"st": "WY",
+"n": "Seminoe Reservoir Lacustrine Pelagic",
+"cty": "Carbon",
+"lq": 17.1,
+"ac": null,
+"words": [
+"seminoe",
+"lacustrine",
+"pelagic"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_12",
+"Seminoe Reservoir Riverine Littoral, North Platte Arm",
+"42.0017690000",
+"-106.8396640000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_13",
+"Seminoe Reservoir Riverine Pelagic, North Platte Arm",
+"42.0029670000",
+"-106.8386280000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_14",
+"Seminoe Reservoir Riverine Pelagic, North Platte Arm",
+"42.0031790000",
+"-106.8490340000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_15",
+"Seminoe Reservoir Riverine Pelagic, Medicine Bow Arm",
+"42.0414640000",
+"-106.7864330000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_16",
+"Seminoe Reservoir  Littoral, Coal Creek Arm",
+"42.0584440000",
+"-106.9096330000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_17",
+"Seminoe Reservoir  Pelagic, Coal Creek Arm",
+"42.0685060000",
+"-106.8639810000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_18",
+"Seminoe Reservoir  Pelagic, Coal Creek Arm",
+"42.0689750000",
+"-106.8638920000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_19",
+"Seminoe Reservoir Transitional Pelagic",
+"42.1185440000",
+"-106.8624500000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_20",
+"Seminoe Reservoir",
+"42.1185640000",
+"-106.8627470000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_21",
+"Seminoe Reservoir",
+"42.1222470000",
+"-106.8588390000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_22",
+"Seminoe Reservoir Transitional Littoral",
+"42.1223030000",
+"-106.8588390000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_23",
+"Seminoe Reservoir Lacustrine Pelagic",
+"42.1422330000",
+"-106.8833030000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_24",
+"Seminoe Reservoir Lacustrine Littoral",
+"42.1434222220",
+"-106.8815777780"
+]
+],
+"k": 34,
+"yrs": 4,
+"y0": "2006",
+"y1": "2012",
+"med": 6.4,
+"avg": 7.1,
+"mx": 17.1,
+"yavg": 7.1
+},
+{
+"st": "WY",
+"n": "Worthen Meadows Reservoir",
+"cty": "Fremont",
+"lq": 15.9,
+"ac": 92,
+"words": [
+"worthen",
+"meadows"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_306",
+"Worthen Meadows Reservoir - Deepest",
+"42.7007150000",
+"-108.9195870000"
+]
+],
+"k": 3,
+"yrs": 1,
+"y0": "2021",
+"y1": "2021",
+"med": 15.9,
+"avg": 15.1,
+"mx": 18.4,
+"yavg": 15.9
+},
+{
+"st": "WY",
+"n": "Healy Reservoir",
+"cty": "Johnson",
+"lq": 15.3,
+"ac": 246,
+"words": [
+"healy"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_255",
+"HEALY RESERVOIR - D",
+"44.4087100000",
+"-106.6123700000"
+]
+],
+"k": 3,
+"yrs": 1,
+"y0": "2019",
+"y1": "2019",
+"med": 13.9,
+"avg": 14.8,
+"mx": 19.0,
+"yavg": 13.9
+},
+{
+"st": "WY",
+"n": "Muddy Guard Reservoir",
+"cty": "Johnson",
+"lq": 15.2,
+"ac": 48,
+"words": [
+"muddy",
+"guard"
+],
+"stations": [
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_249",
+"MUDDY GUARD RESERVOIR #1 - D",
+"44.1772300000",
+"-106.7767500000"
+],
+[
+"WYDEQ_WATERSHED-WYDEQ_RES_250",
+"MUDDY GUARD RESERVOIR #2 - D",
+"44.1824300000",
+"-106.7570800000"
+]
+],
+"k": 6,
+"yrs": 1,
+"y0": "2019",
+"y1": "2019",
+"med": 9.5,
+"avg": 11.4,
+"mx": 20.7,
+"yavg": 9.5
+}
+]

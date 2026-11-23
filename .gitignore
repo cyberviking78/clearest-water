@@ -1,0 +1,13 @@
+# downloads made during a refresh (rebuilt every run)
+pipeline/wcsv/
+pipeline/heads/rf/
+pipeline/heads/rf_hi/
+pipeline/trails/rf/
+pipeline/cities/rf/
+pipeline/og/csv/
+pipeline/rain/csv/
+pipeline/wild/csv/
+pipeline/.tiger/
+pipeline/wild/nlcd_blocks/
+__pycache__/
+*.tmp
