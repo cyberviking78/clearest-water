@@ -881,6 +881,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .fsi-src{font-size:11.5px}
 .fsi-l{display:flex;gap:12px;margin-top:3px}.fsi-l a{color:var(--lake);font-weight:600}
 .fsinote{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.gm{white-space:nowrap}.gm a{font-family:var(--mono);font-size:11.5px;color:var(--lake);font-weight:500}.gm a.gm-sat{font-family:var(--body);font-weight:600;margin-left:2px}
+.pp-gm{font-size:12px;margin-top:4px}.pp-gm a{color:var(--lake)}
 /* springheads */
 .mag{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--spring);background:var(--spring-soft);border-radius:4px;padding:1px 6px;white-space:nowrap}
 .rk.mg{font-family:var(--mono);font-size:13px;color:var(--spring);font-weight:500}
@@ -1325,13 +1327,13 @@ function renderSprings(){
   const R=FSD.rivers.map((r,i)=>[r,i+1]).filter(([r])=>hitR(r)&&keep(r[14],r[0]));
   let h=`<article class="state nat"><div class="shead"><h2>Springs by clarity${s?" · "+esc(NAMES[s]):""}</h2><span class="count">${S.length} of ${FSD.springs.length}</span></div><ol>`;
   S.forEach(([r,rank])=>{const [wi,name,cty,m,a,b,n,yrs,y0,y1,sites,runs,bb,lwp,ploc,meth,st,g]=r;
-    h+=`<li class="row"><span class="rk">${rank}</span><div class="nm">${esc(name)}<span class="st-tag">${st}</span><small>${esc(cty)} ${st==="LA"?"Parish":"Co."}, ${esc(NAMES[st])} · ${runs?`flows into ${esc(runs)} · `:""}${n} readings · ${yrs} years, ${y0}–${y1}${sites>1?` · ${sites} sites`:""}</small></div>${val(m,a,b)}
+    h+=`<li class="row"><span class="rk">${rank}</span><div class="nm">${esc(name)}<span class="st-tag">${st}</span><small>${esc(cty)} ${st==="LA"?"Parish":"Co."}, ${esc(NAMES[st])} · ${runs?`flows into ${esc(runs)} · `:""}${n} readings · ${yrs} years, ${y0}–${y1}${sites>1?` · ${sites} sites`:""}${gmSpring(r)}</small></div>${val(m,a,b)}
       ${fsiBox(fsiRow(r))}${block(g,wi)}<div class="links"><a href="${zUrl(zb(bb),"waterfront")}" target="_blank" rel="noopener">Zillow waterfront</a><a class="alt" href="${zUrl(zb(bb),null)}" target="_blank" rel="noopener">Zillow all</a><a class="alt" href="${LW+esc(lwp)}" target="_blank" rel="noopener">LandWatch: ${esc(cty)}</a></div></li>`});
   if(!S.length)h+=`<li class="row"><span></span><div class="nm"><small>No springs match.</small></div></li>`;
   const B=(typeof FSB!=="undefined"?FSB:[]).filter(r=>hitS(r)&&keep(r[17],r[0])&&fsiOKs(r));
   if(B.length){h+=`</ol></article><article class="state nat"><div class="shead"><h2>Also clear and blue · Florida field surveys</h2><span class="count">${B.length} of ${FSB.length}</span></div><p class="fsinote">Florida springs the state's field surveys describe as clear and blue that aren't in the ranking above, most because they have fewer than 6 turbidity readings. Found through the Florida Springs Institute; sorted by size.</p><ol>`;
     B.forEach(r=>{const [wi,name,cty,m,a,b,n,yrs,y0,y1,sites,runs,bb,lwp,ploc,meth,st,g,ll,mag,nv]=r;
-      h+=`<li class="row"><span class="rk mg" title="Magnitude ${mag}">M${mag}</span><div class="nm">${esc(name)}<span class="st-tag">${st}</span><small>${esc(cty)} Co., ${esc(NAMES[st])} · magnitude ${mag}${nv>1?` · ${nv} vents`:""} · ${runs?`flows into ${esc(runs)} · `:""}${n?`${n} turbidity reading${n>1?"s":""}, ${y0===y1?y0:`${y0}–${y1}`}`:"no turbidity readings on record"}</small></div>${m!=null?val(m,a,b):`<div class="val"><span class="sub">no turbidity record</span></div>`}
+      h+=`<li class="row"><span class="rk mg" title="Magnitude ${mag}">M${mag}</span><div class="nm">${esc(name)}<span class="st-tag">${st}</span><small>${esc(cty)} Co., ${esc(NAMES[st])} · magnitude ${mag}${nv>1?` · ${nv} vents`:""} · ${runs?`flows into ${esc(runs)} · `:""}${n?`${n} turbidity reading${n>1?"s":""}, ${y0===y1?y0:`${y0}–${y1}`}`:"no turbidity readings on record"}${gmSpring(r)}</small></div>${m!=null?val(m,a,b):`<div class="val"><span class="sub">no turbidity record</span></div>`}
       ${fsiBox(fsiRow(r))}${block(g,wi)}<div class="links"><a href="${zUrl(zb(bb),"waterfront")}" target="_blank" rel="noopener">Zillow waterfront</a><a class="alt" href="${zUrl(zb(bb),null)}" target="_blank" rel="noopener">Zillow all</a><a class="alt" href="${LW+esc(lwp)}" target="_blank" rel="noopener">LandWatch: ${esc(cty)}</a></div></li>`})}
   h+=`</ol></article><article class="state nat"><div class="shead"><h2>Spring-fed rivers${s?" · "+esc(NAMES[s]):""}</h2><span class="count">${R.length} of ${FSD.rivers.length}</span></div><ol>`;
   R.forEach(([r,rank])=>{const [wi,name,cty,m,a,b,n,sites,y0,y1,srcs,bb,lwps,st,g]=r;
@@ -1414,7 +1416,8 @@ function shItem(x){
   if(pac&&ac&&Math.abs(pac-ac)>Math.max(.5,ac*.3))facts.push(`tax parcel ${pac} ac`); else if(pac&&!ac)facts.push(`parcel ${pac} ac`);
   const z="https://www.zillow.com/homes/"+encodeURIComponent(`${addr}, ${city}, ${st}`).replace(/%20/g,"-")+"_rb/";
   const seen=first&&first!==SH.date?` · on our list since ${fmtD(first)}`:"";
-  const xs=[];
+  const xs=[], hv=SH.heads[hi];
+  if(hv[8]!=null)xs.push(`<span>${gmLink(hv[8],hv[9],"Vent:")} · listing point ${gmLink(lat,lon)} · ${gmBoth(hv[8],hv[9],lat,lon)}</span>`);
   if(note)xs.push(esc(note[0].toUpperCase()+note.slice(1))+".");
   if(perms&&perms.length)xs.push(`<span><b>${perms.length} permit${perms.length>1?"s":""} or water right${perms.length>1?"s":""} near the vent:</b> `+perms.slice(0,6).map(p=>`<span class="perm">${esc(p[0])} ${esc(p[1]??"")}</span>${p[2]?" "+esc(p[2]):""}${p[3]?" · "+esc(p[3]):""}${p[4]?" · "+esc(String(p[4]).toLowerCase()):""}${p[5]?", expires "+esc(p[5]):""}${p[6]?` · ${Number(p[6]).toLocaleString()} gal/day`:""}`).join("; ")+(perms.length>6?`; and ${perms.length-6} more`:"")+"</span>");
   else if(st==="FL"||st==="TX")xs.push("No permits or water rights on file within "+(st==="TX"?"800":"400")+" m of the vent.");
@@ -1424,7 +1427,7 @@ function shItem(x){
 function lawHtml(st){const l=SH.law[st];if(!l)return"";return `<div class="law"><b>${esc(NAMES[st])} water law.</b> ${esc(l[0])}${l[1]?` <a href="${esc(l[1])}" target="_blank" rel="noopener">State water rights</a>`:""}</div>`}
 function headRow(hi,body,lw=true){const hd=SH.heads[hi],[n,st,cty,mag,q,last,lastq,src,lat,lon,usgs,pub]=hd;
   const zb=[lat-.012,lat+.012,lon-.015,lon+.015];
-  return `<li class="row"><span class="rk mg" title="Magnitude ${mag}">M${mag}</span><div class="nm">${esc(n)}<span class="st-tag">${st}</span><small>${cty?esc(cty)+(st==="LA"?" Parish":" Co.")+", ":""}${esc(NAMES[st])} · <span class="mag">magnitude ${mag}</span> · ${flowTxt(hd)}${pub?" · on public land":""}</small></div><span></span>
+  return `<li class="row"><span class="rk mg" title="Magnitude ${mag}">M${mag}</span><div class="nm">${esc(n)}<span class="st-tag">${st}</span><small>${cty?esc(cty)+(st==="LA"?" Parish":" Co.")+", ":""}${esc(NAMES[st])} · <span class="mag">magnitude ${mag}</span> · ${flowTxt(hd)}${pub?" · on public land":""} · ${gmLink(lat,lon,"vent")}</small></div><span></span>
     ${fsiBox(fsiHead(hd))}${body||""}<div class="links"><a href="${zUrl(zb,null)}" target="_blank" rel="noopener">Zillow around the vent</a>${usgs?`<a class="alt" href="https://waterdata.usgs.gov/monitoring-location/${esc(usgs)}/" target="_blank" rel="noopener">USGS site</a>`:""}</div>${lw?lawHtml(st):""}</li>`}
 function renderHeads(){
   const F=shFilter(), only=document.getElementById("shlist").checked;
@@ -1864,7 +1867,7 @@ function ocPopup(x){
 /* ---------- Florida Springs Institute: how each Florida spring looks (pipeline/fsi_2026_11) ---------- */
 const FSIU="https://floridaspringsinstitute.org/wp-content/uploads/";
 const FSIL={blue:["Clear blue","fl-blue"],clear:["Clear","fl-clear"],tint:["Tannic or murky","fl-tint"]};
-const FSISTOP=new Set(["spring","springs","main","head","the","big","little","upper","lower","rise","seep","sink","vent","boil","run","complex","group","of","st","saint"]);
+const FSISTOP=new Set(["spring","springs","main","head","the","upper","lower","rise","seep","sink","vent","boil","run","complex","group","of","st","saint"]);
 const FSIC=new Map();
 function fsiTok(n){const w=(String(n||"").toLowerCase().replace(/\(.*?\)|#\s*\w+|\d+/g," ").match(/[a-z]+/g)||[]).filter(x=>!FSISTOP.has(x));return w[0]||""}
 function fsiFind(lat,lon,name){
@@ -1889,6 +1892,16 @@ function fsiBox(f){if(!f||!(f[5]||f[6]||f[7]))return "";
 function fsiPop(f){if(!f||!(f[5]||f[6]))return "";const img=fsiUrl(f[6]);
   return `<div class="pp-sub">${fsiBadge(f)||"Florida Springs Institute"}${f[8]?` <i>${esc(f[8].length>160?f[8].slice(0,157)+"…":f[8])}</i>`:""}${img?` <a href="${esc(img)}" target="_blank" rel="noopener">Photo</a>`:""}</div>`}
 function fsiWord(f){const l=f&&FSIL[f[5]];return l?" · "+l[0].toLowerCase():""}
+/* ---------- clickable spring coordinates (pipeline/fixes/coords_links.py) ---------- */
+const gmF=v=>(+v).toFixed(5);
+function gmLink(lat,lon,label){if(lat==null||lon==null)return "";const ll=gmF(lat)+","+gmF(lon);
+  return `<span class="gm">${label?label+" ":""}<a href="https://www.google.com/maps/search/?api=1&query=${ll}" target="_blank" rel="noopener" title="Open this point in Google Maps">${gmF(lat)}, ${gmF(lon)}</a> <a class="gm-sat" href="https://www.google.com/maps/@?api=1&map_action=map&center=${ll}&zoom=19&basemap=satellite" target="_blank" rel="noopener" title="Same spot in satellite view">satellite</a></span>`}
+function gmBoth(vlat,vlon,lat,lon){if(vlat==null||lat==null)return "";
+  return `<a href="https://www.google.com/maps/dir/?api=1&origin=${gmF(lat)},${gmF(lon)}&destination=${gmF(vlat)},${gmF(vlon)}&travelmode=walking" target="_blank" rel="noopener" title="Google Maps with the listing and the vent both pinned">vent and listing on Google Maps</a>`}
+function gmSpring(r){let ll=r[18]||[(r[12][1]+r[12][3])/2,(r[12][0]+r[12][2])/2];
+  if(r[16]==="FL"&&typeof fsiRow==="function"){const f=fsiRow(r); if(f&&fsiTok(f[2])===fsiTok(r[1])){const cl=Math.cos(ll[0]*Math.PI/180);
+    if(Math.hypot((f[0]-ll[0])*111200,(f[1]-ll[1])*111200*cl)<=300)ll=[f[0],f[1]]}}
+  return ` · ${gmLink(ll[0],ll[1],"vent")}`}
 /* ---------- map tab ---------- */
 const MAPV={map:null,base:null,counties:null,cluster:null,waters:null,topo:null,ready:false,fitted:false};
 const tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -1934,7 +1947,7 @@ function shPopup(x){
   return `<div class="pp-price">${money(price)}${x[15]?' <span class="newb">New</span>':""}</div>
     <div class="pp-sub">${size.filter(Boolean).join(" · ")}${dom!=null?` · ${dom} days listed`:""}</div>
     <div>${esc(addr)}, ${esc(city)}, ${hd[1]}</div>
-    <div class="pp-water">${SHT[t][1]}: <b>${esc(hd[0])}</b> <span class="pp-sub">(magnitude ${hd[3]}${hd[4]!=null?`, ${cfs(hd[4])} cfs`:""}${hd[5]?`, measured ${hd[5]}`:""})</span>${x[19]&&x[19].length?`<br><span class="pp-sub">${x[19].length} permit${x[19].length>1?"s":""} or water right${x[19].length>1?"s":""} near the vent</span>`:""}</div>${fsiPop(fsiHead(hd))}
+    <div class="pp-water">${SHT[t][1]}: <b>${esc(hd[0])}</b> <span class="pp-sub">(magnitude ${hd[3]}${hd[4]!=null?`, ${cfs(hd[4])} cfs`:""}${hd[5]?`, measured ${hd[5]}`:""})</span>${x[19]&&x[19].length?`<br><span class="pp-sub">${x[19].length} permit${x[19].length>1?"s":""} or water right${x[19].length>1?"s":""} near the vent</span>`:""}</div>${fsiPop(fsiHead(hd))}${hd[8]!=null?`<div class="pp-gm">${gmLink(hd[8],hd[9],"Vent:")}<br>${gmBoth(hd[8],hd[9],x[16],x[17])}</div>`:""}
     ${wtPop(path)}<div class="pp-links"><a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">View listing on Redfin</a><a class="alt" href="${z}" target="_blank" rel="noopener">Find on Zillow</a></div>`;
 }
 // state outlines: their own layer above any basemap
@@ -2053,7 +2066,7 @@ function geoBuildState(s,d){["tr","wt","hd","cl","rd","rv","lk","pl"].forEach(k=
     ls.forEach(e=>G.wt.addLayer(L.polyline(geoDec(e,1e5),{...o,weight:kind==="f"||kind==="s"?3:3.2,opacity:.85})))});
   G.wt.bindTooltip(geoWaterTip,{sticky:true,className:"gt"}).bindPopup(l=>`<div class="pp-sub" style="font-size:14px">${geoWaterTip(l)}</div><div class="pp-links"></div>`,{maxWidth:300});
   d.hd.forEach(([nm,mag,lat,lon,q])=>G.hd.addLayer(L.circleMarker([lat,lon],{renderer:GEO.top,radius:[0,8,6.5,5,4][mag]||4,color:sp,weight:2,fillColor:surf,fillOpacity:.9,nm,mag,q})));
-  G.hd.bindTooltip(l=>`<b>${esc(l.options.nm)}</b><br>Springhead, magnitude ${l.options.mag}${l.options.q!=null?` · about ${geoCfs(l.options.q)} cfs`:""}`,{direction:"top",className:"gt"}).bindPopup(l=>`<div class="pp-price">${esc(l.options.nm)}</div><div class="pp-sub">Magnitude ${l.options.mag} springhead (${GEO_MAG[l.options.mag]||"unknown"} cubic feet per second)${l.options.q!=null?`; last measured at about ${geoCfs(l.options.q)} cfs`:""}</div>${fsiPop(fsiFind(l.getLatLng().lat,l.getLatLng().lng,l.options.nm))}<div class="pp-links"></div>`,{maxWidth:300});
+  G.hd.bindTooltip(l=>`<b>${esc(l.options.nm)}</b><br>Springhead, magnitude ${l.options.mag}${l.options.q!=null?` · about ${geoCfs(l.options.q)} cfs`:""}`,{direction:"top",className:"gt"}).bindPopup(l=>`<div class="pp-price">${esc(l.options.nm)}</div><div class="pp-sub">Magnitude ${l.options.mag} springhead (${GEO_MAG[l.options.mag]||"unknown"} cubic feet per second)${l.options.q!=null?`; last measured at about ${geoCfs(l.options.q)} cfs`:""}</div>${fsiPop(fsiFind(l.getLatLng().lat,l.getLatLng().lng,l.options.nm))}<div class="pp-gm">${gmLink(l.getLatLng().lat,l.getLatLng().lng,"Vent:")}</div><div class="pp-links"></div>`,{maxWidth:300});
   d.cl.forEach(([nm,ps])=>ps.forEach(p=>G.cl.addLayer(L.polygon(geoRings(p,1e5),{renderer:R.geoCity,interactive:false,color:cc,weight:1.3,dashArray:"5 4",opacity:.7,fill:false}))));
   d.rd.forEach(([nm,rt,e])=>(rt==="s"?G.rdm:G.rdM).addLayer(L.polyline(geoDec(e,1e5),{renderer:R.geoRoad,interactive:false,rt,color:rt==="s"?rm:rM,weight:(rt==="i"?1.8:rt==="u"?1.3:1)*(z>=12&&rt!=="s"?1.4:1),opacity:.8})));
   d.rv.forEach(([nm,sr,e])=>G.rv.addLayer(L.polyline(geoDec(e,1e5),{renderer:R.geoWater,interactive:false,color:hyl,weight:sr<=4?1.8:sr<=6?1.3:1})));

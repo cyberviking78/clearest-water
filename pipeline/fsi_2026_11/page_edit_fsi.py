@@ -20,8 +20,9 @@ FSI = [[r[0], r[1], r[2], r[3], r[4], r[5], r[6][len(PRE):] if r[6].startswith(P
 FSB = json.load(open(HERE + "/fsb.json"))
 J = lambda o: json.dumps(o, separators=(",", ":"), ensure_ascii=False)
 data = "const FSI=" + J(FSI) + ";\nconst FSB=" + J(FSB) + ";\n"
-if "const FSI=" in h:
+if "const FSI=" in h:     # already on the page (later fixes build on these edits): refresh the data only
     h = re.sub(r"const FSI=\[.*?\];\nconst FSB=\[.*?\];\n", lambda m: data, h, count=1, flags=re.S)
+    open(page, "w").write(h); print("FSI/FSB data refreshed"); sys.exit()
 else:
     assert h.count("const SRC=[") == 1; h = h.replace("const SRC=[", data + "const SRC=[")
 
@@ -61,7 +62,7 @@ open(pp, "w").write(P)
 JS = r'''/* ---------- Florida Springs Institute: how each Florida spring looks (pipeline/fsi_2026_11) ---------- */
 const FSIU="https://floridaspringsinstitute.org/wp-content/uploads/";
 const FSIL={blue:["Clear blue","fl-blue"],clear:["Clear","fl-clear"],tint:["Tannic or murky","fl-tint"]};
-const FSISTOP=new Set(["spring","springs","main","head","the","big","little","upper","lower","rise","seep","sink","vent","boil","run","complex","group","of","st","saint"]);
+const FSISTOP=new Set(["spring","springs","main","head","the","upper","lower","rise","seep","sink","vent","boil","run","complex","group","of","st","saint"]);
 const FSIC=new Map();
 function fsiTok(n){const w=(String(n||"").toLowerCase().replace(/\(.*?\)|#\s*\w+|\d+/g," ").match(/[a-z]+/g)||[]).filter(x=>!FSISTOP.has(x));return w[0]||""}
 function fsiFind(lat,lon,name){

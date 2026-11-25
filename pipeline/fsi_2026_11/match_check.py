@@ -4,7 +4,7 @@ h = open(sys.argv[1]).read()
 def obj(name):
     i = h.find("const " + name + "="); o, _ = json.JSONDecoder().raw_decode(h[i + len("const " + name + "="):]); return o
 FSI = json.load(open(sys.argv[2])); FSD = obj("FSD"); SH = obj("SH")
-STOP = {"spring", "springs", "main", "head", "the", "big", "little", "upper", "lower", "rise", "seep", "sink", "vent", "boil", "run", "complex", "group", "of", "st", "saint"}
+STOP = {"spring", "springs", "main", "head", "the", "upper", "lower", "rise", "seep", "sink", "vent", "boil", "run", "complex", "group", "of", "st", "saint"}
 def tok(n):
     n = re.sub(r"\(.*?\)|#\s*\w+|\d+", " ", n.lower()); w = [x for x in re.findall(r"[a-z]+", n) if x not in STOP]; return w[0] if w else ""
 def dist(a, b, c, d): return math.hypot((a - c) * 111.2, (b - d) * 111.2 * math.cos(math.radians(a))) * 1000

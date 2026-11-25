@@ -364,3 +364,11 @@ description, photo link for 441, water-quality report PDF for 158).
    "Also clear and blue" section on the Springs tab. renderSprings is in patch_page.py's RENDER, so it is edited there too.
    Matches: Springs tab 192 Florida springs -> 74 clear blue, 32 clear, 39 tannic or murky, 42 not described, 5 no match;
    409 Florida springheads -> 98 clear blue, 61 clear, 78 tannic or murky.
+
+## Clickable spring coordinates (Nov 25, 2026) -- pipeline/fixes/coords_links.py
+Every spring (Springs tab) and springhead (Springheads tab) shows its vent's coordinates: the numbers open Google Maps with a pin
+on that point, "satellite" opens the same spot in satellite view at zoom 19. Each springhead listing also shows the vent, the
+listing's map point and "vent and listing on Google Maps" (a walking route with both pinned), and the map's springhead popups
+carry the same links. Florida springs use the Florida Springs Institute survey vent when it matches by name within 300 m.
+Also: fsiFind/match_check treat "big" and "little" as name words (Little King Spring no longer takes Big King's survey), and
+page_edit_fsi.py only refreshes FSI/FSB data once its edits are on the page, since this fix builds on them.
