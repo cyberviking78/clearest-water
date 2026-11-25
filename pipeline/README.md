@@ -341,3 +341,26 @@ replaced (in geoInit) so that the padding shrinks as the map grows (sqrt(5.2M / 
 setting, so the small map keeps its wide margin) and the resolution follows the real screen scale (1.5, not 2), capped at
 about 9 million pixels per canvas. Scripted full-screen test at 2560 x 1440, scale 1.5: long browser tasks fell from about
 8.2 s to 0.3-0.6 s and frame rate rose from about 21 to 40-44 fps; lines and markers still line up.
+
+## Florida Springs Institute pass (Nov 25, 2026) -- pipeline/fsi_2026_11/
+Source: the Howard T. Odum Florida Springs Institute's Interactive Florida Springs Map (floridaspringsinstitute.org/springs-map-2-0/,
+short link arcg.is/HTyrO -> ArcGIS web app c2e58c707d2945abb1aa7dbe81013573 -> layer "Florida Spring Locations 2020",
+services2.arcgis.com/euPm04SdnsvTecYy/arcgis/rest/services/Florida_Spring_Locations_2020/FeatureServer/0). arcgis.com isn't
+reachable from the Claude workspace, so the layer was read once by a GitHub Actions job (fsi_probe.py, run on the ci-probe branch);
+the saved copy is src/layer_Spring_Inventory_2020.json (1,011 springs: name, county, magnitude, Florida Geological Survey field
+description, photo link for 441, water-quality report PDF for 158).
+1. looks.py: rates each spring's water from its description -- blue / clear / tint / "" (rules in the file's docstring; sentences
+   about the river, lake or creek the spring runs into are skipped). 180 blue, 95 clear, 126 tannic or murky, 610 not described.
+   -> fsi.json rows [lat, lon, name, county, magnitude (4 = 4th or smaller), look, photo url, report url, survey words].
+2. cands.py: blue springs farther than 1.5 km from every Florida spring already ranked, vents within 1.5 km combined (28).
+   fetch_wqp.py + turb.py: Water Quality Portal turbidity within 600 m of the vents since 2000 (cache/, not committed);
+   trace.py: each run traced ~5 km downstream on NHD large-scale flowlines plus pools within 150 m (runs.json).
+3. build_fsi.py: drops medians over 2 NTU (Natural Bridge Rise 3.35, Sandbag Spring 3.1) and appends the other 26 to
+   props.json "FS" (indices 204-229, "added": "2026-11-25", "src": "fsi"), shore/FS.json and map/st/FL.json; fsb.json holds
+   their page rows (FSD.springs layout + [19] magnitude, [20] vents). run.py searches them like every other spring.
+4. page_edit_fsi.py: const FSI and FSB; fsiFind() matches any Florida spring or springhead to the Institute's spring at runtime
+   (same first name word within 1.5 km, else nearest within 300 m), so it survives refreshes; look badge, survey words, photo
+   and report on the Springs and Springheads tabs and in map popups; "Spring look" menu (#fsilook: blue / clear / photo);
+   "Also clear and blue" section on the Springs tab. renderSprings is in patch_page.py's RENDER, so it is edited there too.
+   Matches: Springs tab 192 Florida springs -> 74 clear blue, 32 clear, 39 tannic or murky, 42 not described, 5 no match;
+   409 Florida springheads -> 98 clear blue, 61 clear, 78 tannic or murky.

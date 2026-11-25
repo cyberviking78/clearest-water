@@ -23,13 +23,18 @@ function renderSprings(){
   const keep=(g,wi)=>!(only||nw||WTD())||listingsFor(g,wi,pt,nw).length;
   const val=(m,a,b)=>`<div class="val"><b>${m<1?m.toFixed(2):m.toFixed(1)}</b> <span class="u">NTU</span><span class="sub">IQR ${a}–${b}</span></div>`;
   const zb=bb=>[bb[1],bb[3],bb[0],bb[2]];
-  const S=FSD.springs.map((r,i)=>[r,i+1]).filter(([r])=>hitS(r)&&keep(r[17],r[0]));
+  const S=FSD.springs.map((r,i)=>[r,i+1]).filter(([r])=>hitS(r)&&keep(r[17],r[0])&&fsiOKs(r));
   const R=FSD.rivers.map((r,i)=>[r,i+1]).filter(([r])=>hitR(r)&&keep(r[14],r[0]));
   let h=`<article class="state nat"><div class="shead"><h2>Springs by clarity${s?" · "+esc(NAMES[s]):""}</h2><span class="count">${S.length} of ${FSD.springs.length}</span></div><ol>`;
   S.forEach(([r,rank])=>{const [wi,name,cty,m,a,b,n,yrs,y0,y1,sites,runs,bb,lwp,ploc,meth,st,g]=r;
     h+=`<li class="row"><span class="rk">${rank}</span><div class="nm">${esc(name)}<span class="st-tag">${st}</span><small>${esc(cty)} ${st==="LA"?"Parish":"Co."}, ${esc(NAMES[st])} · ${runs?`flows into ${esc(runs)} · `:""}${n} readings · ${yrs} years, ${y0}–${y1}${sites>1?` · ${sites} sites`:""}</small></div>${val(m,a,b)}
-      ${block(g,wi)}<div class="links"><a href="${zUrl(zb(bb),"waterfront")}" target="_blank" rel="noopener">Zillow waterfront</a><a class="alt" href="${zUrl(zb(bb),null)}" target="_blank" rel="noopener">Zillow all</a><a class="alt" href="${LW+esc(lwp)}" target="_blank" rel="noopener">LandWatch: ${esc(cty)}</a></div></li>`});
+      ${fsiBox(fsiRow(r))}${block(g,wi)}<div class="links"><a href="${zUrl(zb(bb),"waterfront")}" target="_blank" rel="noopener">Zillow waterfront</a><a class="alt" href="${zUrl(zb(bb),null)}" target="_blank" rel="noopener">Zillow all</a><a class="alt" href="${LW+esc(lwp)}" target="_blank" rel="noopener">LandWatch: ${esc(cty)}</a></div></li>`});
   if(!S.length)h+=`<li class="row"><span></span><div class="nm"><small>No springs match.</small></div></li>`;
+  const B=(typeof FSB!=="undefined"?FSB:[]).filter(r=>hitS(r)&&keep(r[17],r[0])&&fsiOKs(r));
+  if(B.length){h+=`</ol></article><article class="state nat"><div class="shead"><h2>Also clear and blue · Florida field surveys</h2><span class="count">${B.length} of ${FSB.length}</span></div><p class="fsinote">Florida springs the state's field surveys describe as clear and blue that aren't in the ranking above, most because they have fewer than 6 turbidity readings. Found through the Florida Springs Institute; sorted by size.</p><ol>`;
+    B.forEach(r=>{const [wi,name,cty,m,a,b,n,yrs,y0,y1,sites,runs,bb,lwp,ploc,meth,st,g,ll,mag,nv]=r;
+      h+=`<li class="row"><span class="rk mg" title="Magnitude ${mag}">M${mag}</span><div class="nm">${esc(name)}<span class="st-tag">${st}</span><small>${esc(cty)} Co., ${esc(NAMES[st])} · magnitude ${mag}${nv>1?` · ${nv} vents`:""} · ${runs?`flows into ${esc(runs)} · `:""}${n?`${n} turbidity reading${n>1?"s":""}, ${y0===y1?y0:`${y0}–${y1}`}`:"no turbidity readings on record"}</small></div>${m!=null?val(m,a,b):`<div class="val"><span class="sub">no turbidity record</span></div>`}
+      ${fsiBox(fsiRow(r))}${block(g,wi)}<div class="links"><a href="${zUrl(zb(bb),"waterfront")}" target="_blank" rel="noopener">Zillow waterfront</a><a class="alt" href="${zUrl(zb(bb),null)}" target="_blank" rel="noopener">Zillow all</a><a class="alt" href="${LW+esc(lwp)}" target="_blank" rel="noopener">LandWatch: ${esc(cty)}</a></div></li>`})}
   h+=`</ol></article><article class="state nat"><div class="shead"><h2>Spring-fed rivers${s?" · "+esc(NAMES[s]):""}</h2><span class="count">${R.length} of ${FSD.rivers.length}</span></div><ol>`;
   R.forEach(([r,rank])=>{const [wi,name,cty,m,a,b,n,sites,y0,y1,srcs,bb,lwps,st,g]=r;
     h+=`<li class="row"><span class="rk">${rank}</span><div class="nm">${esc(name)}<span class="st-tag">${st}</span><small>${esc(cty)} ${st==="LA"?"Parish":"Co."}, ${esc(NAMES[st])} · ranked springs nearby: ${esc(srcs.join(", "))} · ${n} samples · ${y0}–${y1}</small></div>${val(m,a,b)}

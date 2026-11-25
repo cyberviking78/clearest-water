@@ -12,3 +12,4 @@ pipeline/wild/nlcd_blocks/
 __pycache__/
 *.tmp
 pipeline/ocean/csv/
+pipeline/fsi_2026_11/cache/
