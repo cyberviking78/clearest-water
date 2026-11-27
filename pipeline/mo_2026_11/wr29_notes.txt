@@ -1,0 +1,101 @@
+# "Springs of Missouri" (Vineyard & Feder, Missouri Water Resources Report 29, revised 1982), Description of Individual Springs, pp. 45-185.
+# share.mo.gov refuses GitHub's runners and the Claude workspace, so this table was read from the PDF through a web reader that
+# summarises: NAME | COUNTY | PRINTED PAGE | words the book uses for the spring's water (or -) | setting words | photo or figure (y/n)
+Cook Spring | Reynolds | 47 | - | picnic area, spring branch | n
+Fulton Spring | Wayne | 47 | - | basin-like lowland, cultivated surroundings | y
+January Spring | Reynolds | 47 | - | small stone enclosure, town | n
+Keener Spring | Wayne | 50 | - | private tourist development, lake, trout pools | y
+Markham Spring | Wayne | 52 | - | camping/picnic area, mill, steep hill | n
+Mill Spring | Wayne | 53 | - | municipal water supply, cave at bluff | y
+Pittman Spring | Wayne | 53 | clear and cold | wooded, picnic and camping | n
+Reeds Spring | Reynolds | 54 | - | artificial basin, pools and dams, mill | n
+Speer Spring | Iron | 54 | clear circular pool | trout resort, gravel-filled valley | n
+Warner Bay Spring | Reynolds | 54 | clear blue | private land, rocky cliff, wilderness | n
+Alley Spring | Shannon | 64 | - | deep basin, bluff, mill, state park | y
+Big Spring | Carter | 66 | - | cave wreckage, boulders, state park | y
+Blue Spring | Shannon | 71 | deep blue | short cave, bluff, Jacks Fork | y
+Blue Spring | Shannon | 73 | deep blue, bluest | remote, bluff, Current River | y
+Cave Spring | Shannon | 74 | - | large shaft, sinkhole, cave, Devils Well and Wallace Well | y
+Cove Spring | Shannon | 82 | - | cave mouth in valley, forested uplands | n
+Emerald Spring | Shannon | 83 | deep green | cave passage, rise pool | y
+Greer Spring | Oregon | 85 | - | wilderness gorge | y
+Round Spring | Shannon | 85 | - | nearly circular basin, natural bridge, state park | y
+Bartlett Mill Spring | Pulaski | 95 | - | deep pool, former mill, river-adjacent | y
+Big Spring | Laclede | 95 | deep blue | river bed, old mill remnants | n
+Boiling Spring | Pulaski | 99 | bright blue | river channel below bluff | y
+Brook Spring | Phelps | 100 | - | rock-walled circular basin, Boys Town | n
+Coppedge Spring | Phelps | 101 | - | county road, spring branch, former mill | n
+Creasy Spring | Pulaski | 101 | - | river floodplain, old rock wall | n
+Falling Spring | Pulaski | 101 | - | steep bluff hill, rock dam | y
+Hazelton Spring | Texas | 102 | - | open field, 5-acre lake | n
+Miller Spring | Pulaski | 102 | - | bluff base pool, farm road | n
+Nagogami Spring | Maries | 103 | - | limestone bluff, former resort | n
+Roubidoux Spring | Pulaski | 103 | - | high bluff, city limits | y
+Shanghai Spring | Pulaski | 106 | - | bluff base, cave, riffle | y
+Wilkins Spring | Phelps | 109 | - | 2-acre lake, open field | n
+Yancy Mills Spring | Phelps | 109 | - | rock bluffs, trout rearing pools | n
+Beaver Spring | Crawford | 115 | - | low hill base, lakes, farm | n
+Blue Spring | Crawford | 115 | - | developed park, summer camp | n
+Cathedral Spring | Crawford | 115 | - | cave stream emerging into river | n
+Cold Spring | Washington | 115 | - | wooded hills, YMCA camp lake | n
+Collins Spring | Crawford | 118 | - | concrete spring house, farm | n
+Elm Spring | Crawford | 118 | - | hydraulic ram structure, summer home, fish lakes | n
+Evans Spring | Crawford | 118 | - | modern farm, mansion | n
+Green Cave Spring | Washington | 118 | - | cave opening, bluff, state park area | y
+Hamilton Cave Spring | Washington | 119 | - | cave entrance | y
+Hopewell Spring | Washington | 119 | - | concrete box, natural channel | n
+Howes Mill Spring | Dent | 119 | - | rocky bluff, minnow and goldfish ponds | n
+Kratz Spring | Franklin | 119 | - | wooded area, camp, spring branch | n
+La Jolla Spring | Franklin | 119 | - | parking lot, cave passages | y
+McDade Spring | Crawford | 121 | - | concrete tank, trout fishing | n
+McIntosh Spring | Crawford | 121 | - | sand basin, trees, summer retreat | n
+Maramec Spring | Phelps | 121 | - | circular basin, bluff, park, iron works | y
+Onondaga Spring | Crawford | 124 | - | trout pool, dam, cave | y
+Racing Spring | Washington | 125 | - | bluff, trout ponds, old mill site | n
+Sprinkle Spring | Franklin | 126 | - | small cave, bluff, state park | n
+Westover Springs | Crawford | 127 | - | floodplain, trout hatchery, mill | n
+Woodlock Spring | Crawford | 127 | - | floodplain, concrete flume, resort, old wheel | n
+Althea Spring | Ozark | 129 | - | scenic riverbank, picnic area, turbine | n
+Big Spring | Douglas | 130 | - | talus at hill base | n
+Blue Spring | Ozark | 130 | - | river edge, rock ledges, campground, forest | n
+Bryant Spring | Douglas | 131 | - | fish-rearing pool, former mill site | n
+Crystal Spring | Douglas | 131 | - | ledge, pool behind dam, fish hatchery | n
+Double Spring | Ozark | 131 | - | river bank, dam-enclosed branch, cottages | n
+North Fork Spring | Ozark | 132 | - | river bed and gravel bar | n
+Hodgson Mill Spring | Ozark | 133 | - | bluff, grist mill, picnic camp, cave | y
+Morris Spring | Ozark | 134 | - | small pool, resort, hatchery | n
+Rockbridge Spring | Ozark | 134 | - | lake behind dam, fishing resort, hatchery | n
+Wilder Spring | Ozark | 134 | - | bluff base, ranch stock watering | n
+Zanoni Spring | Ozark | 135 | - | overshot wheel, old grist mill, village | y
+Climax Spring | Camden | 139 | - | concrete trough, park-like setting, former spa | y
+Toronto Spring | Camden | 139 | - | gravel beds, creek bank, water cress | n
+Bennett Spring | Dallas | 143 | clear | circular pool, state park, trout hatchery, old mill | y
+Sweet Blue Spring | Laclede | 148 | beautiful blue color | private resort, river, cliff base | n
+Hahatonka Spring | Camden | 148 | - | bluff, ruined mansion, dams, mill | y
+Bishop Springs | Dade | 153 | - | flood plain of Limestone Creek | y
+Chesapeake Spring | Lawrence | 153 | - | circular rock basin | n
+Fulbright Spring | Greene | 154 | - | picturesque setting | y
+Ritter Springs | Greene | 158 | - | ravine | n
+Bartholic Spring | Newton | 162 | - | fish hatchery | n
+Big Spring | Newton | 163 | - | city park | y
+Big Spring | Lawrence | 163 | - | picnic site | y
+Boy Scout Spring | Newton | 163 | - | Boy Scout camp | n
+Cave Spring | Newton | 165 | - | base of a bluff | n
+Clarkson Spring | Lawrence | 165 | - | picnic site | n
+Ozark Trout Farm Spring | Newton | 165 | - | springhouse | n
+Polk Spring | Lawrence | 166 | - | pastures | n
+Scotland Spring | Jasper | 166 | - | large springhouse | n
+Radium Spring | Barry | 166 | - | hillside | n
+Spring River Spring | Lawrence | 167 | - | base of a bluff | n
+Blue Spring | Christian | 171 | - | cultivated fields | y
+Brown Spring | Stone | 171 | - | base of a low bluff | n
+Crystal Spring | Barry | 173 | - | terrace along Flat Creek | n
+Jones Spring | Greene | 173 | - | beautiful setting | y
+Montague Spring | Christian | 175 | - | trout ranch | n
+Mountaindale Spring | Webster | 175 | - | walled-in basin | n
+Rader Spring | Greene | 175 | - | low bluff | y
+Reeds Spring | Stone | 180 | - | walled basin | n
+Roaring River Spring | Barry | 181 | - | high bluff | y
+Sequiota Spring | Greene | 183 | - | park setting | n
+Winoka Spring | Greene | 184 | - | bluff | n
+Blue Lick Spring | Saline | 185 | - | valley of West Fork Finney Creek | y

@@ -45,51 +45,6 @@
 ]
 },
 {
-"name": "Siphon Creek Rise (Gilchrist)",
-"turb": {
-"m": 1.0,
-"a": 0.6,
-"b": 1.94,
-"n": 13,
-"yrs": 6,
-"y0": "2001",
-"y1": "2025",
-"sites": 8
-},
-"stations": [
-[
-"SR1LR2022",
-"River/Stream",
-392
-],
-[
-"Z2LR4001",
-"River/Stream",
-187
-],
-[
-"Z2-LR-4001R SANTA FE RIVER",
-"River/Stream",
-187
-],
-[
-"SIPHON CREEK RISE",
-"Spring",
-0
-],
-[
-"UN-NAMED SPRING",
-"Spring",
-109
-],
-[
-"UN-NAMED SPRING",
-"Spring",
-223
-]
-]
-},
-{
 "name": "Baltzell Spring #1 (Jackson)",
 "turb": {
 "m": 0.35,
@@ -185,56 +140,6 @@
 ]
 },
 {
-"name": "Hays Spring #1 (Jackson)",
-"turb": {
-"m": 0.3,
-"a": 0.3,
-"b": 0.3,
-"n": 1,
-"yrs": 1,
-"y0": "2003",
-"y1": "2003",
-"sites": 1
-},
-"stations": [
-[
-"HAYS",
-"Spring",
-96
-]
-]
-},
-{
-"name": "Holmes Blue Spring (Holmes)",
-"turb": {
-"m": 1.81,
-"a": 1.38,
-"b": 4.91,
-"n": 4,
-"yrs": 3,
-"y0": "2002",
-"y1": "2024",
-"sites": 3
-},
-"stations": [
-[
-"CHOCTAWHATCHEE BLUE SPRING (HOLMES)",
-"Spring",
-1
-],
-[
-"Holmes Blue Spring",
-"Spring",
-28
-],
-[
-"Choctawhatchee River",
-"River/Stream",
-153
-]
-]
-},
-{
 "name": "Mill Pond Spring (Jackson)",
 "turb": {
 "m": 0.2,
@@ -325,51 +230,6 @@
 ]
 },
 {
-"name": "Sun Springs (Gilchrist)",
-"turb": {
-"m": 0.69,
-"a": 0.21,
-"b": 2.79,
-"n": 10,
-"yrs": 5,
-"y0": "2002",
-"y1": "2022",
-"sites": 7
-},
-"stations": [
-[
-"SUN SPRINGS",
-"Spring",
-0
-],
-[
-"SRWMD -091417012",
-"Well",
-337
-],
-[
-"LUM010C1",
-"Spring",
-487
-],
-[
-"SUN010C1",
-"Spring",
-3
-],
-[
-"Lumbercamp Springs",
-"Spring",
-487
-],
-[
-"SUN SPRINGS",
-"Spring",
-45
-]
-]
-},
-{
 "name": "Sweetwater Springs (Marion)",
 "turb": {
 "m": 0.1,
@@ -402,51 +262,6 @@
 "BLUE SPRINGS (WA-HOLMES)",
 "Spring",
 1
-]
-]
-},
-{
-"name": "Washington Blue Spring (Econfina) #1",
-"turb": {
-"m": 0.4,
-"a": 0.29,
-"b": 1.2,
-"n": 16,
-"yrs": 5,
-"y0": "2002",
-"y1": "2024",
-"sites": 6
-},
-"stations": [
-[
-"BLUE SPRING (WA-ECONFINA)",
-"Spring",
-0
-],
-[
-"NWC-LR-1001 ECONFINA CREEK",
-"River/Stream",
-387
-],
-[
-"NWC-LR-1019 ECONFINA CREEK",
-"River/Stream",
-314
-],
-[
-"NW3LR2009",
-"River/Stream",
-585
-],
-[
-"Econfina Blue Spring Composite",
-"Spring",
-88
-],
-[
-"Washington Blue Spring (WBID 553Z)",
-"Spring",
-12
 ]
 ]
 },
@@ -526,22 +341,12 @@
 "stations": []
 },
 {
-"name": "Newport Spring (Wakulla)",
-"turb": null,
-"stations": []
-},
-{
 "name": "Sally Spring (Calhoun)",
 "turb": null,
 "stations": []
 },
 {
 "name": "Satsuma Spring (Putnam)",
-"turb": null,
-"stations": []
-},
-{
-"name": "Laf929972 (Lafayette)",
 "turb": null,
 "stations": []
 },

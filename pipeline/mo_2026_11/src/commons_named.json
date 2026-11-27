@@ -1,0 +1,38 @@
+[
+ {
+  "name": "Blue Spring",
+  "county": "Shannon",
+  "page82": 73,
+  "title": "File:Blue Spring, Missouri in 2013.jpg",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Blue_Spring%2C_Missouri_in_2013.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Blue_Spring,_Missouri_in_2013.jpg",
+  "credit": "U.S. Department of the Interior, CC BY-SA 2.0"
+ },
+ {
+  "name": "Bennett Spring",
+  "county": "Dallas",
+  "page82": 0,
+  "title": "File:Bennett Spring SP 1-by rjones0.jpg",
+  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Bennett_Spring_SP_1-by_rjones0.jpg/960px-Bennett_Spring_SP_1-by_rjones0.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bennett_Spring_SP_1-by_rjones0.jpg",
+  "credit": "rjones0856, CC BY 2.0"
+ },
+ {
+  "name": "Roubidoux Spring",
+  "county": "Pulaski",
+  "page82": 0,
+  "title": "File:Scenery at Cherokee Campsite (Trial of Tears) - Roubidoux Spring - Waynesville - Missouri - USA - 01 (41916751711).jpg",
+  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Scenery_at_Cherokee_Campsite_%28Trial_of_Tears%29_-_Roubidoux_Spring_-_Waynesville_-_Missouri_-_USA_-_01_%2841916751711%29.jpg/960px-Scenery_at_Cherokee_Campsite_%28Trial_of_Tears%29_-_Roubidoux_Spring_-_Waynesville_-_Missouri_-_USA_-_01_%2841916751711%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Scenery_at_Cherokee_Campsite_(Trial_of_Tears)_-_Roubidoux_Spring_-_Waynesville_-_Missouri_-_USA_-_01_(41916751711).jpg",
+  "credit": "Adam Jones from Kelowna, BC, Canada, CC BY-SA 2.0"
+ },
+ {
+  "name": "Hopewell Spring",
+  "county": "Washington",
+  "page82": 0,
+  "title": "File:Hopewell Spring, Washington County, Missouri.jpg",
+  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Hopewell_Spring%2C_Washington_County%2C_Missouri.jpg/960px-Hopewell_Spring%2C_Washington_County%2C_Missouri.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hopewell_Spring,_Washington_County,_Missouri.jpg",
+  "credit": "Txnerd, CC BY-SA 3.0"
+ }
+]

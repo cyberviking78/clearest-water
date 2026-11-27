@@ -350,20 +350,20 @@ reachable from the Claude workspace, so the layer was read once by a GitHub Acti
 the saved copy is src/layer_Spring_Inventory_2020.json (1,011 springs: name, county, magnitude, Florida Geological Survey field
 description, photo link for 441, water-quality report PDF for 158).
 1. looks.py: rates each spring's water from its description -- blue / clear / tint / "" (rules in the file's docstring; sentences
-   about the river, lake or creek the spring runs into are skipped). 180 blue, 95 clear, 126 tannic or murky, 610 not described.
+   about the river, lake or creek the spring runs into are skipped). 150 blue, 111 clear, 127 tannic or murky, 623 not described (after the Nov 27 fix below).
    -> fsi.json rows [lat, lon, name, county, magnitude (4 = 4th or smaller), look, photo url, report url, survey words].
 2. cands.py: blue springs farther than 1.5 km from every Florida spring already ranked, vents within 1.5 km combined (28).
    fetch_wqp.py + turb.py: Water Quality Portal turbidity within 600 m of the vents since 2000 (cache/, not committed);
    trace.py: each run traced ~5 km downstream on NHD large-scale flowlines plus pools within 150 m (runs.json).
-3. build_fsi.py: drops medians over 2 NTU (Natural Bridge Rise 3.35, Sandbag Spring 3.1) and appends the other 26 to
-   props.json "FS" (indices 204-229, "added": "2026-11-25", "src": "fsi"), shore/FS.json and map/st/FL.json; fsb.json holds
+3. build_fsi.py: drops medians over 2 NTU (Natural Bridge Rise 3.35, Sandbag Spring 3.1) and appends the others (19 after the Nov 27 fix) to
+   props.json "FS" (indices 204-222, "added": "2026-11-25", "src": "fsi"), shore/FS.json and map/st/FL.json; fsb.json holds
    their page rows (FSD.springs layout + [19] magnitude, [20] vents). run.py searches them like every other spring.
 4. page_edit_fsi.py: const FSI and FSB; fsiFind() matches any Florida spring or springhead to the Institute's spring at runtime
    (same first name word within 1.5 km, else nearest within 300 m), so it survives refreshes; look badge, survey words, photo
    and report on the Springs and Springheads tabs and in map popups; "Spring look" menu (#fsilook: blue / clear / photo);
    "Also clear and blue" section on the Springs tab. renderSprings is in patch_page.py's RENDER, so it is edited there too.
-   Matches: Springs tab 192 Florida springs -> 74 clear blue, 32 clear, 39 tannic or murky, 42 not described, 5 no match;
-   409 Florida springheads -> 98 clear blue, 61 clear, 78 tannic or murky.
+   Matches: Springs tab 192 Florida springs -> 68 clear blue, 35 clear, 37 tannic or murky, 47 not described, 5 no match;
+   409 Florida springheads -> 84 clear blue, 66 clear, 80 tannic or murky (after the Nov 27 fix).
 
 ## Clickable spring coordinates (Nov 25, 2026) -- pipeline/fixes/coords_links.py
 Every spring (Springs tab) and springhead (Springheads tab) shows its vent's coordinates: the numbers open Google Maps with a pin
@@ -381,3 +381,25 @@ for the address) to the vent, labels both ends, and shows the straight-line dist
 tab with the clicked link back at the same height on screen (its listing lists reopened, re-checked as photos above it load). The link is also an address (#pair=vent lat,lon,listing lat,lon) that opens straight to
 the line in a new tab. It replaces coords_links.py's "vent and listing on Google Maps" walking-route link. The vent is the same
 point as the coordinates link (springLL). lItem and renderSprings edits are made to patch_page.py's RENDER too.
+
+## Missouri springs (Nov 27, 2026) -- pipeline/mo_2026_11/
+Missouri has nothing like the Florida Springs Institute's map, so Missouri springs and springheads draw on:
+- src/modnr_springs.json: Missouri DNR spring inventory, gis.dnr.mo.gov/host/rest/services/water/water_springs/MapServer/0
+  (4,457 springs; reachable from the workspace). Its LATITUDE/LONGITUDE fields are rounded to 0.1 degree, so the points come
+  from the layer's geometry (outSR=4326).
+- src/V029_pages.json: "The Large Springs of Missouri" (Beckman & Hinchey, 1944), text by PDF page from the University of
+  Missouri Digital Library scan (read by a GitHub Actions job; that host is blocked here). book1944.py -> book1944.json: 118
+  entries (name, county, description page, photo plate page, text; OCR-split words joined with wordfreq).
+- wr29_notes.txt: "Springs of Missouri" (Vineyard & Feder, 1982). share.mo.gov refuses GitHub runners and this workspace, so the
+  table (page as printed, words for the water, setting, photo y/n) was read through a summarising web reader.
+- src/commons.json, src/commons_pts.json: Wikimedia Commons files within 450 m of each spring (GitHub Actions job); kept only when
+  the title names the spring and the file is about a spring. src/commons_named.json: 4 photos found by name and checked by hand.
+build_mo.py -> mos.json (581 springs: inventory magnitude 1-4 plus every book spring), rated with fsi_2026_11/looks.py
+(13 clear blue, 7 clear), 12 with a Commons photo. page_edit_mo.py: const MOS; fsiFind searches FSI + MOS; Missouri springs and
+springheads show the rating, book words, Commons photo with credit, and links to the 1944 description/photo pages and the 1982
+book page; the Spring look menu covers FL and MO; springLL uses the inventory point for Missouri springs matched by name within
+300 m. match_mo.py checks matches (Springs tab: 18 of 23 Missouri springs matched; springheads: 106 of 109).
+Also fixed in fsi_2026_11/looks.py (Nov 27): "aqua\w*" matched "aquifer" and "aquatic", which had rated about 30 Florida springs
+blue that the survey never called blue; capitalised colour words mid-sentence are names, not colours; the spring's side of a
+"contrasts with" sentence counts. Florida was re-rated, and the added springs rebuilt (Siphon Creek Rise and six others dropped:
+19 remain, FS indices 204-222).
