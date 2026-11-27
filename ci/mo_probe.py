@@ -16,31 +16,12 @@ def curl(u, out):
     p = subprocess.run(["curl", "-sSL", "--http1.1", "--retry", "3", "--retry-all-errors", "-m", "600", "-A", BROWSER, "-o", out, "-w", "%{http_code}", u], capture_output=True, text=True)
     return p.stdout + " " + p.stderr.strip()
 log = []
-for name, urls in [("WR29", ["https://share.mo.gov/nr/mgs/MGSData/Books/Water%20Resources/Springs%20of%20Missouri/WR29revised.pdf",
-                               "http://share.mo.gov/nr/mgs/MGSData/Books/Water%20Resources/Springs%20of%20Missouri/WR29revised.pdf"]),
-                ]:
-    try:
-        ok = False
-        for u in urls:
-            r = curl(u, f"out/books/{name}.pdf"); log.append(f"{name} {u}: {r}")
-            if os.path.exists(f"out/books/{name}.pdf") and open(f"out/books/{name}.pdf", "rb").read(5) == b"%PDF-": ok = True; break
-        if not ok: continue
-        n = int(subprocess.run(["pdfinfo", f"out/books/{name}.pdf"], capture_output=True, text=True).stdout.split("Pages:")[1].split()[0])
-        pages = []
-        for p in range(1, n + 1):
-            pages.append(subprocess.run(["pdftotext", "-layout", "-f", str(p), "-l", str(p), f"out/books/{name}.pdf", "-"], capture_output=True, text=True).stdout)
-        json.dump(pages, open(f"out/books/{name}_pages.json", "w"))
-        im = subprocess.run(["pdfimages", "-list", f"out/books/{name}.pdf"], capture_output=True, text=True).stdout
-        open(f"out/books/{name}_images.txt", "w").write(im)
-        log.append(f"{name}: {n} pages, {sum(len(p) for p in pages)} chars, {im.count(chr(10))} image rows, {os.path.getsize(f'out/books/{name}.pdf')} bytes")
-        os.remove(f"out/books/{name}.pdf") if os.path.getsize(f"out/books/{name}.pdf") > 90e6 else None
-    except Exception as e: log.append(f"{name}: {e}")
 pts = json.load(open("ci/mo_pts.json")); com = {}
 import re
 GEN = {"spring", "springs", "big", "blue", "cave", "cold", "mill", "the", "upper", "lower", "little", "rise", "of"}
 for gid, nm, lat, lon, mag in pts:
     u = "https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode({"action": "query", "format": "json", "generator": "geosearch",
-        "ggscoord": f"{lat}|{lon}", "ggsradius": 600, "ggslimit": 200, "ggsnamespace": 6, "prop": "imageinfo|coordinates",
+        "ggscoord": f"{lat}|{lon}", "ggsradius": 450, "ggslimit": 200, "ggsnamespace": 6, "prop": "imageinfo|coordinates",
         "iiprop": "url|extmetadata|size", "iiurlwidth": 640})
     try:
         d = json.loads(get(u)); ps = (d.get("query") or {}).get("pages") or {}
@@ -58,12 +39,5 @@ for gid, nm, lat, lon, mag in pts:
         if rows: com[f"{gid}|{nm}"] = rows
     except Exception as e: log.append(f"commons {nm}: {e}")
     time.sleep(1.0)
-# Wikidata: springs in Missouri with an image
-q = """SELECT ?item ?itemLabel ?coord ?image WHERE { ?item wdt:P31/wdt:P279* wd:Q124714; wdt:P131* wd:Q1581; wdt:P625 ?coord.
- OPTIONAL { ?item wdt:P18 ?image } SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } }"""
-try:
-    d = json.loads(get("https://query.wikidata.org/sparql?" + urllib.parse.urlencode({"query": q, "format": "json"})))
-    json.dump(d["results"]["bindings"], open("out/wikidata.json", "w")); log.append(f"wikidata: {len(d['results']['bindings'])} springs")
-except Exception as e: log.append(f"wikidata: {e}")
 json.dump(com, open("out/commons.json", "w")); log.append(f"commons: {len(com)} of {len(pts)} springs have photos within 400 m")
 open("out/log.txt", "w").write("\n".join(log)); print("\n".join(log))
