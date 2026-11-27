@@ -378,6 +378,6 @@ Google Maps can only pin two points as a driving or walking route. Every listing
 Springheads tab listings, and their map popups) now has "Straight line to the spring · <distance>": it opens the site's map full
 screen on satellite (the saved default basemap is kept), draws a dashed straight line from the listing's map point (Redfin's point
 for the address) to the vent, labels both ends, and shows the straight-line distance. "Back to the list" or Esc returns to the
-tab and scroll position the link was on. The link is also an address (#pair=vent lat,lon,listing lat,lon) that opens straight to
+tab with the clicked link back at the same height on screen (its listing lists reopened, re-checked as photos above it load). The link is also an address (#pair=vent lat,lon,listing lat,lon) that opens straight to
 the line in a new tab. It replaces coords_links.py's "vent and listing on Google Maps" walking-route link. The vent is the same
 point as the coordinates link (springLL). lItem and renderSprings edits are made to patch_page.py's RENDER too.

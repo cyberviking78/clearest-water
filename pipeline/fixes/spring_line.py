@@ -43,13 +43,26 @@ function pairDist(a,b,c,d){const R=6371008.8,p=Math.PI/180,dl=(c-a)*p,dn=(d-b)*p
 function pairFmt(m){const ft=m*3.28084; return ft<1000?`${Math.round(ft).toLocaleString()} ft (${Math.round(m)} m)`:`${(m/1609.344).toFixed(m<16093?2:1)} mi (${m<1000?Math.round(m)+" m":(m/1000).toFixed(2)+" km"})`}
 function pairLink(vlat,vlon,lat,lon,vname,lname){if(vlat==null||lat==null)return "";
   return `<a class="pair" href="#pair=${gmF(vlat)},${gmF(vlon)},${gmF(lat)},${gmF(lon)}" data-v="${esc(vname||"")}" data-l="${esc(lname||"")}" onclick="return pairClick(this)" title="Show the listing and the spring on the map, joined by a straight line">Straight line to the spring · ${pairFmt(pairDist(vlat,vlon,lat,lon))}</a>`}
-function pairClick(a){const p=a.getAttribute("href").slice(6).split(",").map(Number); pairShow(p[0],p[1],p[2],p[3],a.dataset.v,a.dataset.l); return false}
+function pairClick(a){const p=a.getAttribute("href").slice(6).split(",").map(Number), hr=a.getAttribute("href");
+  // where the link sat, so "Back to the list" can put it back in the same spot (open lists, same height on screen)
+  MAPV.pairFrom={href:hr,k:[...document.querySelectorAll("#list a.pair")].filter(x=>x.getAttribute("href")===hr).indexOf(a),top:a.getBoundingClientRect().top,
+    open:[...document.querySelectorAll("#list details")].map((d,i)=>d.open?i:-1).filter(i=>i>=0),lim:typeof LIMIT!=="undefined"?LIMIT:null};
+  pairShow(p[0],p[1],p[2],p[3],a.dataset.v,a.dataset.l); return false}
 function pairClear(){const m=MAPV.map; if(!m)return; if(MAPV.pair){m.removeLayer(MAPV.pair);MAPV.pair=null} if(MAPV.pairCtl){m.removeControl(MAPV.pairCtl);MAPV.pairCtl=null}
   if(/^#pair=/.test(location.hash))try{history.replaceState(null,"",location.pathname+location.search+(MAPV.pairBack?"":"#map"))}catch(e){}
   const b=MAPV.pairBack; MAPV.pairBack=null;
-  if(b){if(b.max&&typeof MAPMAX!=="undefined"&&MAPMAX.on)mapMaxSet(false); setMode(b.mode); setTimeout(()=>window.scrollTo(0,b.y),60)}}
+  if(b){if(b.max&&typeof MAPMAX!=="undefined"&&MAPMAX.on)mapMaxSet(false); setMode(b.mode); const f=b.from;
+    if(f&&f.lim&&typeof LIMIT!=="undefined"&&f.lim>LIMIT){LIMIT=f.lim; render()}
+    let live=true; const stop=()=>{live=false}; ["wheel","touchstart","keydown","mousedown"].forEach(e=>window.addEventListener(e,stop,{once:true,passive:true}));
+    const put=()=>{if(!live)return;
+      if(f){const D=document.querySelectorAll("#list details"); f.open.forEach(i=>{if(D[i])D[i].open=true});
+        const a=[...document.querySelectorAll("#list a.pair")].filter(x=>x.getAttribute("href")===f.href)[Math.max(0,f.k)];
+        if(a){const d=a.closest("details"); if(d)d.open=true; window.scrollBy(0,a.getBoundingClientRect().top-f.top); return}}
+      window.scrollTo(0,b.y)};
+    requestAnimationFrame(put); [200,600,1200].forEach(t=>setTimeout(put,t))}}
 function pairShow(vlat,vlon,lat,lon,vname,lname){
-  if(mode!=="map"){MAPV.pairBack={mode,y:window.scrollY,max:false}; setMode("map")}
+  if(mode!=="map"){MAPV.pairBack={mode,y:window.scrollY,max:false,from:MAPV.pairFrom}; setMode("map")}
+  MAPV.pairFrom=null;
   let tries=0;
   const go=()=>{const m=MAPV.map; tries++;
     if(!m||(!MAPV.tilesOn&&tries<12)){if(tries<60)return setTimeout(go,150); if(!m)return}   // wait for the map (and, on the site, its basemaps)
