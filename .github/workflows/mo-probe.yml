@@ -13,7 +13,6 @@ jobs:
         with: {sparse-checkout: ci}
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: sudo apt-get install -y -q poppler-utils >/dev/null
-      - run: python3 ci/mo_probe.py
+      - run: python3 ci/mo_names_probe.py
       - uses: actions/upload-artifact@v4
         with: {name: mo, path: out, retention-days: 3}
