@@ -403,3 +403,10 @@ Also fixed in fsi_2026_11/looks.py (Nov 27): "aqua\w*" matched "aquifer" and "aq
 blue that the survey never called blue; capitalised colour words mid-sentence are names, not colours; the spring's side of a
 "contrasts with" sentence counts. Florida was re-rated, and the added springs rebuilt (Siphon Creek Rise and six others dropped:
 19 remain, FS indices 204-222).
+
+## Refresh runs and a moving main (Nov 27, 2026)
+A "Re-run" of the Nov 23 manual run (attempt 2, Nov 27) searched fine but used that run's old commit, so it rebuilt the site with
+the code from before the springs work, and its commit clashed with the newer main (conflicts in trails/wt.json, wild/*.json...)
+and was refused, which kept the old code off the site. refresh.yml now: (1) checks out the newest main for every main run, including
+re-runs of old runs (GitHub still uses the old run's workflow file for a re-run, so "Run workflow" is the way to start a fresh one);
+(2) if main moves during a run and the rebase clashes, resets to the newest main and rebuilds from the same downloads, then commits.

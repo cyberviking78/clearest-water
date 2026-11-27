@@ -62,6 +62,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # main runs (scheduled, "Run workflow", or "Re-run" of an old run) always use the newest code on main
+          ref: ${{ github.ref_name == 'main' && 'main' || github.sha }}
           sparse-checkout: |
             pipeline
             ci
@@ -102,6 +104,8 @@ jobs:
     timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name == 'main' && 'main' || github.sha }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -123,7 +127,20 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A index.html robots.txt .nojekyll pipeline ci/last_run.json
           git commit -q -m "Refresh listings $(date -u +%F)" || { echo "nothing changed"; exit 0; }
-          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep 15; done
+          for i in 1 2 3; do
+            if git pull -q --rebase origin main; then git push -q origin HEAD:main && exit 0
+            else
+              # main changed while the searches ran (new code or data) and the rebuilt files clash: rebuild on top of the
+              # newest main with the same downloads (they're git-ignored, so the reset keeps them) and commit that instead
+              echo "main moved during the run; rebuilding on the newest main"
+              git rebase --abort || true
+              git fetch -q origin main && git reset -q --hard origin/main
+              python3 ci/assemble.py
+              git add -A index.html robots.txt .nojekyll pipeline ci/last_run.json
+              git commit -q -m "Refresh listings $(date -u +%F)" || { echo "nothing changed"; exit 0; }
+            fi
+            sleep 15
+          done
           exit 1
       - name: Ask GitHub Pages to publish the new commit
         # a push made with the workflow's own token doesn't start a Pages build by itself
