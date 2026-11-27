@@ -6,12 +6,12 @@ const money=n=>"$"+n.toLocaleString("en-US");
 const fmtD=s=>s?new Date(s+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"";
 const NEAR=()=>{const e=document.getElementById("incnear");return !e||e.checked};
 function listingsFor(k,wi,pt,nw){return (LS[k]||[]).filter(x=>x[0]===wi&&(!pt||x[3]===pt)&&(!nw||x[15])&&wtOK(x[12])&&(NEAR()||x[1]!==1))}
-function lItem(x){
+function lItem(x,g){
   const [wi,t,price,ty,beds,baths,sqft,ac,addr,city,dom,dist,path,flag,first,isNew]=x;
   const facts=ty==="h"?[beds!=null?beds+" bd":null,baths!=null?baths+" ba":null,sqft?sqft.toLocaleString()+" sq ft":null,ac?ac+" ac":null]:["Land",ac?ac+" ac":null];
   const d=dist!=null?(t===0&&dist<15?"at the shore":`${dist} m from shore`):"";
   const seen=first&&first!==RUN.date?` · on our list since ${fmtD(first)}`:"";
-  return `<li${isNew?' class="is-new"':""}><span class="pr">${money(price)}${isNew?' <span class="newb">New</span>':""}</span><span class="ad">${esc(addr)}, ${esc(city)}<small>${facts.filter(Boolean).join(" · ")}${dom!=null?` · ${dom} days listed`:""}${d?` · ${d}`:""}${seen}</small></span><span><span class="tier ${TIER[t][0]}">${t===0&&!flag?"On the water · not marked waterfront":TIER[t][1]}</span> <a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">Redfin</a></span>${wtLine(path)}</li>`}
+  return `<li${isNew?' class="is-new"':""}><span class="pr">${money(price)}${isNew?' <span class="newb">New</span>':""}</span><span class="ad">${esc(addr)}, ${esc(city)}<small>${facts.filter(Boolean).join(" · ")}${dom!=null?` · ${dom} days listed`:""}${d?` · ${d}`:""}${seen}</small></span><span><span class="tier ${TIER[t][0]}">${t===0&&!flag?"On the water · not marked waterfront":TIER[t][1]}</span> <a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">Redfin</a></span>${wtLine(path)}${g?springPair(g,x):""}</li>`}
 function renderSprings(){
   const q=document.getElementById("q").value.trim().toLowerCase(), s=sel.value, pt=document.getElementById("ptype").value,
     only=document.getElementById("haslist").checked, nw=document.getElementById("newonly").checked;
@@ -19,7 +19,7 @@ function renderSprings(){
   const hitR=r=>(!s||r[13]===s)&&(!q||(r[1]+" "+r[2]+" "+r[10].join(" ")+" "+NAMES[r[13]]).toLowerCase().includes(q)||r[13].toLowerCase()===q);
   const block=(g,wi)=>{const L=listingsFor(g,wi,pt,nw); const c=[0,1,2].map(t=>L.filter(x=>x[1]===t).length), cn=L.filter(x=>x[15]).length;
     const chips=(cn?`<span class="cnt new">${cn} new</span>`:"")+[[0,"on"],[1,"near"],[2,"un"]].filter(([t])=>c[t]).map(([t,cl])=>`<span class="cnt ${cl}">${c[t]} ${["on the water","near","unmapped"][t]}</span>`).join("");
-    return L.length?`<details class="lst"${nw?" open":""}><summary>${L.length} listing${L.length===1?"":"s"} ${chips}</summary><ul class="lsts">${L.map(lItem).join("")}</ul></details>`:`<div class="none-l">No ${pt==="h"?"houses":pt==="l"?"land":"listings"} on Redfin on this water right now.</div>`};
+    return L.length?`<details class="lst"${nw?" open":""}><summary>${L.length} listing${L.length===1?"":"s"} ${chips}</summary><ul class="lsts">${L.map(x=>lItem(x,g)).join("")}</ul></details>`:`<div class="none-l">No ${pt==="h"?"houses":pt==="l"?"land":"listings"} on Redfin on this water right now.</div>`};
   const keep=(g,wi)=>!(only||nw||WTD())||listingsFor(g,wi,pt,nw).length;
   const val=(m,a,b)=>`<div class="val"><b>${m<1?m.toFixed(2):m.toFixed(1)}</b> <span class="u">NTU</span><span class="sub">IQR ${a}–${b}</span></div>`;
   const zb=bb=>[bb[1],bb[3],bb[0],bb[2]];

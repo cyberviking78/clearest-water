@@ -883,6 +883,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .fsinote{font-size:13px;color:var(--muted);margin:4px 0 10px}
 .gm{white-space:nowrap}.gm a{font-family:var(--mono);font-size:11.5px;color:var(--lake);font-weight:500}.gm a.gm-sat{font-family:var(--body);font-weight:600;margin-left:2px}
 .pp-gm{font-size:12px;margin-top:4px}.pp-gm a{color:var(--lake)}
+.pair{font-weight:600;color:var(--lake);font-size:12.5px}.pair-l{grid-column:1/-1;margin-top:3px}
+.leaflet-tooltip.pair-tip{font:600 12px/1.3 var(--body);background:#111;color:#fff;border:0;border-radius:5px;padding:3px 7px;box-shadow:0 1px 6px rgba(0,0,0,.4)}
+.leaflet-tooltip.pair-tip:before{display:none}.leaflet-tooltip.pair-d{background:#ffd60a;color:#111}
+.pair-x{font:600 13px var(--body);background:#fff;color:#111;border:2px solid rgba(0,0,0,.25);border-radius:6px;padding:5px 10px;cursor:pointer}
 /* springheads */
 .mag{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--spring);background:var(--spring-soft);border-radius:4px;padding:1px 6px;white-space:nowrap}
 .rk.mg{font-family:var(--mono);font-size:13px;color:var(--spring);font-weight:500}
@@ -1305,12 +1309,12 @@ const money=n=>"$"+n.toLocaleString("en-US");
 const fmtD=s=>s?new Date(s+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"";
 const NEAR=()=>{const e=document.getElementById("incnear");return !e||e.checked};
 function listingsFor(k,wi,pt,nw){return (LS[k]||[]).filter(x=>x[0]===wi&&(!pt||x[3]===pt)&&(!nw||x[15])&&wtOK(x[12])&&(NEAR()||x[1]!==1))}
-function lItem(x){
+function lItem(x,g){
   const [wi,t,price,ty,beds,baths,sqft,ac,addr,city,dom,dist,path,flag,first,isNew]=x;
   const facts=ty==="h"?[beds!=null?beds+" bd":null,baths!=null?baths+" ba":null,sqft?sqft.toLocaleString()+" sq ft":null,ac?ac+" ac":null]:["Land",ac?ac+" ac":null];
   const d=dist!=null?(t===0&&dist<15?"at the shore":`${dist} m from shore`):"";
   const seen=first&&first!==RUN.date?` · on our list since ${fmtD(first)}`:"";
-  return `<li${isNew?' class="is-new"':""}><span class="pr">${money(price)}${isNew?' <span class="newb">New</span>':""}</span><span class="ad">${esc(addr)}, ${esc(city)}<small>${facts.filter(Boolean).join(" · ")}${dom!=null?` · ${dom} days listed`:""}${d?` · ${d}`:""}${seen}</small></span><span><span class="tier ${TIER[t][0]}">${t===0&&!flag?"On the water · not marked waterfront":TIER[t][1]}</span> <a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">Redfin</a></span>${wtLine(path)}</li>`}
+  return `<li${isNew?' class="is-new"':""}><span class="pr">${money(price)}${isNew?' <span class="newb">New</span>':""}</span><span class="ad">${esc(addr)}, ${esc(city)}<small>${facts.filter(Boolean).join(" · ")}${dom!=null?` · ${dom} days listed`:""}${d?` · ${d}`:""}${seen}</small></span><span><span class="tier ${TIER[t][0]}">${t===0&&!flag?"On the water · not marked waterfront":TIER[t][1]}</span> <a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">Redfin</a></span>${wtLine(path)}${g?springPair(g,x):""}</li>`}
 function renderSprings(){
   const q=document.getElementById("q").value.trim().toLowerCase(), s=sel.value, pt=document.getElementById("ptype").value,
     only=document.getElementById("haslist").checked, nw=document.getElementById("newonly").checked;
@@ -1318,7 +1322,7 @@ function renderSprings(){
   const hitR=r=>(!s||r[13]===s)&&(!q||(r[1]+" "+r[2]+" "+r[10].join(" ")+" "+NAMES[r[13]]).toLowerCase().includes(q)||r[13].toLowerCase()===q);
   const block=(g,wi)=>{const L=listingsFor(g,wi,pt,nw); const c=[0,1,2].map(t=>L.filter(x=>x[1]===t).length), cn=L.filter(x=>x[15]).length;
     const chips=(cn?`<span class="cnt new">${cn} new</span>`:"")+[[0,"on"],[1,"near"],[2,"un"]].filter(([t])=>c[t]).map(([t,cl])=>`<span class="cnt ${cl}">${c[t]} ${["on the water","near","unmapped"][t]}</span>`).join("");
-    return L.length?`<details class="lst"${nw?" open":""}><summary>${L.length} listing${L.length===1?"":"s"} ${chips}</summary><ul class="lsts">${L.map(lItem).join("")}</ul></details>`:`<div class="none-l">No ${pt==="h"?"houses":pt==="l"?"land":"listings"} on Redfin on this water right now.</div>`};
+    return L.length?`<details class="lst"${nw?" open":""}><summary>${L.length} listing${L.length===1?"":"s"} ${chips}</summary><ul class="lsts">${L.map(x=>lItem(x,g)).join("")}</ul></details>`:`<div class="none-l">No ${pt==="h"?"houses":pt==="l"?"land":"listings"} on Redfin on this water right now.</div>`};
   const keep=(g,wi)=>!(only||nw||WTD())||listingsFor(g,wi,pt,nw).length;
   const val=(m,a,b)=>`<div class="val"><b>${m<1?m.toFixed(2):m.toFixed(1)}</b> <span class="u">NTU</span><span class="sub">IQR ${a}–${b}</span></div>`;
   const zb=bb=>[bb[1],bb[3],bb[0],bb[2]];
@@ -1416,7 +1420,7 @@ function shItem(x){
   const z="https://www.zillow.com/homes/"+encodeURIComponent(`${addr}, ${city}, ${st}`).replace(/%20/g,"-")+"_rb/";
   const seen=first&&first!==SH.date?` · on our list since ${fmtD(first)}`:"";
   const xs=[], hv=SH.heads[hi];
-  if(hv[8]!=null)xs.push(`<span>${gmLink(hv[8],hv[9],"Vent:")} · listing point ${gmLink(lat,lon)} · ${gmBoth(hv[8],hv[9],lat,lon)}</span>`);
+  if(hv[8]!=null)xs.push(`<span>${gmLink(hv[8],hv[9],"Vent:")} · listing point ${gmLink(lat,lon)}</span>`, `<span>${pairLink(hv[8],hv[9],lat,lon,hv[0],addr)}</span>`);
   if(note)xs.push(esc(note[0].toUpperCase()+note.slice(1))+".");
   if(perms&&perms.length)xs.push(`<span><b>${perms.length} permit${perms.length>1?"s":""} or water right${perms.length>1?"s":""} near the vent:</b> `+perms.slice(0,6).map(p=>`<span class="perm">${esc(p[0])} ${esc(p[1]??"")}</span>${p[2]?" "+esc(p[2]):""}${p[3]?" · "+esc(p[3]):""}${p[4]?" · "+esc(String(p[4]).toLowerCase()):""}${p[5]?", expires "+esc(p[5]):""}${p[6]?` · ${Number(p[6]).toLocaleString()} gal/day`:""}`).join("; ")+(perms.length>6?`; and ${perms.length-6} more`:"")+"</span>");
   else if(st==="FL"||st==="TX")xs.push("No permits or water rights on file within "+(st==="TX"?"800":"400")+" m of the vent.");
@@ -1897,10 +1901,52 @@ function gmLink(lat,lon,label){if(lat==null||lon==null)return "";const ll=gmF(la
   return `<span class="gm">${label?label+" ":""}<a href="https://www.google.com/maps/search/?api=1&query=${ll}" target="_blank" rel="noopener" title="Open this point in Google Maps">${gmF(lat)}, ${gmF(lon)}</a> <a class="gm-sat" href="https://www.google.com/maps/@?api=1&map_action=map&center=${ll}&zoom=19&basemap=satellite" target="_blank" rel="noopener" title="Same spot in satellite view">satellite</a></span>`}
 function gmBoth(vlat,vlon,lat,lon){if(vlat==null||lat==null)return "";
   return `<a href="https://www.google.com/maps/dir/?api=1&origin=${gmF(lat)},${gmF(lon)}&destination=${gmF(vlat)},${gmF(vlon)}&travelmode=walking" target="_blank" rel="noopener" title="Google Maps with the listing and the vent both pinned">vent and listing on Google Maps</a>`}
-function gmSpring(r){let ll=r[18]||[(r[12][1]+r[12][3])/2,(r[12][0]+r[12][2])/2];
+function gmSpring(r){const ll=springLL(r); return ` · ${gmLink(ll[0],ll[1],"vent")}`}
+/* ---------- straight line from a listing to its spring (pipeline/fixes/spring_line.py) ---------- */
+function springLL(r){let ll=r[18]||[(r[12][1]+r[12][3])/2,(r[12][0]+r[12][2])/2];
   if(r[16]==="FL"&&typeof fsiRow==="function"){const f=fsiRow(r); if(f&&fsiTok(f[2])===fsiTok(r[1])){const cl=Math.cos(ll[0]*Math.PI/180);
     if(Math.hypot((f[0]-ll[0])*111200,(f[1]-ll[1])*111200*cl)<=300)ll=[f[0],f[1]]}}
-  return ` · ${gmLink(ll[0],ll[1],"vent")}`}
+  return ll}
+let SGW=null;
+function springByGW(g,wi){if(!SGW){SGW={};FSD.springs.forEach(r=>SGW[r[17]+"|"+r[0]]=r);(typeof FSB!=="undefined"?FSB:[]).forEach(r=>SGW[r[17]+"|"+r[0]]=r)}return SGW[g+"|"+wi]}
+function springPair(g,x){const r=springByGW(g,x[0]); if(!r||x[16]==null)return ""; const v=springLL(r);
+  return `<div class="pair-l">${pairLink(v[0],v[1],x[16],x[17],r[1],x[8])}</div>`}
+function pairDist(a,b,c,d){const R=6371008.8,p=Math.PI/180,dl=(c-a)*p,dn=(d-b)*p,s=Math.sin(dl/2)**2+Math.cos(a*p)*Math.cos(c*p)*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(s))}
+function pairFmt(m){const ft=m*3.28084; return ft<1000?`${Math.round(ft).toLocaleString()} ft (${Math.round(m)} m)`:`${(m/1609.344).toFixed(m<16093?2:1)} mi (${m<1000?Math.round(m)+" m":(m/1000).toFixed(2)+" km"})`}
+function pairLink(vlat,vlon,lat,lon,vname,lname){if(vlat==null||lat==null)return "";
+  return `<a class="pair" href="#pair=${gmF(vlat)},${gmF(vlon)},${gmF(lat)},${gmF(lon)}" data-v="${esc(vname||"")}" data-l="${esc(lname||"")}" onclick="return pairClick(this)" title="Show the listing and the spring on the map, joined by a straight line">Straight line to the spring · ${pairFmt(pairDist(vlat,vlon,lat,lon))}</a>`}
+function pairClick(a){const p=a.getAttribute("href").slice(6).split(",").map(Number); pairShow(p[0],p[1],p[2],p[3],a.dataset.v,a.dataset.l); return false}
+function pairClear(){const m=MAPV.map; if(!m)return; if(MAPV.pair){m.removeLayer(MAPV.pair);MAPV.pair=null} if(MAPV.pairCtl){m.removeControl(MAPV.pairCtl);MAPV.pairCtl=null}
+  if(/^#pair=/.test(location.hash))try{history.replaceState(null,"",location.pathname+location.search+(MAPV.pairBack?"":"#map"))}catch(e){}
+  const b=MAPV.pairBack; MAPV.pairBack=null;
+  if(b){if(b.max&&typeof MAPMAX!=="undefined"&&MAPMAX.on)mapMaxSet(false); setMode(b.mode); setTimeout(()=>window.scrollTo(0,b.y),60)}}
+function pairShow(vlat,vlon,lat,lon,vname,lname){
+  if(mode!=="map"){MAPV.pairBack={mode,y:window.scrollY,max:false}; setMode("map")}
+  let tries=0;
+  const go=()=>{const m=MAPV.map; tries++;
+    if(!m||(!MAPV.tilesOn&&tries<12)){if(tries<60)return setTimeout(go,150); if(!m)return}   // wait for the map (and, on the site, its basemaps)
+    m.closePopup();
+    const lab=[...document.querySelectorAll(".leaflet-control-layers-base label")].find(l=>l.textContent.trim()==="Satellite");
+    if(lab){const i=lab.querySelector("input"); if(i&&!i.checked){let prev=null; try{prev=localStorage.getItem("cw-base")}catch(e){}
+      i.click(); const back=()=>{try{prev==null?localStorage.removeItem("cw-base"):localStorage.setItem("cw-base",prev)}catch(e){}}; back(); setTimeout(back,400); setTimeout(back,1500)}}
+    if(!m.getPane("pairPane")){const p=m.createPane("pairPane");p.style.zIndex=640; MAPV.pairR=L.svg({pane:"pairPane"})}
+    if(MAPV.pair)m.removeLayer(MAPV.pair);
+    const A=[lat,lon], V=[vlat,vlon], d=pairDist(vlat,vlon,lat,lon), o={pane:"pairPane",renderer:MAPV.pairR};
+    MAPV.pair=L.layerGroup([
+      L.polyline([A,V],{...o,color:"#000",weight:7,opacity:.5,interactive:false}),
+      L.polyline([A,V],{...o,color:"#ffd60a",weight:3.5,dashArray:"10 7",interactive:false}),
+      L.circleMarker(V,{...o,radius:8,color:"#fff",weight:2.5,fillColor:"#1e88e5",fillOpacity:1}).bindTooltip(`Spring vent${vname?": "+esc(vname):""}`,{permanent:true,direction:"top",offset:[0,-9],className:"pair-tip"}),
+      L.circleMarker(A,{...o,radius:8,color:"#fff",weight:2.5,fillColor:"#e53935",fillOpacity:1}).bindTooltip(lname?esc(lname):"Listing",{permanent:true,direction:"bottom",offset:[0,9],className:"pair-tip"}),
+      L.circleMarker([(lat+vlat)/2,(lon+vlon)/2],{...o,radius:0,opacity:0,fillOpacity:0,interactive:false}).bindTooltip(`${pairFmt(d)} straight line`,{permanent:true,direction:"center",className:"pair-tip pair-d"})]).addTo(m);
+    if(!MAPV.pairCtl){const C=L.Control.extend({onAdd(){const b=L.DomUtil.create("button","pair-x");b.type="button";b.textContent=MAPV.pairBack?"Back to the list":"Clear line";
+        L.DomEvent.disableClickPropagation(b); b.onclick=pairClear; return b}}); MAPV.pairCtl=new C({position:"topleft"}).addTo(m)}
+    // full-screen map, so the page's controls don't cover it
+    const w=document.getElementById("mapwrap"); if(w&&!w.classList.contains("max")&&typeof mapMaxSet==="function"){mapMaxSet(true); if(MAPV.pairBack)MAPV.pairBack.max=true}
+    const fit=()=>{m.invalidateSize({pan:false}); if(d<25)m.setView([(lat+vlat)/2,(lon+vlon)/2],18); else m.fitBounds(L.latLngBounds([A,V]),{padding:[150,130],maxZoom:18})};
+    fit(); setTimeout(fit,350);
+    try{history.replaceState(null,"",location.pathname+location.search+`#pair=${gmF(vlat)},${gmF(vlon)},${gmF(lat)},${gmF(lon)}`)}catch(e){}};
+  setTimeout(go,60)}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&MAPV.pair)pairClear()});
 /* ---------- map tab ---------- */
 const MAPV={map:null,base:null,counties:null,cluster:null,waters:null,topo:null,ready:false,fitted:false};
 const tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -1937,6 +1983,7 @@ function popupHtml(o){
     <div class="pp-sub">${size.filter(Boolean).join(" · ")}${dom!=null?` · ${dom} days listed`:""}</div>
     <div>${esc(addr)}, ${esc(city)}, ${o.st}</div>
     <div class="pp-water">${ws}${t===0&&!flag?'<br><span class="pp-sub">Not marked waterfront by the agent; confirm frontage.</span>':""}</div>
+    ${o.waters.filter(w=>w.t==="spring"&&w.fr&&x[16]!=null).slice(0,1).map(w=>{const v=springLL(w.fr);return `<div class="pp-gm">${pairLink(v[0],v[1],x[16],x[17],w.n,addr)}</div>`}).join("")}
     ${wtPop(path)}<div class="pp-links"><a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">View listing on Redfin</a><a class="alt" href="${z}" target="_blank" rel="noopener">Find on Zillow</a></div>`;
 }
 function shPopup(x){
@@ -1946,7 +1993,7 @@ function shPopup(x){
   return `<div class="pp-price">${money(price)}${x[15]?' <span class="newb">New</span>':""}</div>
     <div class="pp-sub">${size.filter(Boolean).join(" · ")}${dom!=null?` · ${dom} days listed`:""}</div>
     <div>${esc(addr)}, ${esc(city)}, ${hd[1]}</div>
-    <div class="pp-water">${SHT[t][1]}: <b>${esc(hd[0])}</b> <span class="pp-sub">(magnitude ${hd[3]}${hd[4]!=null?`, ${cfs(hd[4])} cfs`:""}${hd[5]?`, measured ${hd[5]}`:""})</span>${x[19]&&x[19].length?`<br><span class="pp-sub">${x[19].length} permit${x[19].length>1?"s":""} or water right${x[19].length>1?"s":""} near the vent</span>`:""}</div>${fsiPop(fsiHead(hd))}${hd[8]!=null?`<div class="pp-gm">${gmLink(hd[8],hd[9],"Vent:")}<br>${gmBoth(hd[8],hd[9],x[16],x[17])}</div>`:""}
+    <div class="pp-water">${SHT[t][1]}: <b>${esc(hd[0])}</b> <span class="pp-sub">(magnitude ${hd[3]}${hd[4]!=null?`, ${cfs(hd[4])} cfs`:""}${hd[5]?`, measured ${hd[5]}`:""})</span>${x[19]&&x[19].length?`<br><span class="pp-sub">${x[19].length} permit${x[19].length>1?"s":""} or water right${x[19].length>1?"s":""} near the vent</span>`:""}</div>${fsiPop(fsiHead(hd))}${hd[8]!=null?`<div class="pp-gm">${gmLink(hd[8],hd[9],"Vent:")}<br>${pairLink(hd[8],hd[9],x[16],x[17],hd[0],addr)}</div>`:""}
     ${wtPop(path)}<div class="pp-links"><a href="https://www.redfin.com${esc(path)}" target="_blank" rel="noopener">View listing on Redfin</a><a class="alt" href="${z}" target="_blank" rel="noopener">Find on Zillow</a></div>`;
 }
 // state outlines: their own layer above any basemap
@@ -2371,6 +2418,7 @@ document.querySelectorAll(".ctdate").forEach(e=>e.textContent=fmtD(CT.date));
 setMode(mode);
 
 try{mapMaxInit()}catch(e){}
+{const pm=/^#pair=(-?[\d.]+),(-?[\d.]+),(-?[\d.]+),(-?[\d.]+)/.exec(location.hash); if(pm)setTimeout(()=>pairShow(+pm[1],+pm[2],+pm[3],+pm[4]),300)}
 </script>
 
 </body></html>

@@ -372,3 +372,12 @@ listing's map point and "vent and listing on Google Maps" (a walking route with 
 carry the same links. Florida springs use the Florida Springs Institute survey vent when it matches by name within 300 m.
 Also: fsiFind/match_check treat "big" and "little" as name words (Little King Spring no longer takes Big King's survey), and
 page_edit_fsi.py only refreshes FSI/FSB data once its edits are on the page, since this fix builds on them.
+
+## Straight line from a listing to its spring (Nov 26, 2026) -- pipeline/fixes/spring_line.py
+Google Maps can only pin two points as a driving or walking route. Every listing tied to a spring (Springs tab listings,
+Springheads tab listings, and their map popups) now has "Straight line to the spring · <distance>": it opens the site's map full
+screen on satellite (the saved default basemap is kept), draws a dashed straight line from the listing's map point (Redfin's point
+for the address) to the vent, labels both ends, and shows the straight-line distance. "Back to the list" or Esc returns to the
+tab and scroll position the link was on. The link is also an address (#pair=vent lat,lon,listing lat,lon) that opens straight to
+the line in a new tab. It replaces coords_links.py's "vent and listing on Google Maps" walking-route link. The vent is the same
+point as the coordinates link (springLL). lItem and renderSprings edits are made to patch_page.py's RENDER too.
