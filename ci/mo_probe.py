@@ -13,13 +13,12 @@ def get(u, out=None, ua=UA):
     if out: open(out, "wb").write(b)
     return b
 def curl(u, out):
-    p = subprocess.run(["curl", "-sSL", "--retry", "3", "-m", "600", "-A", BROWSER, "-o", out, "-w", "%{http_code}", u], capture_output=True, text=True)
+    p = subprocess.run(["curl", "-sSL", "--http1.1", "--retry", "3", "--retry-all-errors", "-m", "600", "-A", BROWSER, "-o", out, "-w", "%{http_code}", u], capture_output=True, text=True)
     return p.stdout + " " + p.stderr.strip()
 log = []
 for name, urls in [("WR29", ["https://share.mo.gov/nr/mgs/MGSData/Books/Water%20Resources/Springs%20of%20Missouri/WR29revised.pdf",
                                "http://share.mo.gov/nr/mgs/MGSData/Books/Water%20Resources/Springs%20of%20Missouri/WR29revised.pdf"]),
-                ("V029", ["https://digital.library.missouri.edu/sites/default/files/2025-02/mu_417688.pdf",
-                          "https://share.mo.gov/nr/mgs/MGSData/Books/Volumes/The%20Large%20Springs%20of%20Missouri/V-029.pdf"])]:
+                ]:
     try:
         ok = False
         for u in urls:
@@ -37,21 +36,34 @@ for name, urls in [("WR29", ["https://share.mo.gov/nr/mgs/MGSData/Books/Water%20
         os.remove(f"out/books/{name}.pdf") if os.path.getsize(f"out/books/{name}.pdf") > 90e6 else None
     except Exception as e: log.append(f"{name}: {e}")
 pts = json.load(open("ci/mo_pts.json")); com = {}
+import re
+GEN = {"spring", "springs", "big", "blue", "cave", "cold", "mill", "the", "upper", "lower", "little", "rise", "of"}
 for gid, nm, lat, lon, mag in pts:
     u = "https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode({"action": "query", "format": "json", "generator": "geosearch",
-        "ggscoord": f"{lat}|{lon}", "ggsradius": 400, "ggslimit": 20, "ggsnamespace": 6, "prop": "imageinfo|coordinates",
+        "ggscoord": f"{lat}|{lon}", "ggsradius": 600, "ggslimit": 200, "ggsnamespace": 6, "prop": "imageinfo|coordinates",
         "iiprop": "url|extmetadata|size", "iiurlwidth": 640})
     try:
         d = json.loads(get(u)); ps = (d.get("query") or {}).get("pages") or {}
+        toks = [w for w in re.findall(r"[a-z]+", nm.lower()) if w not in GEN]
         rows = []
         for p in ps.values():
+            t = p.get("title", ""); tl = t.lower()
+            if "iss0" in tl or "view of earth" in tl: continue
+            if not ("spring" in tl or any(w in tl for w in toks)): continue
             ii = (p.get("imageinfo") or [{}])[0]; md = ii.get("extmetadata") or {}
             c = (p.get("coordinates") or [{}])[0]
-            rows.append({"title": p.get("title"), "thumb": ii.get("thumburl"), "page": ii.get("descriptionurl"), "lat": c.get("lat"), "lon": c.get("lon"),
-                         "license": (md.get("LicenseShortName") or {}).get("value"), "artist": (md.get("Artist") or {}).get("value"),
-                         "desc": ((md.get("ImageDescription") or {}).get("value") or "")[:300]})
+            rows.append({"title": t, "thumb": ii.get("thumburl"), "page": ii.get("descriptionurl"), "lat": c.get("lat"), "lon": c.get("lon"),
+                         "license": (md.get("LicenseShortName") or {}).get("value"), "artist": re.sub("<[^>]+>", "", (md.get("Artist") or {}).get("value") or "")[:120],
+                         "desc": re.sub("<[^>]+>", "", (md.get("ImageDescription") or {}).get("value") or "")[:300]})
         if rows: com[f"{gid}|{nm}"] = rows
     except Exception as e: log.append(f"commons {nm}: {e}")
-    time.sleep(1.2)
+    time.sleep(1.0)
+# Wikidata: springs in Missouri with an image
+q = """SELECT ?item ?itemLabel ?coord ?image WHERE { ?item wdt:P31/wdt:P279* wd:Q124714; wdt:P131* wd:Q1581; wdt:P625 ?coord.
+ OPTIONAL { ?item wdt:P18 ?image } SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } }"""
+try:
+    d = json.loads(get("https://query.wikidata.org/sparql?" + urllib.parse.urlencode({"query": q, "format": "json"})))
+    json.dump(d["results"]["bindings"], open("out/wikidata.json", "w")); log.append(f"wikidata: {len(d['results']['bindings'])} springs")
+except Exception as e: log.append(f"wikidata: {e}")
 json.dump(com, open("out/commons.json", "w")); log.append(f"commons: {len(com)} of {len(pts)} springs have photos within 400 m")
 open("out/log.txt", "w").write("\n".join(log)); print("\n".join(log))
