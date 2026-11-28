@@ -1,91 +1,91 @@
 {
- "date": "2026-11-23",
- "run": "45260035879",
+ "date": "2026-11-27",
+ "run": "46081943434",
  "steps": {
   "waters": {
    "ok": true,
-   "minutes": 0.4,
+   "minutes": 0.2,
    "last": [
-    "FS: 427 listings (3s)",
-    "SP: 153 listings (1s)",
-    "DONE 2026-11-23: 2362 listings, 109 new since 2026-11-15, 145 gone"
+    "FS: 426 listings (1s)",
+    "SP: 156 listings (1s)",
+    "DONE 2026-11-27: 2344 listings, 43 new since 2026-11-23, 68 gone"
    ],
    "error": null
   },
   "springheads": {
    "ok": true,
-   "minutes": 6.7,
+   "minutes": 14.0,
    "last": [
     "> sh_tab.py /home/runner/work/clearest-water/clearest-water/pipeline/page.html sh.json",
     "data refreshed",
-    "HEADS DONE 2026-11-23: 19 springhead listings, 2 new since 2026-11-15"
+    "HEADS DONE 2026-11-27: 20 springhead listings, 1 new since 2026-11-23"
    ],
    "error": null
   },
   "trails": {
    "ok": true,
-   "minutes": 0.4,
+   "minutes": 0.2,
    "last": [
     "> tr_tab.py /home/runner/work/clearest-water/clearest-water/pipeline/page.html tr.json",
     "trails data refreshed",
-    "TRAILS DONE 2026-11-23: 14453 trail-side houses, 1132 new since 2026-11-15, 1491 gone"
+    "TRAILS DONE 2026-11-27: 14347 trail-side houses, 444 new since 2026-11-23, 619 gone"
    ],
    "error": null
   },
   "water_trails": {
    "ok": true,
-   "minutes": 0.1,
+   "minutes": 0.0,
    "last": [
-    "WT DONE: 2275 water/springhead listings; within 400 m of a trail 57, 800 m 109, 1 mile 177; 25 trail-side houses also on the water; 24 inside big cities"
+    "WT DONE: 2257 water/springhead listings; within 400 m of a trail 58, 800 m 108, 1 mile 170; 26 trail-side houses also on the water; 24 inside big cities"
    ],
    "error": null
   },
   "cities": {
    "ok": true,
-   "minutes": 1.0,
+   "minutes": 0.5,
    "last": [
     "> ct_tab.py /home/runner/work/clearest-water/clearest-water/pipeline/page.html ct.json",
     "cities data refreshed",
-    "CITIES DONE 2026-11-23: 5501 city trail-side houses, 431 new since 2026-11-15, 564 gone, 0 with water and trail access"
+    "CITIES DONE 2026-11-27: 5417 city trail-side houses, 150 new since 2026-11-23, 264 gone, 0 with water and trail access"
    ],
    "error": null
   },
   "old_growth": {
    "ok": true,
-   "minutes": 3.9,
+   "minutes": 2.9,
    "last": [
     "1404 search cells in 42 states",
-    "OG DONE 2026-11-23: 373 listings of 25+ acres near 156 of 392 old-growth forests; 141 of 50+ acres; 20 bordering or inside; 15 new since 2026-11-15; 22 gone; size 502 KB",
+    "OG DONE 2026-11-27: 376 listings of 25+ acres near 155 of 392 old-growth forests; 141 of 50+ acres; 19 bordering or inside; 12 new since 2026-11-23; 9 gone; size 502 KB",
     "old-growth data refreshed"
    ],
    "error": null
   },
   "rainforest": {
    "ok": true,
-   "minutes": 1.2,
+   "minutes": 0.9,
    "last": [
     "1045 search cells",
-    "RAIN DONE 2026-11-23: 364 listings of 25+ acres in rainforest country; 162 of 50+ acres; 200 with a creek, 18 with a pond; by zone {'alaska': 3, 'core': 181, 'fog': 84, 'inland': 11, 'maine': 85}; 17 new since 2026-11-15; 20 gone",
+    "RAIN DONE 2026-11-28: 356 listings of 25+ acres in rainforest country; 160 of 50+ acres; 194 with a creek, 18 with a pond; by zone {'alaska': 3, 'core': 176, 'fog': 81, 'inland': 10, 'maine': 86}; 3 new since 2026-11-23; 11 gone",
     "rainforest data refreshed"
    ],
    "error": null
   },
   "wild_lakes": {
    "ok": true,
-   "minutes": 1.3,
+   "minutes": 0.7,
    "last": [
     "dropped GNIS reservoirs: ['Beaver Brook Number 2 Reservoir', 'Pacific Placer Reservoir']",
-    "ML DONE 2026-11-23: 1779 listings (630 on the shore) at 655 of 15422 wild lakes (107 unnamed); 951 houses, 828 land; 31 new since 2026-11-19; 58 gone",
+    "ML DONE 2026-11-28: 1758 listings (622 on the shore) at 645 of 15422 wild lakes (102 unnamed); 935 houses, 823 land; 26 new since 2026-11-23; 47 gone",
     "mountain lake data refreshed"
    ],
    "error": null
   },
   "oceanfront": {
    "ok": true,
-   "minutes": 0.1,
+   "minutes": 0.0,
    "last": [
     "344 waterfront-marked listings in the cells",
-    "OC DONE 2026-11-23: 31 oceanfront listings (4 houses, 27 land) on 4808 km of clear open coast; 0 new since None; by state {'CA': 2, 'FL': 4, 'MA': 2, 'NC': 6, 'OR': 17}",
+    "OC DONE 2026-11-28: 32 oceanfront listings (4 houses, 28 land) on 4808 km of clear open coast; 2 new since 2026-11-23; by state {'CA': 2, 'FL': 4, 'MA': 2, 'NC': 6, 'OR': 18}",
     "oceanfront data refreshed"
    ],
    "error": null
